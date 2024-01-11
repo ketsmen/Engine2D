@@ -1,21 +1,52 @@
-[gd_scene load_steps=17 format=3 uid="uid://sy05ev3urdih"]
+[gd_scene load_steps=28 format=3 uid="uid://sy05ev3urdih"]
 
-[ext_resource type="AudioStream" uid="uid://cny32whj1bpsm" path="res://framework/resources/music/launch.wav" id="1_dmsg8"]
+[ext_resource type="AudioStream" uid="uid://cny32whj1bpsm" path="res://framework/static/music/launch.wav" id="1_dmsg8"]
 [ext_resource type="Script" path="res://framework/script/launch/launch.gd" id="1_rwg7y"]
-[ext_resource type="Texture2D" uid="uid://h5inqm6802j0" path="res://framework/resources/image/launch.jpeg" id="3_2v45x"]
-[ext_resource type="Texture2D" uid="uid://cs3ka4mdy2ik8" path="res://framework/resources/image/launch/login_main.png" id="4_ta580"]
-[ext_resource type="Texture2D" uid="uid://cj8ys8xkdcqgt" path="res://framework/resources/image/launch/logo.png" id="5_gfabl"]
-[ext_resource type="Texture2D" uid="uid://qc4lxve372pl" path="res://framework/resources/image/launch/start_button_0.png" id="6_0kwtf"]
-[ext_resource type="Texture2D" uid="uid://dg3ib25ue2vev" path="res://framework/resources/image/launch/start_button_2.png" id="7_r6bv8"]
-[ext_resource type="Texture2D" uid="uid://c8576u8is51im" path="res://framework/resources/image/launch/start_button_1.png" id="8_ovqcw"]
-[ext_resource type="Texture2D" uid="uid://dr5febi2xu60w" path="res://framework/resources/image/launch/register_button_0.png" id="9_uebbl"]
-[ext_resource type="Texture2D" uid="uid://boci327wl30oo" path="res://framework/resources/image/launch/register_button_1.png" id="10_3av1s"]
-[ext_resource type="Texture2D" uid="uid://2g5dkco72xy7" path="res://framework/resources/image/launch/register_button_2.png" id="11_obttg"]
-[ext_resource type="Texture2D" uid="uid://cp4d1ctw2q7kp" path="res://framework/resources/image/launch/password_button_0.png" id="12_28xnv"]
-[ext_resource type="Texture2D" uid="uid://12i4au7sb0n" path="res://framework/resources/image/launch/password_button_1.png" id="13_xlb27"]
-[ext_resource type="Texture2D" uid="uid://d2tcrp7te8xo5" path="res://framework/resources/image/launch/password_button_2.png" id="14_x28hu"]
-[ext_resource type="Texture2D" uid="uid://d38dihs8b4gip" path="res://framework/resources/image/launch/progress_background.png" id="15_j7d43"]
-[ext_resource type="Texture2D" uid="uid://cguhns4fvf8oo" path="res://framework/resources/image/launch/progress.png" id="16_s5h0a"]
+[ext_resource type="Texture2D" uid="uid://h5inqm6802j0" path="res://framework/static/image/launch.jpeg" id="3_2v45x"]
+[ext_resource type="Texture2D" uid="uid://cs3ka4mdy2ik8" path="res://framework/static/image/launch/login_main.png" id="4_ta580"]
+[ext_resource type="Texture2D" uid="uid://b0oc1qvx8yowh" path="res://framework/static/image/launch/server.png" id="4_xuvh0"]
+[ext_resource type="Texture2D" uid="uid://cfcstahdpyipe" path="res://framework/static/image/launch/server_button_0.png" id="5_7sc4d"]
+[ext_resource type="Texture2D" uid="uid://cj8ys8xkdcqgt" path="res://framework/static/image/launch/logo.png" id="5_gfabl"]
+[ext_resource type="Texture2D" uid="uid://clxxkrfr345op" path="res://framework/static/image/launch/server_scroll_bg.png" id="5_gxoxv"]
+[ext_resource type="Texture2D" uid="uid://bphc4l6jtqept" path="res://framework/static/image/launch/server_scroll_up.png" id="5_l0ex6"]
+[ext_resource type="Texture2D" uid="uid://qc4lxve372pl" path="res://framework/static/image/launch/start_button_0.png" id="6_0kwtf"]
+[ext_resource type="Texture2D" uid="uid://bjn41cuq1r4hc" path="res://framework/static/image/launch/server_button_2.png" id="6_tvy7t"]
+[ext_resource type="Texture2D" uid="uid://3pgs3we68q7j" path="res://framework/static/image/launch/server_scroll_dow.png" id="7_krild"]
+[ext_resource type="Texture2D" uid="uid://vavjmsqit6kc" path="res://framework/static/image/launch/server_button_1.png" id="7_m7jot"]
+[ext_resource type="Texture2D" uid="uid://dg3ib25ue2vev" path="res://framework/static/image/launch/start_button_2.png" id="7_r6bv8"]
+[ext_resource type="Texture2D" uid="uid://c8576u8is51im" path="res://framework/static/image/launch/start_button_1.png" id="8_ovqcw"]
+[ext_resource type="Texture2D" uid="uid://dr5febi2xu60w" path="res://framework/static/image/launch/register_button_0.png" id="9_uebbl"]
+[ext_resource type="Texture2D" uid="uid://boci327wl30oo" path="res://framework/static/image/launch/register_button_1.png" id="10_3av1s"]
+[ext_resource type="Texture2D" uid="uid://2g5dkco72xy7" path="res://framework/static/image/launch/register_button_2.png" id="11_obttg"]
+[ext_resource type="Texture2D" uid="uid://cp4d1ctw2q7kp" path="res://framework/static/image/launch/password_button_0.png" id="12_28xnv"]
+[ext_resource type="Texture2D" uid="uid://12i4au7sb0n" path="res://framework/static/image/launch/password_button_1.png" id="13_xlb27"]
+[ext_resource type="Texture2D" uid="uid://d2tcrp7te8xo5" path="res://framework/static/image/launch/password_button_2.png" id="14_x28hu"]
+[ext_resource type="Texture2D" uid="uid://d38dihs8b4gip" path="res://framework/static/image/launch/progress_background.png" id="15_j7d43"]
+[ext_resource type="Texture2D" uid="uid://cguhns4fvf8oo" path="res://framework/static/image/launch/progress.png" id="16_s5h0a"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ygu7y"]
+texture = ExtResource("5_gxoxv")
+
+[sub_resource type="Theme" id="Theme_7qkbx"]
+VScrollBar/icons/decrement = ExtResource("5_l0ex6")
+VScrollBar/icons/decrement_highlight = ExtResource("5_l0ex6")
+VScrollBar/icons/decrement_pressed = ExtResource("5_l0ex6")
+VScrollBar/icons/increment = ExtResource("7_krild")
+VScrollBar/icons/increment_highlight = ExtResource("7_krild")
+VScrollBar/icons/increment_pressed = ExtResource("7_krild")
+VScrollBar/styles/grabber = null
+VScrollBar/styles/grabber_highlight = null
+VScrollBar/styles/grabber_pressed = null
+VScrollBar/styles/scroll = SubResource("StyleBoxTexture_ygu7y")
+VScrollBar/styles/scroll_focus = null
+
+[sub_resource type="SystemFont" id="SystemFont_easgd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xkm5f"]
+line_spacing = 10.0
+font = SubResource("SystemFont_easgd")
+font_size = 14
+font_color = Color(0.67451, 0.490196, 0.160784, 1)
 
 [node name="Launch" type="Control"]
 layout_mode = 3
@@ -40,6 +71,188 @@ grow_vertical = 2
 texture = ExtResource("3_2v45x")
 expand_mode = 2
 stretch_mode = 6
+
+[node name="Server" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -638.0
+offset_top = -361.0
+offset_right = 638.0
+offset_bottom = 361.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Main" type="TextureRect" parent="Server"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -249.0
+offset_right = 180.0
+offset_bottom = 249.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_xuvh0")
+
+[node name="ListBox" type="ScrollContainer" parent="Server/Main"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -118.0
+offset_top = -154.0
+offset_right = 122.0
+offset_bottom = 86.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_7qkbx")
+horizontal_scroll_mode = 0
+
+[node name="List" type="VBoxContainer" parent="Server/Main/ListBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Item1" type="TextureButton" parent="Server/Main/ListBox/List"]
+layout_mode = 2
+texture_normal = ExtResource("5_7sc4d")
+texture_pressed = ExtResource("6_tvy7t")
+texture_hover = ExtResource("7_m7jot")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="Server/Main/ListBox/List/Item1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -11.5
+offset_right = 32.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 12
+text = "混沌初开"
+label_settings = SubResource("LabelSettings_xkm5f")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Item2" type="TextureButton" parent="Server/Main/ListBox/List"]
+layout_mode = 2
+texture_normal = ExtResource("5_7sc4d")
+texture_pressed = ExtResource("6_tvy7t")
+texture_hover = ExtResource("7_m7jot")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="Server/Main/ListBox/List/Item2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -11.5
+offset_right = 32.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 12
+text = "女娲造人"
+label_settings = SubResource("LabelSettings_xkm5f")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Item3" type="TextureButton" parent="Server/Main/ListBox/List"]
+layout_mode = 2
+texture_normal = ExtResource("5_7sc4d")
+texture_pressed = ExtResource("6_tvy7t")
+texture_hover = ExtResource("7_m7jot")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="Server/Main/ListBox/List/Item3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -11.5
+offset_right = 32.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 12
+text = "精卫填海"
+label_settings = SubResource("LabelSettings_xkm5f")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Item4" type="TextureButton" parent="Server/Main/ListBox/List"]
+layout_mode = 2
+texture_normal = ExtResource("5_7sc4d")
+texture_pressed = ExtResource("6_tvy7t")
+texture_hover = ExtResource("7_m7jot")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="Server/Main/ListBox/List/Item4"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -11.5
+offset_right = 32.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 12
+text = "愚公移山"
+label_settings = SubResource("LabelSettings_xkm5f")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Item5" type="TextureButton" parent="Server/Main/ListBox/List"]
+layout_mode = 2
+texture_normal = ExtResource("5_7sc4d")
+texture_pressed = ExtResource("6_tvy7t")
+texture_hover = ExtResource("7_m7jot")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="Server/Main/ListBox/List/Item5"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -11.5
+offset_right = 32.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 12
+text = "大禹治水"
+label_settings = SubResource("LabelSettings_xkm5f")
+horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="Login" type="Control" parent="."]
 layout_mode = 1
@@ -180,4 +393,9 @@ value = 50.0
 texture_progress = ExtResource("16_s5h0a")
 
 [connection signal="finished" from="LaunchSound" to="." method="_on_launch_sound_finished"]
+[connection signal="pressed" from="Server/Main/ListBox/List/Item1" to="." method="_on_item_1_pressed"]
+[connection signal="pressed" from="Server/Main/ListBox/List/Item2" to="." method="_on_item_pressed"]
+[connection signal="pressed" from="Server/Main/ListBox/List/Item3" to="." method="_on_item_pressed"]
+[connection signal="pressed" from="Server/Main/ListBox/List/Item4" to="." method="_on_item_pressed"]
+[connection signal="pressed" from="Server/Main/ListBox/List/Item5" to="." method="_on_item_pressed"]
 [connection signal="pressed" from="Login/Main/StartButton" to="." method="_on_start_button_pressed"]
