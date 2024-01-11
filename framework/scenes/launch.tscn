@@ -1,0 +1,103 @@
+[gd_scene load_steps=15 format=3 uid="uid://sy05ev3urdih"]
+
+[ext_resource type="AudioStream" uid="uid://cny32whj1bpsm" path="res://framework/resources/music/launch.wav" id="1_dmsg8"]
+[ext_resource type="Script" path="res://framework/scenes/script/launch.gd" id="1_rwg7y"]
+[ext_resource type="Texture2D" uid="uid://h5inqm6802j0" path="res://framework/resources/image/launch.jpeg" id="3_2v45x"]
+[ext_resource type="Texture2D" uid="uid://cs3ka4mdy2ik8" path="res://framework/resources/image/launch/login_main.png" id="4_ta580"]
+[ext_resource type="Texture2D" uid="uid://cj8ys8xkdcqgt" path="res://framework/resources/image/launch/logo.png" id="5_gfabl"]
+[ext_resource type="Texture2D" uid="uid://qc4lxve372pl" path="res://framework/resources/image/launch/start_button_0.png" id="6_0kwtf"]
+[ext_resource type="Texture2D" uid="uid://dg3ib25ue2vev" path="res://framework/resources/image/launch/start_button_2.png" id="7_r6bv8"]
+[ext_resource type="Texture2D" uid="uid://c8576u8is51im" path="res://framework/resources/image/launch/start_button_1.png" id="8_ovqcw"]
+[ext_resource type="Texture2D" uid="uid://dr5febi2xu60w" path="res://framework/resources/image/launch/register_button_0.png" id="9_uebbl"]
+[ext_resource type="Texture2D" uid="uid://boci327wl30oo" path="res://framework/resources/image/launch/register_button_1.png" id="10_3av1s"]
+[ext_resource type="Texture2D" uid="uid://2g5dkco72xy7" path="res://framework/resources/image/launch/register_button_2.png" id="11_obttg"]
+[ext_resource type="Texture2D" uid="uid://cp4d1ctw2q7kp" path="res://framework/resources/image/launch/password_button_0.png" id="12_28xnv"]
+[ext_resource type="Texture2D" uid="uid://12i4au7sb0n" path="res://framework/resources/image/launch/password_button_1.png" id="13_xlb27"]
+[ext_resource type="Texture2D" uid="uid://d2tcrp7te8xo5" path="res://framework/resources/image/launch/password_button_2.png" id="14_x28hu"]
+
+[node name="Launch" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rwg7y")
+
+[node name="LaunchSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_dmsg8")
+autoplay = true
+
+[node name="BackgroundImage" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_2v45x")
+expand_mode = 2
+stretch_mode = 6
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.5
+offset_top = -315.5
+offset_right = 200.5
+offset_bottom = 121.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_gfabl")
+
+[node name="LoginMain" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -165.5
+offset_top = -38.5
+offset_right = 165.5
+offset_bottom = 264.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_ta580")
+
+[node name="StartButton" type="TextureButton" parent="LoginMain"]
+layout_mode = 0
+offset_left = 77.0
+offset_top = 150.0
+offset_right = 259.0
+offset_bottom = 235.0
+texture_normal = ExtResource("6_0kwtf")
+texture_pressed = ExtResource("8_ovqcw")
+texture_hover = ExtResource("7_r6bv8")
+
+[node name="RegisterButton" type="TextureButton" parent="LoginMain"]
+layout_mode = 0
+offset_left = 46.5
+offset_top = 231.5
+offset_right = 145.5
+offset_bottom = 271.5
+texture_normal = ExtResource("9_uebbl")
+texture_pressed = ExtResource("10_3av1s")
+texture_hover = ExtResource("11_obttg")
+
+[node name="PasswordButton" type="TextureButton" parent="LoginMain"]
+layout_mode = 0
+offset_left = 192.5
+offset_top = 232.5
+offset_right = 291.5
+offset_bottom = 272.5
+texture_normal = ExtResource("12_28xnv")
+texture_pressed = ExtResource("13_xlb27")
+texture_hover = ExtResource("14_x28hu")
+
+[connection signal="finished" from="LaunchSound" to="." method="_on_launch_sound_finished"]
+[connection signal="pressed" from="LoginMain/StartButton" to="." method="_on_start_button_pressed"]
