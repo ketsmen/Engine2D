@@ -66,6 +66,6 @@ func _on_server_item_pressed(server_token: String):
 	$Server.visible = false
 	tween.tween_property($Background, "modulate:a", 0, 0.5)
 	$Roles.visible = true
-	tween.tween_property($Roles/Background, "modulate:a", 1, 1)
+	tween.tween_property($Roles, "modulate:a", 1, 1)
 	$Login/Sound.stop()
 	$Roles/Sound.play()

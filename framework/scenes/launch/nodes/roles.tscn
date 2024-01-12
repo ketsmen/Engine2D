@@ -1,10 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://dhjpyghfgls38"]
+[gd_scene load_steps=21 format=3 uid="uid://dhjpyghfgls38"]
 
 [ext_resource type="Script" path="res://framework/scripts/launch/roles.gd" id="1_txevj"]
 [ext_resource type="AudioStream" uid="uid://jweokr186bpu" path="res://framework/statics/music/launch_login.wav" id="2_gbjyi"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dorq5"]
-load_path = "res://.godot/imported/roles.png-b568d8a7336e1f1ec7357ee2b0a4ed56.ctex"
+[ext_resource type="Texture2D" uid="uid://dgq6h8yx64i6d" path="res://framework/statics/scenes/launch/roles/roles.png" id="3_khr8p"]
+[ext_resource type="Texture2D" uid="uid://dmgxula2ih0iq" path="res://framework/statics/scenes/launch/roles/start_background.png" id="4_wpp1t"]
+[ext_resource type="Texture2D" uid="uid://y277yj84o5o8" path="res://framework/statics/scenes/launch/roles/start_button_0.png" id="5_66nb2"]
+[ext_resource type="Texture2D" uid="uid://cuv883e30k2lo" path="res://framework/statics/scenes/launch/roles/start_button_1.png" id="6_hmoen"]
+[ext_resource type="Texture2D" uid="uid://6dmb6cui8mm4" path="res://framework/statics/scenes/launch/roles/start_button_2.png" id="7_qxh16"]
+[ext_resource type="Texture2D" uid="uid://c4qgwbplwd3xo" path="res://framework/statics/scenes/launch/roles/return_button_0.png" id="8_gyqld"]
+[ext_resource type="Texture2D" uid="uid://drqptsx3mm5ao" path="res://framework/statics/scenes/launch/roles/return_button_1.png" id="9_8ma3l"]
+[ext_resource type="Texture2D" uid="uid://fkcngm37vahl" path="res://framework/statics/scenes/launch/roles/return_button_2.png" id="10_kuv27"]
+[ext_resource type="Texture2D" uid="uid://dqw5d7a5071lm" path="res://framework/statics/scenes/launch/roles/create_button_0.png" id="11_6m2dc"]
+[ext_resource type="Texture2D" uid="uid://bv1rfst01fsih" path="res://framework/statics/scenes/launch/roles/create_button_1.png" id="12_w43ph"]
+[ext_resource type="Texture2D" uid="uid://b8xelnmsptl1p" path="res://framework/statics/scenes/launch/roles/create_button_2.png" id="13_r48ur"]
+[ext_resource type="Texture2D" uid="uid://bu7rycb6o1qmr" path="res://framework/statics/scenes/launch/roles/restore_button_0.png" id="14_id7oa"]
+[ext_resource type="Texture2D" uid="uid://ddfrp4hiyle30" path="res://framework/statics/scenes/launch/roles/restore_button_1.png" id="15_yk0jp"]
+[ext_resource type="Texture2D" uid="uid://d0a3w6mmjxnl7" path="res://framework/statics/scenes/launch/roles/restore_button_2.png" id="16_u7box"]
+[ext_resource type="Texture2D" uid="uid://j8jsaj8tyn87" path="res://framework/statics/scenes/launch/roles/delete_button_0.png" id="17_gc6uh"]
+[ext_resource type="Texture2D" uid="uid://bwlvs8bysmsyf" path="res://framework/statics/scenes/launch/roles/delete_button_1.png" id="18_oa0ep"]
+[ext_resource type="Texture2D" uid="uid://ojx060phf5ve" path="res://framework/statics/scenes/launch/roles/delete_button_2.png" id="19_geosi"]
+[ext_resource type="Texture2D" uid="uid://bwq2v0fgce4km" path="res://framework/statics/scenes/launch/roles/002326.png" id="20_bp4t2"]
 
 [node name="Roles" type="Control"]
 layout_mode = 3
@@ -25,7 +40,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("CompressedTexture2D_dorq5")
+texture = ExtResource("3_khr8p")
 expand_mode = 2
 stretch_mode = 6
 
@@ -46,4 +61,121 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Start" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="Start"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -146.0
+offset_top = -128.0
+offset_right = 146.0
+offset_bottom = -68.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("4_wpp1t")
+
+[node name="StartButton" type="TextureButton" parent="Start"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -135.5
+offset_top = -120.0
+offset_right = 135.5
+offset_bottom = -76.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("5_66nb2")
+texture_pressed = ExtResource("6_hmoen")
+texture_hover = ExtResource("7_qxh16")
+
+[node name="ReturnButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -356.0
+offset_top = 179.0
+offset_right = -133.0
+offset_bottom = 240.0
+grow_horizontal = 0
+grow_vertical = 2
+texture_normal = ExtResource("8_gyqld")
+texture_pressed = ExtResource("9_8ma3l")
+texture_hover = ExtResource("10_kuv27")
+
+[node name="CreateButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = 8.0
+offset_right = -38.0
+offset_bottom = 62.0
+grow_horizontal = 0
+grow_vertical = 2
+texture_normal = ExtResource("11_6m2dc")
+texture_pressed = ExtResource("12_w43ph")
+texture_hover = ExtResource("13_r48ur")
+
+[node name="RestoreButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = 62.0
+offset_right = -58.0
+offset_bottom = 116.0
+grow_horizontal = 0
+grow_vertical = 2
+texture_normal = ExtResource("14_id7oa")
+texture_pressed = ExtResource("15_yk0jp")
+texture_hover = ExtResource("16_u7box")
+
+[node name="DeleteButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -340.0
+offset_top = 116.0
+offset_right = -78.0
+offset_bottom = 170.0
+grow_horizontal = 0
+grow_vertical = 2
+texture_normal = ExtResource("17_gc6uh")
+texture_pressed = ExtResource("18_oa0ep")
+texture_hover = ExtResource("19_geosi")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 81.0
+offset_top = 112.0
+offset_right = 313.0
+offset_bottom = 410.0
+texture = ExtResource("20_bp4t2")
+
+[connection signal="resized" from="." to="." method="_on_resized"]
 [connection signal="finished" from="Sound" to="." method="_on_sound_finished"]
