@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhjpyghfgls38"]
+
+[ext_resource type="Script" path="res://framework/scripts/launch/roles.gd" id="1_txevj"]
+[ext_resource type="AudioStream" uid="uid://jweokr186bpu" path="res://framework/statics/music/launch_login.wav" id="2_gbjyi"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dorq5"]
+load_path = "res://.godot/imported/roles.png-b568d8a7336e1f1ec7357ee2b0a4ed56.ctex"
+
+[node name="Roles" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_txevj")
+
+[node name="Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_gbjyi")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CompressedTexture2D_dorq5")
+expand_mode = 2
+stretch_mode = 6
+
+[node name="Mask" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Mask"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="finished" from="Sound" to="." method="_on_sound_finished"]

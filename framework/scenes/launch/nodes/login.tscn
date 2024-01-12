@@ -1,0 +1,285 @@
+[gd_scene load_steps=25 format=3 uid="uid://dxko355fkpwmk"]
+
+[ext_resource type="Script" path="res://framework/scripts/launch/login.gd" id="1_kcqpe"]
+[ext_resource type="Texture2D" uid="uid://dkrc3iususlww" path="res://framework/statics/scenes/launch/common/logo.png" id="2_7lmew"]
+[ext_resource type="AudioStream" uid="uid://bvbw65l1ymwxq" path="res://framework/statics/music/launch.wav" id="2_pmerm"]
+[ext_resource type="Texture2D" uid="uid://dh3xnku30umj8" path="res://framework/statics/scenes/launch/login/login_main.png" id="3_xw66n"]
+[ext_resource type="Texture2D" uid="uid://cxrxqe1xyrr3o" path="res://framework/statics/scenes/launch/login/submit_button_0.png" id="4_w51df"]
+[ext_resource type="Texture2D" uid="uid://jdsck4t0lpnu" path="res://framework/statics/scenes/launch/login/submit_button_1.png" id="5_vvya0"]
+[ext_resource type="Texture2D" uid="uid://hrwnemv3c3tr" path="res://framework/statics/scenes/launch/login/submit_button_2.png" id="6_m3wdk"]
+[ext_resource type="Texture2D" uid="uid://d3kmn03fi3voq" path="res://framework/statics/scenes/launch/login/register_button_0.png" id="7_8b2j4"]
+[ext_resource type="Texture2D" uid="uid://7xlssg2hkw8m" path="res://framework/statics/scenes/launch/login/register_button_1.png" id="8_c0e4j"]
+[ext_resource type="Texture2D" uid="uid://b6aqm1s12nlau" path="res://framework/statics/scenes/launch/login/register_button_2.png" id="9_uvt3x"]
+[ext_resource type="Texture2D" uid="uid://cxj4r5fbde0se" path="res://framework/statics/scenes/launch/login/change_password_button_0.png" id="10_8ttj7"]
+[ext_resource type="Texture2D" uid="uid://b2f22w42raduu" path="res://framework/statics/scenes/launch/login/change_password_button_1.png" id="11_seu6x"]
+[ext_resource type="Texture2D" uid="uid://ci0q1y0v2a8c5" path="res://framework/statics/scenes/launch/login/change_password_button_2.png" id="12_o60j6"]
+[ext_resource type="Texture2D" uid="uid://c7dpb8dnk5ya" path="res://framework/statics/scenes/launch/login/change_password.png" id="13_2imjr"]
+[ext_resource type="Texture2D" uid="uid://b2jy3jvklp47h" path="res://framework/statics/scenes/launch/common/confirm_button_0.png" id="14_nyv0p"]
+[ext_resource type="Texture2D" uid="uid://uk2q4a8a2we0" path="res://framework/statics/scenes/launch/common/confirm_button_1.png" id="15_b3cd6"]
+[ext_resource type="Texture2D" uid="uid://ba5hci3gbn6ky" path="res://framework/statics/scenes/launch/common/confirm_button_2.png" id="16_8fobg"]
+[ext_resource type="Texture2D" uid="uid://c840eathab74n" path="res://framework/statics/scenes/launch/common/cancel_button_0.png" id="17_pa6cg"]
+[ext_resource type="Texture2D" uid="uid://dg6c0j3sxoy6l" path="res://framework/statics/scenes/launch/common/cancel_button_1.png" id="18_iiobn"]
+[ext_resource type="Texture2D" uid="uid://d2m5onr3wneu4" path="res://framework/statics/scenes/launch/common/cancel_button_2.png" id="19_uh6vx"]
+[ext_resource type="Texture2D" uid="uid://dujcju8utj6fp" path="res://framework/statics/scenes/launch/login/register.png" id="20_e3h1n"]
+[ext_resource type="Texture2D" uid="uid://cvrdotvevm0d0" path="res://framework/statics/scenes/launch/common/adolescent_icon.png" id="22_d5cdj"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_3msj6"]
+color = Color(0, 0, 0, 0)
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 0
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_ofu5q"]
+color = Color(0, 0, 0, 0)
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 0
+
+[node name="Login" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kcqpe")
+
+[node name="Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_pmerm")
+
+[node name="Logo" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.5
+offset_top = -295.5
+offset_right = 200.5
+offset_bottom = 141.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_7lmew")
+
+[node name="Main" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -165.5
+offset_top = -13.5
+offset_right = 165.5
+offset_bottom = 289.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_xw66n")
+
+[node name="SubmitButton" type="TextureButton" parent="Main"]
+layout_mode = 0
+offset_left = 75.5
+offset_top = 147.5
+offset_right = 257.5
+offset_bottom = 232.5
+texture_normal = ExtResource("4_w51df")
+texture_pressed = ExtResource("5_vvya0")
+texture_hover = ExtResource("6_m3wdk")
+
+[node name="RegisterButton" type="TextureButton" parent="Main"]
+layout_mode = 0
+offset_left = 45.5
+offset_top = 231.5
+offset_right = 144.5
+offset_bottom = 271.5
+texture_normal = ExtResource("7_8b2j4")
+texture_pressed = ExtResource("8_c0e4j")
+texture_hover = ExtResource("9_uvt3x")
+
+[node name="ChangePasswordButton" type="TextureButton" parent="Main"]
+layout_mode = 0
+offset_left = 193.5
+offset_top = 231.5
+offset_right = 292.5
+offset_bottom = 271.5
+texture_normal = ExtResource("10_8ttj7")
+texture_pressed = ExtResource("11_seu6x")
+texture_hover = ExtResource("12_o60j6")
+
+[node name="EmailIpunt" type="LineEdit" parent="Main"]
+layout_mode = 0
+offset_left = 84.0
+offset_top = 99.0
+offset_right = 256.0
+offset_bottom = 123.0
+theme_override_font_sizes/font_size = 11
+theme_override_styles/focus = SubResource("StyleBoxLine_3msj6")
+placeholder_text = "请输入登录邮箱"
+context_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+flat = true
+caret_blink = true
+
+[node name="PasswordIpunt" type="LineEdit" parent="Main"]
+layout_mode = 0
+offset_left = 84.0
+offset_top = 128.0
+offset_right = 256.0
+offset_bottom = 152.0
+theme_override_font_sizes/font_size = 11
+theme_override_styles/focus = SubResource("StyleBoxLine_ofu5q")
+placeholder_text = "请输入登录密码"
+context_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+flat = true
+caret_blink = true
+secret = true
+
+[node name="ChangePassword" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Main" type="TextureRect" parent="ChangePassword"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -148.5
+offset_top = -113.5
+offset_right = 148.5
+offset_bottom = 113.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("13_2imjr")
+
+[node name="ConfirmButton" type="TextureButton" parent="ChangePassword"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0
+offset_top = 69.0
+offset_right = 31.0
+offset_bottom = 109.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("14_nyv0p")
+texture_pressed = ExtResource("15_b3cd6")
+texture_hover = ExtResource("16_8fobg")
+metadata/type = "change_password"
+
+[node name="CancelButton" type="TextureButton" parent="ChangePassword"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 38.0
+offset_top = 69.0
+offset_right = 107.0
+offset_bottom = 109.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("17_pa6cg")
+texture_pressed = ExtResource("18_iiobn")
+texture_hover = ExtResource("19_uh6vx")
+
+[node name="Register" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Main" type="TextureRect" parent="Register"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -213.0
+offset_top = -239.0
+offset_right = 213.0
+offset_bottom = 239.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("20_e3h1n")
+
+[node name="ConfirmButton" type="TextureButton" parent="Register"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = 189.0
+offset_right = -67.0
+offset_bottom = 229.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("14_nyv0p")
+texture_pressed = ExtResource("15_b3cd6")
+texture_hover = ExtResource("16_8fobg")
+
+[node name="CancelButton" type="TextureButton" parent="Register"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = 189.0
+offset_right = 9.0
+offset_bottom = 229.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("17_pa6cg")
+texture_pressed = ExtResource("18_iiobn")
+texture_hover = ExtResource("19_uh6vx")
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -69.0
+offset_top = 19.0
+offset_right = 29.0
+offset_bottom = 145.0
+grow_horizontal = 0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("22_d5cdj")
+
+[connection signal="finished" from="Sound" to="." method="_on_sound_finished"]
+[connection signal="pressed" from="Main/SubmitButton" to="." method="_on_submit_button_pressed"]
+[connection signal="pressed" from="Main/RegisterButton" to="." method="_on_register_button_pressed"]
+[connection signal="pressed" from="Main/ChangePasswordButton" to="." method="_on_change_password_button_pressed"]
+[connection signal="pressed" from="ChangePassword/ConfirmButton" to="." method="_on_confirm_button_pressed" binds= ["change_password"]]
+[connection signal="pressed" from="ChangePassword/CancelButton" to="." method="_on_cancel_button_pressed"]
+[connection signal="pressed" from="Register/ConfirmButton" to="." method="_on_confirm_button_pressed" binds= ["register"]]
+[connection signal="pressed" from="Register/CancelButton" to="." method="_on_cancel_button_pressed"]

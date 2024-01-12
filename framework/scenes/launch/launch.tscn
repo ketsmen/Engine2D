@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://sy05ev3urdih"]
+
+[ext_resource type="Script" path="res://framework/scripts/launch/launch.gd" id="1_tw44y"]
+[ext_resource type="Texture2D" uid="uid://1hapb1n6idgh" path="res://framework/statics/scenes/launch/launch.jpeg" id="3_xcjg8"]
+[ext_resource type="PackedScene" uid="uid://dxko355fkpwmk" path="res://framework/scenes/launch/nodes/login.tscn" id="4_c4kig"]
+[ext_resource type="PackedScene" uid="uid://mnolno0phv7x" path="res://framework/scenes/launch/nodes/server.tscn" id="5_fde8w"]
+[ext_resource type="PackedScene" uid="uid://dhjpyghfgls38" path="res://framework/scenes/launch/nodes/roles.tscn" id="5_pan11"]
+
+[node name="Launch" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tw44y")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_xcjg8")
+expand_mode = 2
+stretch_mode = 6
+
+[node name="Login" parent="." instance=ExtResource("4_c4kig")]
+visible = false
+layout_mode = 1
+
+[node name="Server" parent="." instance=ExtResource("5_fde8w")]
+visible = false
+layout_mode = 1
+
+[node name="Roles" parent="." instance=ExtResource("5_pan11")]
+visible = false
+layout_mode = 1
+
+[connection signal="submit_button_pressed" from="Login" to="." method="_on_login_submit_button_pressed"]
+[connection signal="item_pressed" from="Server" to="." method="_on_server_item_pressed"]
