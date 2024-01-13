@@ -55,9 +55,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -200.5
-offset_top = -295.5
+offset_top = -328.5
 offset_right = 200.5
-offset_bottom = 141.5
+offset_bottom = 108.5
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_7lmew")
@@ -69,51 +69,72 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -165.5
-offset_top = -13.5
-offset_right = 165.5
-offset_bottom = 289.5
+offset_left = -281.0
+offset_top = 11.5
+offset_right = 281.0
+offset_bottom = 266.5
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_xw66n")
 
 [node name="SubmitButton" type="TextureButton" parent="Main"]
-layout_mode = 0
-offset_left = 75.5
-offset_top = 147.5
-offset_right = 257.5
-offset_bottom = 232.5
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -101.0
+offset_top = 17.5
+offset_right = 101.0
+offset_bottom = 63.5
+grow_horizontal = 2
+grow_vertical = 2
 texture_normal = ExtResource("4_w51df")
 texture_pressed = ExtResource("5_vvya0")
 texture_hover = ExtResource("6_m3wdk")
 
 [node name="RegisterButton" type="TextureButton" parent="Main"]
-layout_mode = 0
-offset_left = 45.5
-offset_top = 231.5
-offset_right = 144.5
-offset_bottom = 271.5
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -161.0
+offset_top = 78.5
+offset_right = -39.0
+offset_bottom = 101.5
+grow_horizontal = 2
+grow_vertical = 2
 texture_normal = ExtResource("7_8b2j4")
 texture_pressed = ExtResource("8_c0e4j")
 texture_hover = ExtResource("9_uvt3x")
 
 [node name="ChangePasswordButton" type="TextureButton" parent="Main"]
-layout_mode = 0
-offset_left = 193.5
-offset_top = 231.5
-offset_right = 292.5
-offset_bottom = 271.5
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 39.0
+offset_top = 78.5
+offset_right = 161.0
+offset_bottom = 103.5
+grow_horizontal = 2
+grow_vertical = 2
 texture_normal = ExtResource("10_8ttj7")
 texture_pressed = ExtResource("11_seu6x")
 texture_hover = ExtResource("12_o60j6")
 
 [node name="EmailIpunt" type="LineEdit" parent="Main"]
 layout_mode = 0
-offset_left = 84.0
-offset_top = 99.0
-offset_right = 256.0
-offset_bottom = 123.0
-theme_override_font_sizes/font_size = 11
+offset_left = 195.0
+offset_top = 47.0
+offset_right = 385.0
+offset_bottom = 76.0
+theme_override_font_sizes/font_size = 12
 theme_override_styles/focus = SubResource("StyleBoxLine_3msj6")
 placeholder_text = "请输入登录邮箱"
 context_menu_enabled = false
@@ -124,15 +145,14 @@ selecting_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 flat = true
-caret_blink = true
 
 [node name="PasswordIpunt" type="LineEdit" parent="Main"]
 layout_mode = 0
-offset_left = 84.0
-offset_top = 128.0
-offset_right = 256.0
-offset_bottom = 152.0
-theme_override_font_sizes/font_size = 11
+offset_left = 196.0
+offset_top = 96.0
+offset_right = 386.0
+offset_bottom = 125.0
+theme_override_font_sizes/font_size = 12
 theme_override_styles/focus = SubResource("StyleBoxLine_ofu5q")
 placeholder_text = "请输入登录密码"
 context_menu_enabled = false
@@ -147,7 +167,6 @@ caret_blink = true
 secret = true
 
 [node name="ChangePassword" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -162,25 +181,25 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -148.5
-offset_top = -113.5
-offset_right = 148.5
-offset_bottom = 113.5
+offset_left = -185.5
+offset_top = -124.5
+offset_right = 185.5
+offset_bottom = 124.5
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("13_2imjr")
 
-[node name="ConfirmButton" type="TextureButton" parent="ChangePassword"]
+[node name="ConfirmButton" type="TextureButton" parent="ChangePassword/Main"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -38.0
+offset_left = -46.5
 offset_top = 69.0
-offset_right = 31.0
-offset_bottom = 109.0
+offset_right = 37.5
+offset_bottom = 98.0
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("14_nyv0p")
@@ -188,17 +207,17 @@ texture_pressed = ExtResource("15_b3cd6")
 texture_hover = ExtResource("16_8fobg")
 metadata/type = "change_password"
 
-[node name="CancelButton" type="TextureButton" parent="ChangePassword"]
+[node name="CancelButton" type="TextureButton" parent="ChangePassword/Main"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 38.0
+offset_left = 53.5
 offset_top = 69.0
-offset_right = 107.0
-offset_bottom = 109.0
+offset_right = 137.5
+offset_bottom = 98.0
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("17_pa6cg")
@@ -221,42 +240,42 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -213.0
-offset_top = -239.0
-offset_right = 213.0
-offset_bottom = 239.0
+offset_left = -281.5
+offset_top = -191.5
+offset_right = 281.5
+offset_bottom = 191.5
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("20_e3h1n")
 
-[node name="ConfirmButton" type="TextureButton" parent="Register"]
+[node name="ConfirmButton" type="TextureButton" parent="Register/Main"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -136.0
-offset_top = 189.0
-offset_right = -67.0
-offset_bottom = 229.0
+offset_left = 20.0
+offset_top = 141.5
+offset_right = 104.0
+offset_bottom = 170.5
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("14_nyv0p")
 texture_pressed = ExtResource("15_b3cd6")
 texture_hover = ExtResource("16_8fobg")
 
-[node name="CancelButton" type="TextureButton" parent="Register"]
+[node name="CancelButton" type="TextureButton" parent="Register/Main"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -60.0
-offset_top = 189.0
-offset_right = 9.0
-offset_bottom = 229.0
+offset_left = 180.0
+offset_top = 141.5
+offset_right = 264.0
+offset_bottom = 170.5
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("17_pa6cg")
@@ -280,7 +299,7 @@ texture = ExtResource("22_d5cdj")
 [connection signal="pressed" from="Main/SubmitButton" to="." method="_on_submit_button_pressed"]
 [connection signal="pressed" from="Main/RegisterButton" to="." method="_on_register_button_pressed"]
 [connection signal="pressed" from="Main/ChangePasswordButton" to="." method="_on_change_password_button_pressed"]
-[connection signal="pressed" from="ChangePassword/ConfirmButton" to="." method="_on_confirm_button_pressed" binds= ["change_password"]]
-[connection signal="pressed" from="ChangePassword/CancelButton" to="." method="_on_cancel_button_pressed"]
-[connection signal="pressed" from="Register/ConfirmButton" to="." method="_on_confirm_button_pressed" binds= ["register"]]
-[connection signal="pressed" from="Register/CancelButton" to="." method="_on_cancel_button_pressed"]
+[connection signal="pressed" from="ChangePassword/Main/ConfirmButton" to="." method="_on_confirm_button_pressed" binds= ["change_password"]]
+[connection signal="pressed" from="ChangePassword/Main/CancelButton" to="." method="_on_cancel_button_pressed"]
+[connection signal="pressed" from="Register/Main/ConfirmButton" to="." method="_on_confirm_button_pressed" binds= ["register"]]
+[connection signal="pressed" from="Register/Main/CancelButton" to="." method="_on_cancel_button_pressed"]
