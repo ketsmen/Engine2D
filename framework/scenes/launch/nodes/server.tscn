@@ -1,11 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://mnolno0phv7x"]
+[gd_scene load_steps=9 format=3 uid="uid://mnolno0phv7x"]
 
 [ext_resource type="Script" path="res://framework/scripts/launch/server.gd" id="1_ncr6l"]
-[ext_resource type="Texture2D" uid="uid://cvrdotvevm0d0" path="res://framework/statics/scenes/launch/common/adolescent_icon.png" id="2_lxxg8"]
-[ext_resource type="Texture2D" uid="uid://cxha7w5qp8ryk" path="res://framework/statics/scenes/launch/server/server.png" id="2_xcs0t"]
-[ext_resource type="Texture2D" uid="uid://baikd4haoigdk" path="res://framework/statics/scenes/launch/server/server_button_0.png" id="3_hbt0c"]
-[ext_resource type="Texture2D" uid="uid://clf6uc17tfqry" path="res://framework/statics/scenes/launch/server/server_button_1.png" id="4_tk43r"]
-[ext_resource type="Texture2D" uid="uid://c6a3y0pssoklq" path="res://framework/statics/scenes/launch/server/server_button_2.png" id="5_fhqx7"]
+[ext_resource type="Texture2D" uid="uid://b3kfonxce1k5s" path="res://framework/statics/scenes/launch/server/server.png" id="2_xcs0t"]
+[ext_resource type="Texture2D" uid="uid://dkhr4gstfc1ei" path="res://framework/statics/scenes/launch/server/server_button_0.png" id="3_hbt0c"]
+[ext_resource type="Texture2D" uid="uid://cd5sj68ts85uo" path="res://framework/statics/scenes/launch/server/server_button_1.png" id="4_tk43r"]
+[ext_resource type="Texture2D" uid="uid://c6oygeauwd5ox" path="res://framework/statics/scenes/launch/server/server_button_2.png" id="5_fhqx7"]
+[ext_resource type="Texture2D" uid="uid://b4tofbbanewdc" path="res://framework/statics/scenes/common/adolescent_icon.png" id="6_qlb65"]
+[ext_resource type="FontFile" uid="uid://b8ippc7k3ew6o" path="res://framework/statics/fonts/msyh.ttc" id="6_xuhoe"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_28x8p"]
 font_size = 12
@@ -74,6 +75,8 @@ offset_right = 77.0
 offset_bottom = 11.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_xuhoe")
+theme_override_font_sizes/font_size = 12
 text = "天下一区"
 label_settings = SubResource("LabelSettings_28x8p")
 horizontal_alignment = 1
@@ -98,6 +101,8 @@ offset_right = 77.0
 offset_bottom = 11.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_xuhoe")
+theme_override_font_sizes/font_size = 12
 text = "天下二区"
 label_settings = SubResource("LabelSettings_28x8p")
 horizontal_alignment = 1
@@ -122,6 +127,8 @@ offset_right = 77.0
 offset_bottom = 11.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_xuhoe")
+theme_override_font_sizes/font_size = 12
 text = "天下三区"
 label_settings = SubResource("LabelSettings_28x8p")
 horizontal_alignment = 1
@@ -146,6 +153,8 @@ offset_right = 77.0
 offset_bottom = 11.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_xuhoe")
+theme_override_font_sizes/font_size = 12
 text = "天下四区"
 label_settings = SubResource("LabelSettings_28x8p")
 horizontal_alignment = 1
@@ -170,6 +179,8 @@ offset_right = 77.0
 offset_bottom = 11.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_xuhoe")
+theme_override_font_sizes/font_size = 12
 text = "赛事专区"
 label_settings = SubResource("LabelSettings_28x8p")
 horizontal_alignment = 1
@@ -186,7 +197,7 @@ offset_right = 29.0
 offset_bottom = 145.0
 grow_horizontal = 0
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_lxxg8")
+texture = ExtResource("6_qlb65")
 
 [connection signal="pressed" from="Main/ListBox/List/Item1" to="." method="_on_item_pressed"]
 [connection signal="pressed" from="Main/ListBox/List/Item2" to="." method="_on_item_pressed"]

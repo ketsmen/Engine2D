@@ -21,6 +21,8 @@ func _ready():
 	$ChangePassword.visible = false
 	# 隐藏注册窗口
 	$Register.visible = false
+	# 登录游戏按钮允许点击
+	$Main/SubmitButton.disabled = false
 
 func _on_submit_button_pressed():
 	# 获取用户登录数据
@@ -30,6 +32,11 @@ func _on_submit_button_pressed():
 	if login_email != "" and login_password != "":
 		# TODO 请求服务端接口
 		submit_button_pressed.emit(login_email, login_password, true)
+		# 清空用户登录数据
+		login_email = ""
+		login_password = ""
+		$Main/EmailIpunt.text = ""
+		$Main/PasswordIpunt.text = ""
 		return
 	submit_button_pressed.emit(login_email, login_password, false)
 

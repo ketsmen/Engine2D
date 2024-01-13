@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://uioqkvjb3k18"]
+
+[ext_resource type="Script" path="res://framework/scripts/common/dialog.gd" id="1_ombao"]
+[ext_resource type="Texture2D" uid="uid://ms3xrwagkoj5" path="res://framework/statics/scenes/common/message_background.png" id="1_smc7v"]
+[ext_resource type="FontFile" uid="uid://b8ippc7k3ew6o" path="res://framework/statics/fonts/msyh.ttc" id="3_jikwo"]
+
+[node name="Dialog" type="Control"]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+script = ExtResource("1_ombao")
+
+[node name="Message" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="TextureRect" type="TextureRect" parent="Message"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -111.0
+offset_top = 10.0
+offset_right = 111.0
+offset_bottom = 64.0
+grow_horizontal = 2
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_smc7v")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Message/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.0
+offset_top = -11.5
+offset_right = 56.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_jikwo")
+theme_override_font_sizes/font_size = 14
+horizontal_alignment = 1
