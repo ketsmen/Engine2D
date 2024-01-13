@@ -7,12 +7,12 @@ extends Control
 # 自定义信号
 signal submit_button_pressed(email: String, password: String, status: bool)
 
-# 初始化用户登录数据
+# 初始化节点数据
 var login_email: String = ""
 var login_password: String = ""
 
 func _ready():
-	# 默认清空用户登录数据
+	# 设置节点默认数据
 	login_email = ""
 	login_password = ""
 	# 显示当前节点场景
@@ -32,7 +32,7 @@ func _on_submit_button_pressed():
 	if login_email != "" and login_password != "":
 		# TODO 请求服务端接口
 		submit_button_pressed.emit(login_email, login_password, true)
-		# 清空用户登录数据
+		# 清空节点数据
 		login_email = ""
 		login_password = ""
 		$Main/EmailIpunt.text = ""
@@ -46,11 +46,11 @@ func _on_change_password_button_pressed():
 
 func _on_confirm_button_pressed(type: String):
 	if type == "change_password":
-		print("change_password")
-		$ChangePassword.visible = false
+		# 修改密码
+		pass
 	if type == "register":
-		print("register")
-		$Register.visible = false
+		# 注册账号
+		pass
 
 func _on_cancel_button_pressed():
 	# 隐藏密码修改窗口

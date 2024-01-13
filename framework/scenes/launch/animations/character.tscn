@@ -1,6 +1,7 @@
-[gd_scene load_steps=133 format=3 uid="uid://y4tq0q7gv4im"]
+[gd_scene load_steps=140 format=3 uid="uid://y4tq0q7gv4im"]
 
 [ext_resource type="Texture2D" uid="uid://6acfgi3i18er" path="res://framework/statics/scenes/launch/roles/warrior/000000.png" id="1_iy5y1"]
+[ext_resource type="Script" path="res://framework/scripts/launch/animations/character.gd" id="1_uogar"]
 [ext_resource type="Texture2D" uid="uid://bqcg7f34k3iwb" path="res://framework/statics/scenes/launch/roles/warrior/000001.png" id="2_nskhk"]
 [ext_resource type="Texture2D" uid="uid://b2nriu3bv0x6f" path="res://framework/statics/scenes/launch/roles/warrior/000002.png" id="3_mfu7o"]
 [ext_resource type="Texture2D" uid="uid://bii0v1pcfwdro" path="res://framework/statics/scenes/launch/roles/warrior/000003.png" id="4_dhgll"]
@@ -126,6 +127,12 @@
 [ext_resource type="Texture2D" uid="uid://dsdhvvigimj5a" path="res://framework/statics/scenes/launch/roles/switch_button_0.png" id="124_yxaby"]
 [ext_resource type="Texture2D" uid="uid://bpm4yxn15ajwj" path="res://framework/statics/scenes/launch/roles/switch_button_1.png" id="125_c5yft"]
 [ext_resource type="Texture2D" uid="uid://dvcd76bctd8d" path="res://framework/statics/scenes/launch/roles/switch_button_2.png" id="126_vg3v7"]
+[ext_resource type="Texture2D" uid="uid://bpwgjksmipvnq" path="res://framework/statics/scenes/launch/roles/men_button_0.png" id="128_anxs1"]
+[ext_resource type="Texture2D" uid="uid://0i7i1eh1v0iq" path="res://framework/statics/scenes/launch/roles/men_button_1.png" id="129_dxqop"]
+[ext_resource type="Texture2D" uid="uid://b0cojtx2m0kcd" path="res://framework/statics/scenes/launch/roles/men_button_2.png" id="130_klhov"]
+[ext_resource type="Texture2D" uid="uid://bb81nym6xmxmm" path="res://framework/statics/scenes/launch/roles/women_button_0.png" id="131_2ko1s"]
+[ext_resource type="Texture2D" uid="uid://1gl0qhpotuvh" path="res://framework/statics/scenes/launch/roles/women_button_1.png" id="132_xar7c"]
+[ext_resource type="Texture2D" uid="uid://l68qa1wa48ym" path="res://framework/statics/scenes/launch/roles/women_button_2.png" id="133_j6i0h"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ahhg5"]
 animations = [{
@@ -562,7 +569,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"play",
-"speed": 5.0
+"speed": 8.0
 }]
 
 [node name="Character" type="Control"]
@@ -572,6 +579,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_uogar")
 
 [node name="Warrior" type="Control" parent="."]
 layout_mode = 1
@@ -580,15 +588,13 @@ anchors_preset = 0
 [node name="Men" type="AnimatedSprite2D" parent="Warrior"]
 position = Vector2(5, 0)
 sprite_frames = SubResource("SpriteFrames_ahhg5")
-animation = &"play"
-autoplay = "play"
+autoplay = "default"
 
 [node name="Women" type="AnimatedSprite2D" parent="Warrior"]
 position = Vector2(7, 11)
 scale = Vector2(1.05, 1.05)
 sprite_frames = SubResource("SpriteFrames_tr7hm")
-animation = &"play"
-autoplay = "play"
+autoplay = "default"
 
 [node name="Brand" type="TextureRect" parent="Warrior"]
 layout_mode = 0
@@ -607,14 +613,14 @@ offset_bottom = 40.0
 position = Vector2(-65, -22)
 sprite_frames = SubResource("SpriteFrames_qalfe")
 animation = &"play"
-autoplay = "play"
+autoplay = "default"
 
 [node name="Women" type="AnimatedSprite2D" parent="Mage"]
 position = Vector2(-43, -7)
 scale = Vector2(1.05, 1.05)
 sprite_frames = SubResource("SpriteFrames_883gh")
 animation = &"play"
-autoplay = "play"
+autoplay = "default"
 
 [node name="Brand" type="TextureRect" parent="Mage"]
 layout_mode = 0
@@ -632,15 +638,13 @@ offset_bottom = 40.0
 [node name="Men" type="AnimatedSprite2D" parent="Taoist"]
 position = Vector2(-18, -35)
 sprite_frames = SubResource("SpriteFrames_g0wkd")
-animation = &"play"
-autoplay = "play"
+autoplay = "default"
 
 [node name="Women" type="AnimatedSprite2D" parent="Taoist"]
 position = Vector2(-97, 7)
 scale = Vector2(1.08, 1.08)
 sprite_frames = SubResource("SpriteFrames_ctoca")
-animation = &"play"
-autoplay = "play"
+autoplay = "default"
 
 [node name="Brand" type="TextureRect" parent="Taoist"]
 layout_mode = 0
@@ -650,14 +654,14 @@ offset_right = -494.0
 offset_bottom = 30.0
 texture = ExtResource("83_71ebr")
 
-[node name="Switch" type="Control" parent="."]
+[node name="Career" type="Control" parent="."]
 anchors_preset = 0
 offset_left = -43.0
 offset_top = -54.0
 offset_right = -3.0
 offset_bottom = -14.0
 
-[node name="LeftButton" type="TextureButton" parent="Switch"]
+[node name="LeftButton" type="TextureButton" parent="Career"]
 layout_mode = 0
 offset_left = -380.0
 offset_right = -331.0
@@ -668,7 +672,8 @@ texture_hover = ExtResource("126_vg3v7")
 texture_disabled = ExtResource("124_yxaby")
 flip_h = true
 
-[node name="RightButton" type="TextureButton" parent="Switch"]
+[node name="RightButton" type="TextureButton" parent="Career"]
+layout_mode = 0
 offset_left = 310.0
 offset_right = 359.0
 offset_bottom = 45.0
@@ -676,3 +681,35 @@ texture_normal = ExtResource("124_yxaby")
 texture_pressed = ExtResource("125_c5yft")
 texture_hover = ExtResource("126_vg3v7")
 texture_disabled = ExtResource("124_yxaby")
+
+[node name="Gender" type="Control" parent="."]
+anchors_preset = 0
+offset_left = -537.0
+offset_top = 65.0
+offset_right = -497.0
+offset_bottom = 105.0
+
+[node name="Men" type="TextureButton" parent="Gender"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("128_anxs1")
+texture_pressed = ExtResource("130_klhov")
+texture_hover = ExtResource("129_dxqop")
+texture_disabled = ExtResource("128_anxs1")
+texture_focused = ExtResource("130_klhov")
+
+[node name="Women" type="TextureButton" parent="Gender"]
+offset_left = 66.0
+offset_right = 106.0
+offset_bottom = 40.0
+texture_normal = ExtResource("131_2ko1s")
+texture_pressed = ExtResource("133_j6i0h")
+texture_hover = ExtResource("132_xar7c")
+texture_disabled = ExtResource("131_2ko1s")
+texture_focused = ExtResource("133_j6i0h")
+
+[connection signal="pressed" from="Career/LeftButton" to="." method="_on_left_button_pressed"]
+[connection signal="pressed" from="Career/RightButton" to="." method="_on_right_button_pressed"]
+[connection signal="pressed" from="Gender/Men" to="." method="_on_men_pressed"]
+[connection signal="pressed" from="Gender/Women" to="." method="_on_women_pressed"]
