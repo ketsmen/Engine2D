@@ -1,0 +1,471 @@
+[gd_scene load_steps=115 format=3 uid="uid://wih5p1d0xwa1"]
+
+[ext_resource type="Script" path="res://framework/scripts/world/player/player.gd" id="1_ok6hu"]
+[ext_resource type="Texture2D" uid="uid://bnq0k5qmpfpuo" path="res://framework/statics/scenes/world/player/warrior/0001.站立.方向0.01.png" id="2_y2fnn"]
+[ext_resource type="Texture2D" uid="uid://cdcusafdtwga4" path="res://framework/statics/scenes/world/player/warrior/0002.站立.方向0.02.png" id="3_7es6d"]
+[ext_resource type="Texture2D" uid="uid://h1qun8k5om3n" path="res://framework/statics/scenes/world/player/warrior/0003.站立.方向0.03.png" id="4_j2tn6"]
+[ext_resource type="Texture2D" uid="uid://cygm75ywhyofl" path="res://framework/statics/scenes/world/player/warrior/0004.站立.方向1.00.png" id="5_11kkc"]
+[ext_resource type="Texture2D" uid="uid://4gdu06snetlk" path="res://framework/statics/scenes/world/player/warrior/0005.站立.方向1.01.png" id="6_m8r3j"]
+[ext_resource type="Texture2D" uid="uid://ces14eopxbfin" path="res://framework/statics/scenes/world/player/warrior/0006.站立.方向1.02.png" id="7_v3fgr"]
+[ext_resource type="Texture2D" uid="uid://bvn0e78hq4w82" path="res://framework/statics/scenes/world/player/warrior/0007.站立.方向1.03.png" id="8_l0cph"]
+[ext_resource type="Texture2D" uid="uid://udn4kgqffxep" path="res://framework/statics/scenes/world/player/warrior/0008.站立.方向2.00.png" id="9_43me4"]
+[ext_resource type="Texture2D" uid="uid://bdchej7unjx7x" path="res://framework/statics/scenes/world/player/warrior/0009.站立.方向2.01.png" id="10_thvda"]
+[ext_resource type="Texture2D" uid="uid://drqcjhp04pggv" path="res://framework/statics/scenes/world/player/warrior/0010.站立.方向2.02.png" id="11_8iuu1"]
+[ext_resource type="Texture2D" uid="uid://byn3m017dsbaq" path="res://framework/statics/scenes/world/player/warrior/0011.站立.方向2.03.png" id="12_x0nou"]
+[ext_resource type="Texture2D" uid="uid://bb6wm1sapd7x3" path="res://framework/statics/scenes/world/player/warrior/0012.站立.方向3.00.png" id="13_weevn"]
+[ext_resource type="Texture2D" uid="uid://c61wc0nktrvw0" path="res://framework/statics/scenes/world/player/warrior/0013.站立.方向3.01.png" id="14_y3u2l"]
+[ext_resource type="Texture2D" uid="uid://bajkhrowwhi4n" path="res://framework/statics/scenes/world/player/warrior/0014.站立.方向3.02.png" id="15_ab6sp"]
+[ext_resource type="Texture2D" uid="uid://cbab5vilaukif" path="res://framework/statics/scenes/world/player/warrior/0015.站立.方向3.03.png" id="16_3tulg"]
+[ext_resource type="Texture2D" uid="uid://dgl3p740y1oft" path="res://framework/statics/scenes/world/player/warrior/0016.站立.方向4.00.png" id="17_v2ksi"]
+[ext_resource type="Texture2D" uid="uid://dvwikm8phb3k2" path="res://framework/statics/scenes/world/player/warrior/0017.站立.方向4.01.png" id="18_ofa5j"]
+[ext_resource type="Texture2D" uid="uid://b8wvv685cbgrp" path="res://framework/statics/scenes/world/player/warrior/0018.站立.方向4.02.png" id="19_moxwa"]
+[ext_resource type="Texture2D" uid="uid://pg5q2xcpkgy7" path="res://framework/statics/scenes/world/player/warrior/0019.站立.方向4.03.png" id="20_2iml6"]
+[ext_resource type="Texture2D" uid="uid://ct5xglj0hwpvm" path="res://framework/statics/scenes/world/player/warrior/0020.站立.方向5.00.png" id="21_wmymk"]
+[ext_resource type="Texture2D" uid="uid://dysobsjyjdvek" path="res://framework/statics/scenes/world/player/warrior/0021.站立.方向5.01.png" id="22_6tymp"]
+[ext_resource type="Texture2D" uid="uid://cclx7dnubcsdv" path="res://framework/statics/scenes/world/player/warrior/0022.站立.方向5.02.png" id="23_tsuk6"]
+[ext_resource type="Texture2D" uid="uid://dg8yp3vwd0q2r" path="res://framework/statics/scenes/world/player/warrior/0023.站立.方向5.03.png" id="24_m67sy"]
+[ext_resource type="Texture2D" uid="uid://21pf3mrcdwxc" path="res://framework/statics/scenes/world/player/warrior/0024.站立.方向6.00.png" id="25_rd63d"]
+[ext_resource type="Texture2D" uid="uid://cy33pax6xtbho" path="res://framework/statics/scenes/world/player/warrior/0025.站立.方向6.01.png" id="26_r7k3g"]
+[ext_resource type="Texture2D" uid="uid://gwyqanl40ixf" path="res://framework/statics/scenes/world/player/warrior/0026.站立.方向6.02.png" id="27_5180w"]
+[ext_resource type="Texture2D" uid="uid://clxsomkvt611a" path="res://framework/statics/scenes/world/player/warrior/0027.站立.方向6.03.png" id="28_5qcko"]
+[ext_resource type="Texture2D" uid="uid://dwqho3ksdhwce" path="res://framework/statics/scenes/world/player/warrior/0028.站立.方向7.00.png" id="29_73vjh"]
+[ext_resource type="Texture2D" uid="uid://biol1hoi5nqlg" path="res://framework/statics/scenes/world/player/warrior/0029.站立.方向7.01.png" id="30_t4x4u"]
+[ext_resource type="Texture2D" uid="uid://bm78reu5v6pbq" path="res://framework/statics/scenes/world/player/warrior/0030.站立.方向7.02.png" id="31_u2kgg"]
+[ext_resource type="Texture2D" uid="uid://bttlg7exnqvb" path="res://framework/statics/scenes/world/player/warrior/0031.站立.方向7.03.png" id="32_ncroi"]
+[ext_resource type="Texture2D" uid="uid://d01mlre015fu7" path="res://framework/statics/scenes/world/player/warrior/0032.行走.方向0.00.png" id="33_hntno"]
+[ext_resource type="Texture2D" uid="uid://dtoariod8i473" path="res://framework/statics/scenes/world/player/warrior/0033.行走.方向0.01.png" id="34_h7qjb"]
+[ext_resource type="Texture2D" uid="uid://rlyndq8q5rjm" path="res://framework/statics/scenes/world/player/warrior/0034.行走.方向0.02.png" id="35_7obwm"]
+[ext_resource type="Texture2D" uid="uid://cdkgspg0yaqec" path="res://framework/statics/scenes/world/player/warrior/0035.行走.方向0.03.png" id="36_5lmir"]
+[ext_resource type="Texture2D" uid="uid://fbhj5c21l0jv" path="res://framework/statics/scenes/world/player/warrior/0036.行走.方向0.04.png" id="37_u48q7"]
+[ext_resource type="Texture2D" uid="uid://dxmynl3d7kcpt" path="res://framework/statics/scenes/world/player/warrior/0037.行走.方向0.05.png" id="38_lslpf"]
+[ext_resource type="Texture2D" uid="uid://c5q587dk4x38h" path="res://framework/statics/scenes/world/player/warrior/0038.行走.方向1.00.png" id="39_ml08j"]
+[ext_resource type="Texture2D" uid="uid://dehe6hwjvhfj4" path="res://framework/statics/scenes/world/player/warrior/0039.行走.方向1.01.png" id="40_jocvo"]
+[ext_resource type="Texture2D" uid="uid://c1vs8kbn5vg5f" path="res://framework/statics/scenes/world/player/warrior/0040.行走.方向1.02.png" id="41_d24eg"]
+[ext_resource type="Texture2D" uid="uid://3twgn0mivh7w" path="res://framework/statics/scenes/world/player/warrior/0041.行走.方向1.03.png" id="42_agqlu"]
+[ext_resource type="Texture2D" uid="uid://crwg1iop8ycgu" path="res://framework/statics/scenes/world/player/warrior/0042.行走.方向1.04.png" id="43_p1373"]
+[ext_resource type="Texture2D" uid="uid://b6qjnj5iqfxtl" path="res://framework/statics/scenes/world/player/warrior/0043.行走.方向1.05.png" id="44_6tpkm"]
+[ext_resource type="Texture2D" uid="uid://dwlli7gjep4ur" path="res://framework/statics/scenes/world/player/warrior/0044.行走.方向2.00.png" id="45_n540e"]
+[ext_resource type="Texture2D" uid="uid://2lhytdbwif8s" path="res://framework/statics/scenes/world/player/warrior/0045.行走.方向2.01.png" id="46_rtkw6"]
+[ext_resource type="Texture2D" uid="uid://b0qipbw6pywbp" path="res://framework/statics/scenes/world/player/warrior/0046.行走.方向2.02.png" id="47_6nphf"]
+[ext_resource type="Texture2D" uid="uid://coqr5f66vfr2i" path="res://framework/statics/scenes/world/player/warrior/0047.行走.方向2.03.png" id="48_onie2"]
+[ext_resource type="Texture2D" uid="uid://kogo8cg3sgyq" path="res://framework/statics/scenes/world/player/warrior/0048.行走.方向2.04.png" id="49_n2dtm"]
+[ext_resource type="Texture2D" uid="uid://bp55700sglf7t" path="res://framework/statics/scenes/world/player/warrior/0049.行走.方向2.05.png" id="50_eyg3x"]
+[ext_resource type="Texture2D" uid="uid://dlukkp3vmb2mq" path="res://framework/statics/scenes/world/player/warrior/0050.行走.方向3.00.png" id="51_sf70k"]
+[ext_resource type="Texture2D" uid="uid://de5atqo8emtka" path="res://framework/statics/scenes/world/player/warrior/0051.行走.方向3.01.png" id="52_b8pcv"]
+[ext_resource type="Texture2D" uid="uid://c0g0ooc3sm0fi" path="res://framework/statics/scenes/world/player/warrior/0052.行走.方向3.02.png" id="53_di2qp"]
+[ext_resource type="Texture2D" uid="uid://cg1wpfj1wkntb" path="res://framework/statics/scenes/world/player/warrior/0053.行走.方向3.03.png" id="54_jsgsy"]
+[ext_resource type="Texture2D" uid="uid://dok8pb2okhcwp" path="res://framework/statics/scenes/world/player/warrior/0054.行走.方向3.04.png" id="55_s0521"]
+[ext_resource type="Texture2D" uid="uid://b1rluolvxosbx" path="res://framework/statics/scenes/world/player/warrior/0055.行走.方向3.05.png" id="56_iinfr"]
+[ext_resource type="Texture2D" uid="uid://dqndn3ej3x7bi" path="res://framework/statics/scenes/world/player/warrior/0056.行走.方向4.00.png" id="57_o2keo"]
+[ext_resource type="Texture2D" uid="uid://bgo8qae26xm1q" path="res://framework/statics/scenes/world/player/warrior/0057.行走.方向4.01.png" id="58_icyeo"]
+[ext_resource type="Texture2D" uid="uid://bncjyuq7vipab" path="res://framework/statics/scenes/world/player/warrior/0058.行走.方向4.02.png" id="59_kpo4u"]
+[ext_resource type="Texture2D" uid="uid://lh4hjmg13jcp" path="res://framework/statics/scenes/world/player/warrior/0059.行走.方向4.03.png" id="60_y3n77"]
+[ext_resource type="Texture2D" uid="uid://bdri8tchg1t8d" path="res://framework/statics/scenes/world/player/warrior/0060.行走.方向4.04.png" id="61_5s30v"]
+[ext_resource type="Texture2D" uid="uid://cfuurkd3fgn0w" path="res://framework/statics/scenes/world/player/warrior/0061.行走.方向4.05.png" id="62_b3iph"]
+[ext_resource type="Texture2D" uid="uid://3mhd4mb18qxm" path="res://framework/statics/scenes/world/player/warrior/0062.行走.方向5.00.png" id="63_maemh"]
+[ext_resource type="Texture2D" uid="uid://cudfyqfdlbjyv" path="res://framework/statics/scenes/world/player/warrior/0063.行走.方向5.01.png" id="64_dvn3c"]
+[ext_resource type="Texture2D" uid="uid://ylmueajtia3w" path="res://framework/statics/scenes/world/player/warrior/0064.行走.方向5.02.png" id="65_g4bei"]
+[ext_resource type="Texture2D" uid="uid://benln1wbx8kj0" path="res://framework/statics/scenes/world/player/warrior/0065.行走.方向5.03.png" id="66_kljiv"]
+[ext_resource type="Texture2D" uid="uid://cs22ex3idbuma" path="res://framework/statics/scenes/world/player/warrior/0066.行走.方向5.04.png" id="67_rhuyk"]
+[ext_resource type="Texture2D" uid="uid://uwtoambmrjro" path="res://framework/statics/scenes/world/player/warrior/0067.行走.方向5.05.png" id="68_yw0op"]
+[ext_resource type="Texture2D" uid="uid://cg2k07il11cby" path="res://framework/statics/scenes/world/player/warrior/0068.行走.方向6.00.png" id="69_n4x3n"]
+[ext_resource type="Texture2D" uid="uid://bw8sa4lr6yk2k" path="res://framework/statics/scenes/world/player/warrior/0069.行走.方向6.01.png" id="70_soc3y"]
+[ext_resource type="Texture2D" uid="uid://d0y24dyuqwbue" path="res://framework/statics/scenes/world/player/warrior/0070.行走.方向6.02.png" id="71_vyskp"]
+[ext_resource type="Texture2D" uid="uid://dssftlaau8r81" path="res://framework/statics/scenes/world/player/warrior/0071.行走.方向6.03.png" id="72_j5ad5"]
+[ext_resource type="Texture2D" uid="uid://bjsh4ydwfqg88" path="res://framework/statics/scenes/world/player/warrior/0072.行走.方向6.04.png" id="73_sni6f"]
+[ext_resource type="Texture2D" uid="uid://d0sxu4cqv7a70" path="res://framework/statics/scenes/world/player/warrior/0073.行走.方向6.05.png" id="74_jwm47"]
+[ext_resource type="Texture2D" uid="uid://bma7f846ntpdq" path="res://framework/statics/scenes/world/player/warrior/0074.行走.方向7.00.png" id="75_yrotc"]
+[ext_resource type="Texture2D" uid="uid://d1eb00putnrjt" path="res://framework/statics/scenes/world/player/warrior/0075.行走.方向7.01.png" id="76_54wn7"]
+[ext_resource type="Texture2D" uid="uid://bjh8n1roys7a6" path="res://framework/statics/scenes/world/player/warrior/0076.行走.方向7.02.png" id="77_ypx4o"]
+[ext_resource type="Texture2D" uid="uid://0hxws87v7uuu" path="res://framework/statics/scenes/world/player/warrior/0077.行走.方向7.03.png" id="78_uavqc"]
+[ext_resource type="Texture2D" uid="uid://bwa4nmqslw57" path="res://framework/statics/scenes/world/player/warrior/0078.行走.方向7.04.png" id="79_ltc2e"]
+[ext_resource type="Texture2D" uid="uid://bo6pabvjuy6r6" path="res://framework/statics/scenes/world/player/warrior/0079.行走.方向7.05.png" id="80_spgx1"]
+[ext_resource type="Texture2D" uid="uid://bqbvl7ufd0416" path="res://framework/statics/scenes/world/player/warrior/0080.跑动.方向0.00.png" id="81_fef08"]
+[ext_resource type="Texture2D" uid="uid://bw0gxpffkk7dn" path="res://framework/statics/scenes/world/player/warrior/0081.跑动.方向0.01.png" id="82_eos31"]
+[ext_resource type="Texture2D" uid="uid://d16qvqxnl22rp" path="res://framework/statics/scenes/world/player/warrior/0082.跑动.方向0.02.png" id="83_ohphu"]
+[ext_resource type="Texture2D" uid="uid://bmn5l3gwg5x2c" path="res://framework/statics/scenes/world/player/warrior/0083.跑动.方向0.03.png" id="84_6wml3"]
+[ext_resource type="Texture2D" uid="uid://ci0y50x5dtk5r" path="res://framework/statics/scenes/world/player/warrior/0084.跑动.方向1.00.png" id="85_grnxo"]
+[ext_resource type="Texture2D" uid="uid://rvs7ykoc13aa" path="res://framework/statics/scenes/world/player/warrior/0085.跑动.方向1.01.png" id="86_wq10p"]
+[ext_resource type="Texture2D" uid="uid://ceers23b17x1f" path="res://framework/statics/scenes/world/player/warrior/0086.跑动.方向1.02.png" id="87_3tmgd"]
+[ext_resource type="Texture2D" uid="uid://cr6v2j8wcwir" path="res://framework/statics/scenes/world/player/warrior/0087.跑动.方向1.03.png" id="88_sbjmh"]
+[ext_resource type="Texture2D" uid="uid://dtfabvr1wtua7" path="res://framework/statics/scenes/world/player/warrior/0088.跑动.方向2.00.png" id="89_o0ml5"]
+[ext_resource type="Texture2D" uid="uid://khn065100jda" path="res://framework/statics/scenes/world/player/warrior/0089.跑动.方向2.01.png" id="90_eewde"]
+[ext_resource type="Texture2D" uid="uid://dj2akioi5mn4v" path="res://framework/statics/scenes/world/player/warrior/0090.跑动.方向2.02.png" id="91_1tboa"]
+[ext_resource type="Texture2D" uid="uid://dxpnl8bmj54rp" path="res://framework/statics/scenes/world/player/warrior/0091.跑动.方向2.03.png" id="92_5ger3"]
+[ext_resource type="Texture2D" uid="uid://c5rhdv4au5ud2" path="res://framework/statics/scenes/world/player/warrior/0092.跑动.方向3.00.png" id="93_alo36"]
+[ext_resource type="Texture2D" uid="uid://bs7xr65bitxi7" path="res://framework/statics/scenes/world/player/warrior/0093.跑动.方向3.01.png" id="94_mc86u"]
+[ext_resource type="Texture2D" uid="uid://dxy4rywln2ucf" path="res://framework/statics/scenes/world/player/warrior/0094.跑动.方向3.02.png" id="95_kpydm"]
+[ext_resource type="Texture2D" uid="uid://b32flxaia5npg" path="res://framework/statics/scenes/world/player/warrior/0095.跑动.方向3.03.png" id="96_qoweo"]
+[ext_resource type="Texture2D" uid="uid://mlv44ses5tla" path="res://framework/statics/scenes/world/player/warrior/0096.跑动.方向4.00.png" id="97_tcs64"]
+[ext_resource type="Texture2D" uid="uid://bamhbsress5i8" path="res://framework/statics/scenes/world/player/warrior/0097.跑动.方向4.01.png" id="98_sdnsu"]
+[ext_resource type="Texture2D" uid="uid://03b7r0yi51k7" path="res://framework/statics/scenes/world/player/warrior/0098.跑动.方向4.02.png" id="99_d4sba"]
+[ext_resource type="Texture2D" uid="uid://di5mynghk2dut" path="res://framework/statics/scenes/world/player/warrior/0099.跑动.方向4.03.png" id="100_jp5es"]
+[ext_resource type="Texture2D" uid="uid://clm84wa20n65d" path="res://framework/statics/scenes/world/player/warrior/0100.跑动.方向5.00.png" id="101_hw0rt"]
+[ext_resource type="Texture2D" uid="uid://bott158us10cp" path="res://framework/statics/scenes/world/player/warrior/0101.跑动.方向5.01.png" id="102_10e2i"]
+[ext_resource type="Texture2D" uid="uid://tjc4af281efm" path="res://framework/statics/scenes/world/player/warrior/0102.跑动.方向5.02.png" id="103_8g7xe"]
+[ext_resource type="Texture2D" uid="uid://8vy4ta3vrjpi" path="res://framework/statics/scenes/world/player/warrior/0103.跑动.方向5.03.png" id="104_ttfp5"]
+[ext_resource type="Texture2D" uid="uid://cinj2nwvqvbbd" path="res://framework/statics/scenes/world/player/warrior/0104.跑动.方向6.00.png" id="105_svyui"]
+[ext_resource type="Texture2D" uid="uid://2rbqq650bnk0" path="res://framework/statics/scenes/world/player/warrior/0105.跑动.方向6.01.png" id="106_os805"]
+[ext_resource type="Texture2D" uid="uid://c7nur6atccvbj" path="res://framework/statics/scenes/world/player/warrior/0106.跑动.方向6.02.png" id="107_f8x3x"]
+[ext_resource type="Texture2D" uid="uid://b8igyu6ky4h2y" path="res://framework/statics/scenes/world/player/warrior/0107.跑动.方向6.03.png" id="108_lanw3"]
+[ext_resource type="Texture2D" uid="uid://cco8edia2fiul" path="res://framework/statics/scenes/world/player/warrior/0108.跑动.方向7.00.png" id="109_o86xp"]
+[ext_resource type="Texture2D" uid="uid://bf6ruknrrtefp" path="res://framework/statics/scenes/world/player/warrior/0109.跑动.方向7.01.png" id="110_wepx0"]
+[ext_resource type="Texture2D" uid="uid://cr6udnxppw1yg" path="res://framework/statics/scenes/world/player/warrior/0110.跑动.方向7.02.png" id="111_r6d1f"]
+[ext_resource type="Texture2D" uid="uid://cmofdhtjis80o" path="res://framework/statics/scenes/world/player/warrior/0111.跑动.方向7.03.png" id="112_w4kgh"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8bkoj"]
+height = 20.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5tene"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_y2fnn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_7es6d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_j2tn6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_11kkc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_m8r3j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_v3fgr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_l0cph")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_43me4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_thvda")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_8iuu1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_x0nou")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_weevn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_y3u2l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_ab6sp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_3tulg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_v2ksi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_ofa5j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_moxwa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_2iml6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_wmymk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_6tymp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_tsuk6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_m67sy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_rd63d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_r7k3g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_5180w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_5qcko")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_73vjh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_t4x4u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_u2kgg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_ncroi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_hntno")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_h7qjb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_7obwm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_5lmir")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_u48q7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_lslpf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_ml08j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_jocvo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_d24eg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_agqlu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_p1373")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_6tpkm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_n540e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_rtkw6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_6nphf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_onie2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_n2dtm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_eyg3x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_sf70k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_b8pcv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_di2qp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_jsgsy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_s0521")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_iinfr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_o2keo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_icyeo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_kpo4u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_y3n77")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_5s30v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_b3iph")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_maemh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_dvn3c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_g4bei")
+}, {
+"duration": 1.0,
+"texture": ExtResource("66_kljiv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("67_rhuyk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("68_yw0op")
+}, {
+"duration": 1.0,
+"texture": ExtResource("69_n4x3n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("70_soc3y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("71_vyskp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("72_j5ad5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("73_sni6f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("74_jwm47")
+}, {
+"duration": 1.0,
+"texture": ExtResource("75_yrotc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("76_54wn7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("77_ypx4o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("78_uavqc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("79_ltc2e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("80_spgx1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("81_fef08")
+}, {
+"duration": 1.0,
+"texture": ExtResource("82_eos31")
+}, {
+"duration": 1.0,
+"texture": ExtResource("83_ohphu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("84_6wml3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("85_grnxo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("86_wq10p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("87_3tmgd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("88_sbjmh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("89_o0ml5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("90_eewde")
+}, {
+"duration": 1.0,
+"texture": ExtResource("91_1tboa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("92_5ger3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("93_alo36")
+}, {
+"duration": 1.0,
+"texture": ExtResource("94_mc86u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("95_kpydm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("96_qoweo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("97_tcs64")
+}, {
+"duration": 1.0,
+"texture": ExtResource("98_sdnsu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("99_d4sba")
+}, {
+"duration": 1.0,
+"texture": ExtResource("100_jp5es")
+}, {
+"duration": 1.0,
+"texture": ExtResource("101_hw0rt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("102_10e2i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("103_8g7xe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("104_ttfp5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("105_svyui")
+}, {
+"duration": 1.0,
+"texture": ExtResource("106_os805")
+}, {
+"duration": 1.0,
+"texture": ExtResource("107_f8x3x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("108_lanw3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("109_o86xp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("110_wepx0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("111_r6d1f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("112_w4kgh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_ok6hu")
+
+[node name="RigidBody" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_8bkoj")
+
+[node name="Father" type="Sprite2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Father"]
+sprite_frames = SubResource("SpriteFrames_5tene")
+autoplay = "default"
+offset = Vector2(9, -8)

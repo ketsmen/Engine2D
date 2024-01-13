@@ -1,6 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://b8h0so03h47va"]
+[gd_scene load_steps=4 format=3 uid="uid://b8h0so03h47va"]
 
 [ext_resource type="Script" path="res://framework/scripts/world/world.gd" id="1_pq6gk"]
+[ext_resource type="PackedScene" uid="uid://wih5p1d0xwa1" path="res://framework/scenes/world/player/player.tscn" id="2_1kfon"]
+[ext_resource type="PackedScene" uid="uid://rjfcnghlbxgu" path="res://framework/scenes/world/map/001.tscn" id="3_iak2o"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_pq6gk")
+
+[node name="Map" parent="." instance=ExtResource("3_iak2o")]
+scale = Vector2(0.5, 0.5)
+
+[node name="Player" parent="." instance=ExtResource("2_1kfon")]
+position = Vector2(839, -465)
+scale = Vector2(0.9, 0.9)
+
+[node name="Camera" type="Camera2D" parent="Player"]
+offset = Vector2(0, 50)
+zoom = Vector2(1.1, 1.1)
+position_smoothing_enabled = true
