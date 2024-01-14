@@ -14,3 +14,7 @@ func _ready():
 	current_scene.add_child(map_loader)
 	# 将地图设置为最底层
 	current_scene.move_child(map_loader, 0)
+
+func _process(_delta):
+	# 同步小地图
+	pass
