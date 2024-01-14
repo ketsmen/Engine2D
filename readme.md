@@ -1,5 +1,5 @@
-# 🛠️ Tiance Engine
+# 🛠️ Aithority Engine
 
-⚡ Tiance engine based on GoDot. ⚡
+⚡ Aithority engine based on GoDot. ⚡
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
