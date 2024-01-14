@@ -6,6 +6,7 @@ extends Control
 
 # 自定义信号
 signal return_button_pressed
+signal start_button_pressed
 
 func _ready():
 	# 隐藏当前节点场景
@@ -25,4 +26,4 @@ func _on_return_button_pressed():
 
 func _on_start_button_pressed():
 	# 开始游戏按钮被点击
-	pass
+	start_button_pressed.emit()
