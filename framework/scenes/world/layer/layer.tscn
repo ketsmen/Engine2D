@@ -1,13 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://xwmftefgbtfh"]
+[gd_scene load_steps=9 format=3 uid="uid://xwmftefgbtfh"]
 
 [ext_resource type="Texture2D" uid="uid://cn0jt4ujaa3q5" path="res://framework/statics/scenes/world/layer/footer.png" id="1_hedfk"]
+[ext_resource type="Script" path="res://framework/scripts/world/layer/layer.gd" id="1_mkbk8"]
 [ext_resource type="Texture2D" uid="uid://bxiqm5j3kpnv" path="res://framework/statics/scenes/world/layer/minmap/header_button_0.png" id="2_m1yox"]
 [ext_resource type="Texture2D" uid="uid://b8tlxb8vyo64x" path="res://framework/statics/scenes/world/layer/minmap/header_button_1.png" id="3_r7k8u"]
 [ext_resource type="Texture2D" uid="uid://cy2ecb8jcrxav" path="res://framework/statics/scenes/world/layer/minmap/header_button_2.png" id="4_7bg3t"]
 [ext_resource type="Texture2D" uid="uid://ch78qv1a0ei8r" path="res://framework/statics/scenes/world/layer/minmap/background.png" id="5_b6yut"]
-[ext_resource type="PackedScene" uid="uid://rjfcnghlbxgu" path="res://framework/scenes/world/map/001.tscn" id="5_pwu4x"]
+[ext_resource type="Script" path="res://framework/scripts/world/layer/minimap/show.gd" id="5_wc7k5"]
+[ext_resource type="Texture2D" uid="uid://7bgs1j3u2i52" path="res://framework/statics/scenes/world/layer/minmap/location.png" id="7_0045m"]
 
 [node name="Layer" type="CanvasLayer"]
+script = ExtResource("1_mkbk8")
 
 [node name="Footer" type="CanvasLayer" parent="."]
 
@@ -38,7 +41,7 @@ texture_pressed = ExtResource("3_r7k8u")
 texture_hover = ExtResource("4_7bg3t")
 texture_focused = ExtResource("4_7bg3t")
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="MiniMap"]
+[node name="Main" type="SubViewportContainer" parent="MiniMap"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -49,12 +52,28 @@ offset_bottom = 166.0
 grow_horizontal = 0
 stretch = true
 
-[node name="SubViewport" type="SubViewport" parent="MiniMap/SubViewportContainer"]
+[node name="Show" type="SubViewport" parent="MiniMap/Main"]
 handle_input_locally = false
 size = Vector2i(164, 142)
-render_target_update_mode = 4
+script = ExtResource("5_wc7k5")
 
-[node name="Map" parent="MiniMap/SubViewportContainer/SubViewport" instance=ExtResource("5_pwu4x")]
+[node name="Location" type="TextureRect" parent="MiniMap/Main/Show"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.0
+offset_top = -32.0
+offset_right = 39.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_0045m")
+
+[node name="Camera" type="Camera2D" parent="MiniMap/Main/Show"]
+show_behind_parent = true
+zoom = Vector2(0.1, 0.1)
 
 [node name="Background" type="TextureRect" parent="MiniMap"]
 anchors_preset = 1
