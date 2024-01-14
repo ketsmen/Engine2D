@@ -26,6 +26,8 @@ func _process(_delta):
 			set_process(false)
 			await get_tree().create_timer(0.5).timeout
 			get_tree().change_scene_to_file(loader_path)
+			is_loader = false
+			visible = false
 
 func on_loader():
 	if !is_loader:
