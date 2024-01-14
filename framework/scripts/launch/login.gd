@@ -4,6 +4,10 @@
 #*****************************************************************************
 extends Control
 
+# 实例化节点中的控件
+@onready var email_input:LineEdit = $Main/EmailInput
+@onready var password_input:LineEdit = $Main/PasswordInput
+
 # 自定义信号
 signal submit_button_pressed(email: String, password: String, status: bool)
 
@@ -15,6 +19,8 @@ func _ready():
 	# 设置节点默认数据
 	login_email = ""
 	login_password = ""
+	email_input.text = ""
+	password_input.text = ""
 	# 显示当前节点场景
 	visible = true
 	# 隐藏密码修改窗口
@@ -26,8 +32,8 @@ func _ready():
 
 func _on_submit_button_pressed():
 	# 获取用户登录数据
-	login_email = $Main/EmailIpunt.text
-	login_password = $Main/PasswordIpunt.text
+	login_email = email_input.text
+	login_password = password_input.text
 	# 校验用户登录数据
 	if login_email != "" and login_password != "":
 		# TODO 请求服务端接口
@@ -35,8 +41,8 @@ func _on_submit_button_pressed():
 		# 清空节点数据
 		login_email = ""
 		login_password = ""
-		$Main/EmailIpunt.text = ""
-		$Main/PasswordIpunt.text = ""
+		email_input.text = ""
+		password_input.text = ""
 		return
 	submit_button_pressed.emit(login_email, login_password, false)
 

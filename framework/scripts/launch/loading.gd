@@ -4,6 +4,7 @@
 #*****************************************************************************
 extends Control
 
+# 实例化节点中的控件
 @onready var progress:TextureProgressBar = $Progress/Texture
 
 # 初始化节点数据

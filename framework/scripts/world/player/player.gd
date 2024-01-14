@@ -36,7 +36,7 @@ func _process(_delta):
 				# 将获取的倍数分别除以45度(0,1,2,3,4,-3,-2,-1)
 				angle = wrapi(int(angle), 0, 8)
 				# 鼠标位置距离玩家多远才触发
-				if mouse_position.length() > 1:
+				if mouse_position.length() > 5:
 					var direction = mouse_position.normalized()
 					# TODO 需要增加步长控制，将影响玩家最终的走位
 					#var new_position = player_position + direction * step_length
