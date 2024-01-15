@@ -24,13 +24,13 @@ func _process(_delta):
 	if is_loader:
 		# 加载世界场景
 		loader_status = ResourceLoader.load_threaded_get_status(loader_path, loader_progress)
-		progress.value = (loader_progress[0] * 100) / 2
+		progress.value = 10
 		if loader_status == ResourceLoader.THREAD_LOAD_LOADED:
 			# 加载地图
 			loader_progress = []
 			ResourceLoader.load_threaded_request(map_path)
 			loader_status = ResourceLoader.load_threaded_get_status(map_path, loader_progress)
-			progress.value += (loader_progress[0] * 100) / 2
+			progress.value += (loader_progress[0] * 100) - 10
 			if loader_status == ResourceLoader.THREAD_LOAD_LOADED:
 				set_process(false)
 				await get_tree().create_timer(0.5).timeout

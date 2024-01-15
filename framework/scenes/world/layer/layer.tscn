@@ -1,20 +1,193 @@
-[gd_scene load_steps=9 format=3 uid="uid://xwmftefgbtfh"]
+[gd_scene load_steps=14 format=3 uid="uid://xwmftefgbtfh"]
 
 [ext_resource type="Texture2D" uid="uid://cn0jt4ujaa3q5" path="res://framework/statics/scenes/world/layer/footer.png" id="1_hedfk"]
 [ext_resource type="Script" path="res://framework/scripts/world/layer/layer.gd" id="1_mkbk8"]
-[ext_resource type="Texture2D" uid="uid://bxiqm5j3kpnv" path="res://framework/statics/scenes/world/layer/minmap/header_button_0.png" id="2_m1yox"]
-[ext_resource type="Texture2D" uid="uid://b8tlxb8vyo64x" path="res://framework/statics/scenes/world/layer/minmap/header_button_1.png" id="3_r7k8u"]
-[ext_resource type="Texture2D" uid="uid://cy2ecb8jcrxav" path="res://framework/statics/scenes/world/layer/minmap/header_button_2.png" id="4_7bg3t"]
-[ext_resource type="Texture2D" uid="uid://ch78qv1a0ei8r" path="res://framework/statics/scenes/world/layer/minmap/background.png" id="5_b6yut"]
-[ext_resource type="Script" path="res://framework/scripts/world/layer/minimap/show.gd" id="5_wc7k5"]
-[ext_resource type="Texture2D" uid="uid://7bgs1j3u2i52" path="res://framework/statics/scenes/world/layer/minmap/location.png" id="7_0045m"]
+[ext_resource type="Texture2D" uid="uid://bxiqm5j3kpnv" path="res://framework/statics/scenes/world/layer/map/header_button_0.png" id="3_0px6j"]
+[ext_resource type="Texture2D" uid="uid://b8tlxb8vyo64x" path="res://framework/statics/scenes/world/layer/map/header_button_1.png" id="4_up2jr"]
+[ext_resource type="Script" path="res://framework/scripts/world/layer/map/min.gd" id="5_6y7wt"]
+[ext_resource type="Texture2D" uid="uid://cy2ecb8jcrxav" path="res://framework/statics/scenes/world/layer/map/header_button_2.png" id="5_xydxc"]
+[ext_resource type="Texture2D" uid="uid://7bgs1j3u2i52" path="res://framework/statics/scenes/world/layer/map/location.png" id="7_o4biu"]
+[ext_resource type="Script" path="res://framework/scripts/world/layer/map/max.gd" id="8_7agls"]
+[ext_resource type="Texture2D" uid="uid://ch78qv1a0ei8r" path="res://framework/statics/scenes/world/layer/map/background.png" id="8_7xnss"]
+[ext_resource type="Texture2D" uid="uid://daa6i6egdmtbp" path="res://framework/statics/scenes/world/layer/map/max_background.png" id="9_j7vhp"]
+[ext_resource type="Texture2D" uid="uid://do62owv5m6h58" path="res://framework/statics/scenes/common/close_button_0.png" id="10_sfp4y"]
+[ext_resource type="Texture2D" uid="uid://caqfpcr8jf16q" path="res://framework/statics/scenes/common/close_button_1.png" id="11_v1g58"]
+[ext_resource type="Texture2D" uid="uid://dohcyay56kl35" path="res://framework/statics/scenes/common/close_button_2.png" id="12_218fs"]
 
 [node name="Layer" type="CanvasLayer"]
 script = ExtResource("1_mkbk8")
 
-[node name="Footer" type="CanvasLayer" parent="."]
+[node name="MinMap" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+
+[node name="HeaderButton" type="TextureButton" parent="MinMap"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -196.0
+offset_bottom = 40.0
+grow_horizontal = 0
+texture_normal = ExtResource("3_0px6j")
+texture_pressed = ExtResource("4_up2jr")
+texture_hover = ExtResource("5_xydxc")
+texture_focused = ExtResource("5_xydxc")
+
+[node name="Background" type="TextureRect" parent="MinMap"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -196.0
+offset_bottom = 169.0
+grow_horizontal = 0
+texture = ExtResource("8_7xnss")
+
+[node name="Main" type="SubViewportContainer" parent="MinMap"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -167.0
+offset_top = 24.0
+offset_right = -3.0
+offset_bottom = 166.0
+grow_horizontal = 0
+stretch = true
+
+[node name="Min" type="SubViewport" parent="MinMap/Main"]
+handle_input_locally = false
+size = Vector2i(164, 142)
+render_target_update_mode = 4
+script = ExtResource("5_6y7wt")
+
+[node name="Location" type="TextureRect" parent="MinMap/Main/Min"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.0
+offset_top = -32.0
+offset_right = 39.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_o4biu")
+
+[node name="Camera" type="Camera2D" parent="MinMap/Main/Min"]
+show_behind_parent = true
+zoom = Vector2(0.1, 0.1)
+
+[node name="MaxShowButton" type="TextureButton" parent="MinMap"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -167.0
+offset_top = 24.0
+offset_right = -3.0
+offset_bottom = 166.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MaxMap" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -112.0
+offset_bottom = -112.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="MaxMap"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -292.0
+offset_top = -222.5
+offset_right = 292.0
+offset_bottom = 222.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_j7vhp")
+
+[node name="MaxHideButton" type="TextureButton" parent="MaxMap"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 247.0
+offset_top = -196.0
+offset_right = 268.0
+offset_bottom = -174.0
+grow_horizontal = 0
+texture_normal = ExtResource("10_sfp4y")
+texture_pressed = ExtResource("11_v1g58")
+texture_hover = ExtResource("12_218fs")
+
+[node name="Main" type="SubViewportContainer" parent="MaxMap"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -268.0
+offset_top = -161.0
+offset_right = 268.0
+offset_bottom = 203.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="Max" type="SubViewport" parent="MaxMap/Main"]
+handle_input_locally = false
+size = Vector2i(536, 364)
+render_target_update_mode = 4
+script = ExtResource("8_7agls")
+
+[node name="Location" type="TextureRect" parent="MaxMap/Main/Max"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.0
+offset_top = -32.0
+offset_right = 39.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_o4biu")
+
+[node name="Camera" type="Camera2D" parent="MaxMap/Main/Max"]
+zoom = Vector2(0.081, 0.081)
+
+[node name="Footer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
 
 [node name="Background" type="TextureRect" parent="Footer"]
+layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -27,59 +200,5 @@ grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("1_hedfk")
 
-[node name="MiniMap" type="CanvasLayer" parent="."]
-
-[node name="HeaderButton" type="TextureButton" parent="MiniMap"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -196.0
-offset_bottom = 40.0
-grow_horizontal = 0
-texture_normal = ExtResource("2_m1yox")
-texture_pressed = ExtResource("3_r7k8u")
-texture_hover = ExtResource("4_7bg3t")
-texture_focused = ExtResource("4_7bg3t")
-
-[node name="Main" type="SubViewportContainer" parent="MiniMap"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -167.0
-offset_top = 24.0
-offset_right = -3.0
-offset_bottom = 166.0
-grow_horizontal = 0
-stretch = true
-
-[node name="Show" type="SubViewport" parent="MiniMap/Main"]
-handle_input_locally = false
-size = Vector2i(164, 142)
-script = ExtResource("5_wc7k5")
-
-[node name="Location" type="TextureRect" parent="MiniMap/Main/Show"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -39.0
-offset_top = -32.0
-offset_right = 39.0
-offset_bottom = 32.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("7_0045m")
-
-[node name="Camera" type="Camera2D" parent="MiniMap/Main/Show"]
-show_behind_parent = true
-zoom = Vector2(0.1, 0.1)
-
-[node name="Background" type="TextureRect" parent="MiniMap"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -196.0
-offset_bottom = 169.0
-grow_horizontal = 0
-texture = ExtResource("5_b6yut")
+[connection signal="pressed" from="MinMap/MaxShowButton" to="." method="_on_max_show_button_pressed"]
+[connection signal="pressed" from="MaxMap/MaxHideButton" to="." method="_on_max_hide_button_pressed"]

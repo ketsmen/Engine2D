@@ -10,10 +10,19 @@ var data = {
 	"config": {
 		"version": "1.0.0",
 		"user_path": "user://userdata/",
-		"map_path": "res://framework/scenes/world/map/"
+		"map_path": "res://framework/scenes/world/map/",
+		"player_path": "res://framework/scenes/world/player/"
 	},
 	"world": {
-		"current_map": "001"
+		"current_map": "001",
+		"player": {
+			"career": "warrior",
+			"gender": "man",
+			"body": {
+				"clothe": "000",
+				"weapon": "000"
+			}
+		}
 	}
 }
 
