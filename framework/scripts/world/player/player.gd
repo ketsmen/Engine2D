@@ -34,6 +34,15 @@ func _physics_process(_delta):
 		player_angle = wrapi(int(angle), 0, 8)
 		# 计算方向向量
 		var direction = Vector2(cos(player_angle * PI/4), sin(player_angle * PI/4))
+		# 修正角方向偏移
+		if player_angle == 1:
+			direction = Vector2(0.7, 0.4)
+		if player_angle == 3:
+			direction = Vector2(-0.7, 0.4)
+		if player_angle == 5:
+			direction = Vector2(-0.7, -0.4)
+		if player_angle == 7:
+			direction = Vector2(0.7, -0.4)
 		# 鼠标左右键按下时触发
 		if Input.is_action_pressed("walking") or Input.is_action_pressed("running"):
 			# 更新速度
@@ -44,7 +53,7 @@ func _physics_process(_delta):
 			if Input.is_action_pressed("running"):
 				player_action = "running"
 				# 鼠标左键奔跑
-				speed = 100
+				speed = 120
 			if speed > 0:
 				# 鼠标位置距离玩家多远才触发
 				if mouse_position.length() > 10:
