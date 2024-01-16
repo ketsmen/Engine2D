@@ -95,7 +95,7 @@ func _physics_process(_delta):
 				direction = Vector2(0.7, -0.4)
 			# 鼠标左右键按下时触发
 			if Input.is_action_pressed("walking") or Input.is_action_pressed("running"):
-				# 更新速度
+				# 更新速度和动作
 				if Input.is_action_pressed("walking"):
 					player_action = "walking"
 					# 鼠标左键行走
