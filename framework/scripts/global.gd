@@ -84,6 +84,10 @@ func get_player_magic_string() -> String:
 func get_player_magic_percentage() -> float:
 	return (float(data["world"]["player"]["asset"]["magic"]) / float(data["world"]["player"]["asset"]["magic_max"])) * 100
 
+# 获取玩家经验值
+func get_player_experience_value():
+	return data["world"]["player"]["asset"]["experience"]
+
 # 更新玩家数据
 func on_update_player_data(parameter: String, value):
 	if data[parameter]:

@@ -43,7 +43,6 @@ func _ready():
 	on_action_stop()
 
 func loader_player_resources():
-	print(player_father.get_child_count())
 	# 加载玩家服饰
 	loader_player_clothe()
 	# 加载玩家武器
@@ -63,7 +62,7 @@ func loader_player_clothe():
 	clothe_loader.name = "Clothe"
 	# 将服饰资源添加到玩家Body节点
 	player_body.add_child(clothe_loader)
-	# 设置地图资源层级
+	# 设置服饰资源层级
 	player_body.move_child(clothe_loader, 0)
 
 func _physics_process(_delta):
@@ -84,7 +83,7 @@ func _physics_process(_delta):
 			player_angle = wrapi(int(angle), 0, 8)
 			# 计算方向向量
 			var direction = Vector2(cos(player_angle * PI/4), sin(player_angle * PI/4))
-			# 修正角方向偏移
+			# 修正角方向偏移 TODO 仍有轻微偏移
 			if player_angle == 1:
 				direction = Vector2(0.7, 0.4)
 			if player_angle == 3:
@@ -114,6 +113,9 @@ func _physics_process(_delta):
 				on_action_stop()
 	else:
 		on_action_stop()
+
+func on_action():
+	pass
 
 func on_action_stop():
 	player_action_speed = 0
