@@ -7,6 +7,7 @@ extends Node2D
 # 初始化节点数据
 var current_scene
 
+
 func _ready():
 	current_scene = get_tree().current_scene
 	# 加载玩家所在地图资源
