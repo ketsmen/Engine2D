@@ -5,7 +5,7 @@
 extends CharacterBody2D
 
 # 实例化控件
-@onready var player_father:Sprite2D = $Father
+@onready var player_father:Control = $Father
 @onready var player_body:Control = $Father/Body
 @onready var player_header:Control = $Father/Header
 @onready var player_header_life_value:Label = $Father/Header/LifeValue
@@ -27,13 +27,13 @@ func _ready():
 	# 默认隐藏玩家主体
 	player_father.visible = false
 	# 初始化玩家数据
-	player_nickname.text = Global.data["world"]["player"]["nickname"]
-	player_career = Global.data["world"]["player"]["career"]
-	player_gender = Global.data["world"]["player"]["gender"]
+	player_nickname.text = Global.get_player_nickname_value()
+	player_career = Global.get_player_career_value()
+	player_gender = Global.get_player_gender_value()
 	player_angle = Global.data["world"]["player"]["angle"]
-	player_header_life_value.text = str(Global.data["world"]["player"]["asset"]["life"]) + "/" + str(Global.data["world"]["player"]["asset"]["life_max"])
-	player_header_life.value = (float(Global.data["world"]["player"]["asset"]["life"]) / float(Global.data["world"]["player"]["asset"]["life_max"])) * 100
-	player_header_magic.value = (float(Global.data["world"]["player"]["asset"]["magic"]) / float(Global.data["world"]["player"]["asset"]["magic_max"])) * 100
+	player_header_life_value.text = Global.get_player_life_format_value()
+	player_header_life.value = Global.get_player_life_percentage()
+	player_header_magic.value = Global.get_player_magic_percentage()
 	player_action = "stand"
 	player_action_speed = 0
 	player_step_length = 10

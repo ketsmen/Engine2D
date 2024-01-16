@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://xwmftefgbtfh"]
+[gd_scene load_steps=16 format=3 uid="uid://xwmftefgbtfh"]
 
 [ext_resource type="Texture2D" uid="uid://cn0jt4ujaa3q5" path="res://framework/statics/scenes/world/layer/footer.png" id="1_hedfk"]
 [ext_resource type="Script" path="res://framework/scripts/world/layer/layer.gd" id="1_mkbk8"]
@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://do62owv5m6h58" path="res://framework/statics/scenes/common/close_button_0.png" id="10_sfp4y"]
 [ext_resource type="Texture2D" uid="uid://caqfpcr8jf16q" path="res://framework/statics/scenes/common/close_button_1.png" id="11_v1g58"]
 [ext_resource type="Texture2D" uid="uid://dohcyay56kl35" path="res://framework/statics/scenes/common/close_button_2.png" id="12_218fs"]
+[ext_resource type="Texture2D" uid="uid://b1g43ae7g22uq" path="res://framework/statics/scenes/world/layer/footer/experience/experience_0.png" id="14_kafia"]
+[ext_resource type="Texture2D" uid="uid://b6d1u5e07tecb" path="res://framework/statics/scenes/world/layer/footer/experience/background.png" id="14_tno8q"]
 
 [node name="Layer" type="CanvasLayer"]
 script = ExtResource("1_mkbk8")
@@ -200,6 +202,136 @@ offset_right = 492.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("1_hedfk")
+
+[node name="Experience" type="HBoxContainer" parent="Footer"]
+modulate = Color(1, 1, 1, 0.537255)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -349.0
+offset_top = -6.2
+offset_right = 349.0
+offset_bottom = -2.2
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 5
+
+[node name="0" type="TextureProgressBar" parent="Footer/Experience"]
+layout_mode = 2
+value = 100.0
+texture_over = ExtResource("14_tno8q")
+texture_progress = ExtResource("14_kafia")
+
+[node name="1" type="TextureProgressBar" parent="Footer/Experience"]
+layout_mode = 2
+value = 100.0
+texture_over = ExtResource("14_tno8q")
+texture_progress = ExtResource("14_kafia")
+
+[node name="2" type="TextureProgressBar" parent="Footer/Experience"]
+layout_mode = 2
+value = 100.0
+texture_over = ExtResource("14_tno8q")
+texture_progress = ExtResource("14_kafia")
+
+[node name="3" type="TextureProgressBar" parent="Footer/Experience"]
+layout_mode = 2
+value = 100.0
+texture_over = ExtResource("14_tno8q")
+texture_progress = ExtResource("14_kafia")
+
+[node name="4" type="TextureProgressBar" parent="Footer/Experience"]
+layout_mode = 2
+value = 100.0
+texture_over = ExtResource("14_tno8q")
+texture_progress = ExtResource("14_kafia")
+
+[node name="5" type="TextureProgressBar" parent="Footer/Experience"]
+layout_mode = 2
+value = 100.0
+texture_over = ExtResource("14_tno8q")
+texture_progress = ExtResource("14_kafia")
+
+[node name="6" type="TextureProgressBar" parent="Footer/Experience"]
+layout_mode = 2
+value = 100.0
+texture_over = ExtResource("14_tno8q")
+texture_progress = ExtResource("14_kafia")
+
+[node name="7" type="TextureProgressBar" parent="Footer/Experience"]
+layout_mode = 2
+value = 100.0
+texture_over = ExtResource("14_tno8q")
+texture_progress = ExtResource("14_kafia")
+
+[node name="8" type="TextureProgressBar" parent="Footer/Experience"]
+layout_mode = 2
+value = 100.0
+texture_over = ExtResource("14_tno8q")
+texture_progress = ExtResource("14_kafia")
+
+[node name="9" type="TextureProgressBar" parent="Footer/Experience"]
+layout_mode = 2
+value = 100.0
+texture_over = ExtResource("14_tno8q")
+texture_progress = ExtResource("14_kafia")
+
+[node name="10" type="TextureProgressBar" parent="Footer/Experience"]
+layout_mode = 2
+value = 100.0
+texture_over = ExtResource("14_tno8q")
+texture_progress = ExtResource("14_kafia")
+
+[node name="11" type="TextureProgressBar" parent="Footer/Experience"]
+layout_mode = 2
+value = 100.0
+texture_over = ExtResource("14_tno8q")
+texture_progress = ExtResource("14_kafia")
+
+[node name="12" type="TextureProgressBar" parent="Footer/Experience"]
+layout_mode = 2
+value = 100.0
+texture_over = ExtResource("14_tno8q")
+texture_progress = ExtResource("14_kafia")
+
+[node name="13" type="TextureProgressBar" parent="Footer/Experience"]
+layout_mode = 2
+value = 100.0
+texture_over = ExtResource("14_tno8q")
+texture_progress = ExtResource("14_kafia")
+
+[node name="14" type="TextureProgressBar" parent="Footer/Experience"]
+layout_mode = 2
+value = 100.0
+texture_over = ExtResource("14_tno8q")
+texture_progress = ExtResource("14_kafia")
+
+[node name="15" type="TextureProgressBar" parent="Footer/Experience"]
+layout_mode = 2
+value = 100.0
+texture_over = ExtResource("14_tno8q")
+texture_progress = ExtResource("14_kafia")
+
+[node name="16" type="TextureProgressBar" parent="Footer/Experience"]
+layout_mode = 2
+value = 100.0
+texture_over = ExtResource("14_tno8q")
+texture_progress = ExtResource("14_kafia")
+
+[node name="17" type="TextureProgressBar" parent="Footer/Experience"]
+layout_mode = 2
+value = 100.0
+texture_over = ExtResource("14_tno8q")
+texture_progress = ExtResource("14_kafia")
+
+[node name="18" type="TextureProgressBar" parent="Footer/Experience"]
+layout_mode = 2
+value = 100.0
+texture_over = ExtResource("14_tno8q")
+texture_progress = ExtResource("14_kafia")
 
 [connection signal="button_down" from="MinMap/MaxShowButton" to="." method="_on_max_show_button_button_down"]
 [connection signal="button_up" from="MinMap/MaxShowButton" to="." method="_on_max_show_button_button_up"]

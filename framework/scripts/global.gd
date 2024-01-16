@@ -43,7 +43,48 @@ func _ready():
 	# 限制窗口最小尺寸
 	DisplayServer.window_set_min_size(Vector2(1280, 720))
 
+# 获取玩家昵称
+func get_player_nickname_value() -> String:
+	return data["world"]["player"]["nickname"]
+
+# 获取玩家职业
+func get_player_career_value() -> String:
+	return data["world"]["player"]["career"]
+
+# 获取玩家性别
+func get_player_gender_value() -> String:
+	return data["world"]["player"]["gender"]
+
+# 获取玩家生命值
+func get_player_life_value():
+	return data["world"]["player"]["asset"]["life"]
+
+func get_player_life_float() -> float:
+	return float(data["world"]["player"]["asset"]["life"])
+
+func get_player_life_string() -> String:
+	return str(data["world"]["player"]["asset"]["life"])
+
+func get_player_life_percentage() -> float:
+	return (float(data["world"]["player"]["asset"]["life"]) / float(data["world"]["player"]["asset"]["life_max"])) * 100
+
+func get_player_life_format_value() -> String:
+	return str(data["world"]["player"]["asset"]["life"]) + "/" + str(data["world"]["player"]["asset"]["life_max"])
+
+# 获取玩家魔法值
+func get_player_magic_value():
+	return data["world"]["player"]["asset"]["magic"]
+
+func get_player_magic_float() -> float:
+	return float(data["world"]["player"]["asset"]["magic"])
+
+func get_player_magic_string() -> String:
+	return str(data["world"]["player"]["asset"]["magic"])
+
+func get_player_magic_percentage() -> float:
+	return (float(data["world"]["player"]["asset"]["magic"]) / float(data["world"]["player"]["asset"]["magic_max"])) * 100
+
+# 更新玩家数据
 func on_update_player_data(parameter: String, value):
 	if data[parameter]:
 		data[parameter] = value
-	

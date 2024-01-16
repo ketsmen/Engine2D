@@ -10,6 +10,8 @@ extends CanvasLayer
 @onready var max_box = $MaxMap
 @onready var max_camera = $MaxMap/Main/Max/Camera
 @onready var max_location = $MaxMap/Main/Max/Location
+@onready var footer_box = $Footer
+@onready var footer_experience = $Footer/Experience
 
 func _ready():
 	# 默认隐藏大地图
