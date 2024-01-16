@@ -27,16 +27,17 @@ func _ready():
 	current_scene.add_child(npcs_node)
 	current_scene.move_child(npcs_node, 3)
 	# 加载玩家资源
-	on_loader_player(Global.data["world"]["player"]["gender"], Global.data["world"]["player"]["body"]["clothe"])
+	on_loader_player()
 	# 加载UI资源
 	on_loader_layer()
 
 func on_loader_layer():
+	# 更新layer层级
 	current_scene.move_child($Layer, 5)
 
-func on_loader_player(gender: String, clothe_id: String):
+func on_loader_player():
 	# 玩家资源路径
-	var player_path = Global.data["config"]["player_path"] + clothe_id + "/"  + gender + ".tscn"
+	var player_path = "res://framework/scenes/world/player/player.tscn"
 	# 加载玩家资源
 	var player_loader = load(player_path).instantiate()
 	player_loader.name = "Player"

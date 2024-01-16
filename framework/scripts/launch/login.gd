@@ -4,7 +4,7 @@
 #*****************************************************************************
 extends Control
 
-# 实例化节点中的控件
+# 实例化控件
 @onready var email_input:LineEdit = $Main/EmailInput
 @onready var password_input:LineEdit = $Main/PasswordInput
 
@@ -29,6 +29,7 @@ func _ready():
 	$Register.visible = false
 	# 登录游戏按钮允许点击
 	$Main/SubmitButton.disabled = false
+	# 背景音效
 
 func _on_submit_button_pressed():
 	# 获取用户登录数据

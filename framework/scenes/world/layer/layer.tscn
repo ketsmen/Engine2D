@@ -176,7 +176,7 @@ texture = ExtResource("7_o4biu")
 [node name="Camera" type="Camera2D" parent="MaxMap/Main/Max"]
 zoom = Vector2(0.081, 0.081)
 
-[node name="Footer" type="Control" parent="."]
+[node name="Footer" type="Control" parent="." node_paths=PackedStringArray("shortcut_context")]
 layout_mode = 3
 anchors_preset = 7
 anchor_left = 0.5
@@ -185,6 +185,7 @@ anchor_right = 0.5
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
+shortcut_context = NodePath(".")
 
 [node name="Background" type="TextureRect" parent="Footer"]
 layout_mode = 1
@@ -200,5 +201,9 @@ grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("1_hedfk")
 
+[connection signal="button_down" from="MinMap/MaxShowButton" to="." method="_on_max_show_button_button_down"]
+[connection signal="button_up" from="MinMap/MaxShowButton" to="." method="_on_max_show_button_button_up"]
 [connection signal="pressed" from="MinMap/MaxShowButton" to="." method="_on_max_show_button_pressed"]
+[connection signal="button_down" from="MaxMap/MaxHideButton" to="." method="_on_max_show_button_button_down"]
+[connection signal="button_up" from="MaxMap/MaxHideButton" to="." method="_on_max_show_button_button_up"]
 [connection signal="pressed" from="MaxMap/MaxHideButton" to="." method="_on_max_hide_button_pressed"]
