@@ -19,7 +19,7 @@ var data = {
 		"player": {
 			"nickname": "游戏管理员",
 			"career": "warrior",
-			"gender": "man",
+			"gender": "women",
 			"angle": 1,
 			"asset": {
 				"level": 42,
@@ -32,7 +32,7 @@ var data = {
 				"backpack": []
 			},
 			"body": {
-				"clothe": "000",
+				"clothe": "011",
 				"weapon": "000"
 			}
 		}
