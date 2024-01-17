@@ -82,7 +82,7 @@ func main() {
 				Uid:    uid,
 				Id:     id,
 			}
-			strContent += `[ext_resource type="Texture2D" uid="uid://` + fileInfo.Uid + `" path="` + fileInfo.Path + `" id="` + fileInfo.Id + `"]` + "\n"
+			strContent += `[ext_resource type="Texture2D" uid="` + fileInfo.Uid + `" path="` + fileInfo.Path + `" id="` + fileInfo.Id + `"]` + "\n"
 			filesInfo = append(filesInfo, fileInfo)
 		}
 		return nil
