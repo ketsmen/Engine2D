@@ -8,6 +8,7 @@
 package main
 
 import (
+	"bufio"
 	"crypto/md5"
 	"encoding/hex"
 	"encoding/json"
@@ -58,9 +59,21 @@ func main() {
 			return err
 		}
 		if !info.IsDir() && !strings.HasSuffix(info.Name(), ".import") {
+			file, err := os.Open("../" + targetDir + "/" + info.Name() + ".import")
+			if err != nil {
+				fmt.Println("Error opening file:", err)
+			}
+			defer file.Close()
+			uid, id := GenerateUniqueIDs(info.Name())
+			scanner := bufio.NewScanner(file)
+			for scanner.Scan() {
+				line := scanner.Text()
+				if strings.HasPrefix(line, "uid=") {
+					uid = strings.TrimPrefix(line, "uid=")
+				}
+			}
 			ext := filepath.Ext(info.Name())
 			prefix := strings.TrimSuffix(info.Name(), ext)
-			uid, id := GenerateUniqueIDs(info.Name())
 			fileInfo := FileInfo{
 				Name:   info.Name(),
 				Prefix: prefix,
