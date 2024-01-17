@@ -74,11 +74,12 @@ func _physics_process(_delta):
 		# 检查鼠标是否在窗口内
 		if viewport_rect.has_point(viewport_mouse_position):
 			# 获取玩家的位置
-			var player_position = position
+			var player_position = global_position
 			# 获取鼠标的位置
-			var mouse_position = get_local_mouse_position()
+			var mouse_position = get_global_mouse_position()
+			var that_position = mouse_position - player_position
 			# 获取鼠标的角度(以弧度为单位)并捕捉最接近45度的倍数(0,1,2,3,4,-4,-3,-2,-1)
-			var angle = snapped(mouse_position.angle(), PI/4) / (PI/4)
+			var angle = snapped(that_position.angle(), PI/4) / (PI/4)
 			# 将获取的倍数分别除以45度(0,1,2,3,4,5,6,7)
 			player_angle = wrapi(int(angle), 0, 8)
 			# 计算方向向量

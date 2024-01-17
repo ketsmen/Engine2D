@@ -4,6 +4,9 @@
 #*****************************************************************************
 extends Control
 
+# 实例化节点树中的资源
+@onready var server_list_box:VBoxContainer = $Main/ListBox/List
+
 # 自定义信号
 signal item_pressed(server_token: String)
 

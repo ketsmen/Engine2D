@@ -28,16 +28,12 @@ func _process(_delta):
 			# 如果大图显示，则生效
 			max_location.position = owner.get_child(4).position
 		# TODO 显示周边人物、NPC、怪物
-
-func on_disable_control(status: bool):
-	# 更新玩家可控制状态
-	Global.data["is_control"] = status
 	
 func _on_max_show_button_button_down():
-	on_disable_control(false)
+	Global.set_player_control(false)
 
 func _on_max_show_button_button_up():
-	on_disable_control(true)
+	Global.set_player_control(true)
 
 func _on_max_show_button_pressed():
 	if !max_box.visible:

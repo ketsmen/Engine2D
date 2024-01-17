@@ -10,7 +10,7 @@ func _ready():
 	# 获取当前场景
 	var current_scene = get_tree().current_scene
 	# 动态加载地图
-	var map_path = Global.data["config"]["map_path"] + Global.data["world"]["current_map"] + ".tscn"
+	var map_path = Global.get_player_current_map()
 	var map_loader = load(map_path).instantiate()
 	# 查找小地图渲染节点
 	var map_box = current_scene.find_child("Min")

@@ -4,9 +4,20 @@
 #*****************************************************************************
 extends Control
 
-# 实例化控件
+# 实例化节点树中的资源
+@onready var sound:AudioStreamPlayer = $Sound
+@onready var main:TextureRect = $Main
 @onready var email_input:LineEdit = $Main/EmailInput
 @onready var password_input:LineEdit = $Main/PasswordInput
+@onready var submit_button:TextureButton = $Main/SubmitButton
+@onready var register_button:TextureButton = $Main/RegisterButton
+@onready var change_password_button:TextureButton = $Main/ChangePasswordButton
+@onready var register:Control = $Register
+@onready var register_confirm_button:TextureButton = $Register/Box/ConfirmButton
+@onready var register_cancel_button:TextureButton = $Register/Box/CancelButton
+@onready var change_password:Control = $ChangePassword
+@onready var change_password_confirm_button:TextureButton = $ChangePassword/Box/ConfirmButton
+@onready var change_password_cancel_button:TextureButton = $ChangePassword/Box/CancelButton
 
 # 自定义信号
 signal submit_button_pressed(email: String, password: String, status: bool)
@@ -24,11 +35,11 @@ func _ready():
 	# 显示当前节点场景
 	visible = true
 	# 隐藏密码修改窗口
-	$ChangePassword.visible = false
+	change_password.visible = false
 	# 隐藏注册窗口
-	$Register.visible = false
+	register.visible = false
 	# 登录游戏按钮允许点击
-	$Main/SubmitButton.disabled = false
+	submit_button.disabled = false
 	# 背景音效
 
 func _on_submit_button_pressed():
@@ -49,7 +60,7 @@ func _on_submit_button_pressed():
 
 func _on_change_password_button_pressed():
 	# 显示密码修改窗口
-	$ChangePassword.visible = true
+	change_password.visible = true
 
 func _on_confirm_button_pressed(type: String):
 	if type == "change_password":
@@ -61,13 +72,13 @@ func _on_confirm_button_pressed(type: String):
 
 func _on_cancel_button_pressed():
 	# 隐藏密码修改窗口
-	$ChangePassword.visible = false
-	$Register.visible = false
+	change_password.visible = false
+	register.visible = false
 
 func _on_register_button_pressed():
 	# 显示注册窗口
-	$Register.visible = true
+	register.visible = true
 
 func _on_sound_finished():
 	# 确保背景音效循环播放
-	$Sound.play()
+	sound.play()

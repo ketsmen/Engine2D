@@ -11,7 +11,7 @@ var data = {
 	"config": {
 		"version": "1.0.0",
 		"user_path": "user://userdata/",
-		"map_path": "res://framework/scenes/world/map/",
+		"map_root_path": "res://framework/scenes/world/map/",
 		"clothe_path": "res://framework/scenes/world/player/clothe/"
 	},
 	"world": {
@@ -42,6 +42,18 @@ var data = {
 func _ready():
 	# 限制窗口最小尺寸
 	DisplayServer.window_set_min_size(Vector2(1280, 720))
+
+# 设置玩家是否可以控制
+func set_player_control(status: bool):
+	data["is_control"] = status
+
+# 地图根路径
+func get_map_root_path() -> String:
+	return data["config"]["map_root_path"]
+
+# 获取玩家所在地图
+func get_player_current_map() -> String:
+	return data["config"]["map_root_path"] + data["world"]["current_map"] + ".tscn"
 
 # 获取玩家昵称
 func get_player_nickname_value() -> String:
