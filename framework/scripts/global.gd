@@ -27,7 +27,7 @@ var data = {
 				"life_max": 1599,
 				"magic": 800,
 				"magic_max": 1000,
-				"experience": 50000,
+				"experience": 250000,
 				"experience_max": 500000,
 				"backpack": []
 			},
@@ -71,12 +71,6 @@ func get_player_gender_value() -> String:
 func get_player_life_value():
 	return data["world"]["player"]["asset"]["life"]
 
-func get_player_life_float() -> float:
-	return float(data["world"]["player"]["asset"]["life"])
-
-func get_player_life_string() -> String:
-	return str(data["world"]["player"]["asset"]["life"])
-
 func get_player_life_percentage() -> float:
 	return (float(data["world"]["player"]["asset"]["life"]) / float(data["world"]["player"]["asset"]["life_max"])) * 100
 
@@ -87,18 +81,39 @@ func get_player_life_format_value() -> String:
 func get_player_magic_value():
 	return data["world"]["player"]["asset"]["magic"]
 
-func get_player_magic_float() -> float:
-	return float(data["world"]["player"]["asset"]["magic"])
-
-func get_player_magic_string() -> String:
-	return str(data["world"]["player"]["asset"]["magic"])
-
 func get_player_magic_percentage() -> float:
 	return (float(data["world"]["player"]["asset"]["magic"]) / float(data["world"]["player"]["asset"]["magic_max"])) * 100
 
 # 获取玩家经验值
 func get_player_experience_value():
 	return data["world"]["player"]["asset"]["experience"]
+
+# 获取玩家最大经验值
+func get_player_experience_max_value():
+	return data["world"]["player"]["asset"]["experience_max"]
+
+# 获取玩家经验条数据
+func get_player_experience(page: int) -> Array:
+	var bar_states = []
+	# 每个子节点代表的经验值量
+	var exp_per_bar = int(data["world"]["player"]["asset"]["experience_max"]) / page
+	# 计算当前经验值对应的子节点索引
+	var active_bar_index = int(int(data["world"]["player"]["asset"]["experience"]) / exp_per_bar)
+	var remainder_exp = int(data["world"]["player"]["asset"]["experience"]) % exp_per_bar
+	# 计算
+	for i in range(page):
+		var state = {"visible": false, "value": 0}
+		if i < active_bar_index:
+			state["visible"] = true
+			state["value"] = 100
+		elif i == active_bar_index:
+			state["visible"] = true
+			state["value"] = (float(remainder_exp) / float(exp_per_bar)) * 100
+		else:
+			state["visible"] = false
+			state["value"] = 0
+		bar_states.append(state)
+	return bar_states
 
 # 更新玩家数据
 func on_update_player_data(parameter: String, value):

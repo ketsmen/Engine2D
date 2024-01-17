@@ -19,6 +19,8 @@ func _ready():
 
 func _process(_delta):
 	if owner.get_child(4):
+		# 更新玩家经验数据
+		update_footer_experience()
 		# 相机位置同步
 		min_camera.position = owner.get_child(4).position
 		# max_camera.position = owner.find_child("Player").position
@@ -28,7 +30,15 @@ func _process(_delta):
 			# 如果大图显示，则生效
 			max_location.position = owner.get_child(4).position
 		# TODO 显示周边人物、NPC、怪物
-	
+
+func update_footer_experience():
+	var status = Global.get_player_experience(19)
+	for i in range(footer_experience.get_child_count()):
+		var child = footer_experience.get_child(i) as TextureProgressBar
+		var child_status = status[i]
+		child.visible = child_status["visible"]
+		child.value = child_status["value"]
+
 func _on_max_show_button_button_down():
 	Global.set_player_control(false)
 
