@@ -133,6 +133,7 @@ func _physics_process(_delta):
 				direction = Vector2(-0.7, -0.4)
 			if player_angle == 7:
 				direction = Vector2(0.7, -0.4)
+			on_switch_layer()
 			# 鼠标左右键按下时触发
 			if Input.is_action_pressed("walking") or Input.is_action_pressed("running"):
 				# 更新速度和动作
@@ -158,6 +159,14 @@ func _physics_process(_delta):
 				on_action_stop()
 	else:
 		on_action_stop()
+
+func on_switch_layer():
+	if player_angle == 3 or player_angle == 4 or player_angle == 5:
+		if player_body.get_child(0).name == "Clothe":
+			player_body.move_child(player_body.get_child(1), 0)
+	else:
+		if player_body.get_child(0).name == "Weapon":
+			player_body.move_child(player_body.get_child(1), 0)
 
 func on_action_stop():
 	on_sound_stop()
