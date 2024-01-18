@@ -17,6 +17,7 @@ import (
 	"log"
 	"os"
 	"path/filepath"
+	"strconv"
 	"strings"
 	"time"
 )
@@ -46,6 +47,13 @@ type Frame struct {
 	Texture  string  `json:"texture"`
 }
 
+type Action struct {
+	Names []string `json:"names"`
+	Size  int      `json:"size"`
+	Start int      `json:"start"`
+	End   int      `json:"end"`
+}
+
 func main() {
 	var filesInfo []FileInfo
 
@@ -53,7 +61,8 @@ func main() {
 
 	strContent := `[gd_scene load_steps=418 format=3 uid="uid://` + strContentUid + `"]` + "\n\n"
 
-	targetDir := "framework/statics/scenes/world/player/clothe/011/women"
+	targetI := 0
+	targetDir := "framework/statics/scenes/world/player/clothe/000/men"
 	err := filepath.Walk("../"+targetDir, func(path string, info os.FileInfo, err error) error {
 		if err != nil {
 			return err
@@ -80,10 +89,11 @@ func main() {
 				Suffix: ext,
 				Path:   "res://" + targetDir + "/" + info.Name(),
 				Uid:    uid,
-				Id:     id,
+				Id:     strconv.Itoa(targetI) + "_" + id,
 			}
 			strContent += `[ext_resource type="Texture2D" uid=` + fileInfo.Uid + ` path="` + fileInfo.Path + `" id="` + fileInfo.Id + `"]` + "\n"
 			filesInfo = append(filesInfo, fileInfo)
+			targetI++
 		}
 		return nil
 	})
@@ -99,68 +109,43 @@ func main() {
 	data := Data{}
 	data.Animations = make([]Animation, 0)
 
-	fps := 8.0
+	fps := 8.0     //
 	direction := 8 // 八个方向
-	standNames := []string{"6_stand", "7_stand", "0_stand", "1_stand", "2_stand", "3_stand", "4_stand", "5_stand"}
-	walkingNames := []string{"6_walking", "7_walking", "0_walking", "1_walking", "2_walking", "3_walking", "4_walking", "5_walking"}
-	runningNames := []string{"6_running", "7_running", "0_running", "1_running", "2_running", "3_running", "4_running", "5_running"}
+	action := make([]Action, 0)
+	action = append(
+		action,
+		Action{Start: 0, End: 32, Size: 4, Names: []string{"6_stand", "7_stand", "0_stand", "1_stand", "2_stand", "3_stand", "4_stand", "5_stand"}},
+		Action{Start: 32, End: 80, Size: 6, Names: []string{"6_walking", "7_walking", "0_walking", "1_walking", "2_walking", "3_walking", "4_walking", "5_walking"}},
+		Action{Start: 80, End: 128, Size: 6, Names: []string{"6_running", "7_running", "0_running", "1_running", "2_running", "3_running", "4_running", "5_running"}},
+		Action{Start: 128, End: 136, Size: 1, Names: []string{"6_attack_stand", "7_attack_stand", "0_attack_stand", "1_attack_stand", "2_attack_stand", "3_attack_stand", "4_attack_stand", "5_attack_stand"}},
+		Action{Start: 136, End: 184, Size: 6, Names: []string{"6_attack", "7_attack", "0_attack", "1_attack", "2_attack", "3_attack", "4_attack", "5_attack"}},
+		Action{Start: 184, End: 232, Size: 6, Names: []string{"6_digging", "7_digging", "0_digging", "1_digging", "2_digging", "3_digging", "4_digging", "5_digging"}},
+		Action{Start: 232, End: 296, Size: 8, Names: []string{"6_jump", "7_jump", "0_jump", "1_jump", "2_jump", "3_jump", "4_jump", "5_jump"}},
+		Action{Start: 296, End: 344, Size: 6, Names: []string{"6_launch", "7_launch", "0_launch", "1_launch", "2_launch", "3_launch", "4_launch", "5_launch"}},
+		Action{Start: 344, End: 360, Size: 2, Names: []string{"6_pickup", "7_pickup", "0_pickup", "1_pickup", "2_pickup", "3_pickup", "4_pickup", "5_pickup"}},
+		Action{Start: 360, End: 384, Size: 3, Names: []string{"6_damage", "7_damage", "0_damage", "1_damage", "2_damage", "3_damage", "4_damage", "5_damage"}},
+		Action{Start: 384, End: 416, Size: 4, Names: []string{"6_death", "7_death", "0_death", "1_death", "2_death", "3_death", "4_death", "5_death"}},
+	)
 	for i := 0; i < direction; i++ {
-		// 站立资源
-		stand := filesInfo[0:32]                                       // 共32张图片
-		standSize := 4                                                 // 每个方向4张图片
-		standI := stand[(i * standSize):((i * standSize) + standSize)] // 当前方向中的4张
-		fmt.Printf("第 %d 组站立资源为 %s到%s \n", i, standI[0].Name, standI[len(standI)-1].Name)
-		standItem := Animation{
-			Frames: make([]Frame, 0),
-			Loop:   true,
-			Speed:  fps,
-			Name:   standNames[i],
+		for x := 0; x < len(action); x++ {
+			itemRange := filesInfo[action[x].Start:action[x].End]
+			itemSize := action[x].Size
+			itemI := itemRange[(i * itemSize):((i * itemSize) + itemSize)]
+			fmt.Printf("%d 方向 %s 资源文件为 %s到%s \n", i, action[x].Names[i], itemI[0].Name, itemI[len(itemI)-1].Name)
+			item := Animation{
+				Frames: make([]Frame, 0),
+				Loop:   true,
+				Speed:  fps,
+				Name:   action[x].Names[i],
+			}
+			for y := 0; y < len(itemI); y++ {
+				frame := Frame{}
+				frame.Texture = `ExtResource(` + itemI[y].Id + `)`
+				frame.Duration = 1.0
+				item.Frames = append(item.Frames, frame)
+			}
+			data.Animations = append(data.Animations, item)
 		}
-		for x := 0; x < len(standI); x++ {
-			item := Frame{}
-			item.Texture = `ExtResource(` + standI[x].Id + `)`
-			item.Duration = 1.0
-			standItem.Frames = append(standItem.Frames, item)
-		}
-		data.Animations = append(data.Animations, standItem)
-
-		// 行走资源
-		walking := filesInfo[32:80]                                              // 共48张图片
-		walkingSize := 6                                                         // 每个方向6张图片
-		walkingI := walking[(i * walkingSize):((i * walkingSize) + walkingSize)] // 当前方向中的6张
-		fmt.Printf("第 %d 组行走资源为 %s到%s \n", i, walkingI[0].Name, walkingI[len(walkingI)-1].Name)
-		walkingItem := Animation{
-			Frames: make([]Frame, 0),
-			Loop:   true,
-			Speed:  fps,
-			Name:   walkingNames[i],
-		}
-		for x := 0; x < len(walkingI); x++ {
-			item := Frame{}
-			item.Texture = `ExtResource(` + walkingI[x].Id + `)`
-			item.Duration = 1.0
-			walkingItem.Frames = append(walkingItem.Frames, item)
-		}
-		data.Animations = append(data.Animations, walkingItem)
-
-		// 奔跑资源
-		running := filesInfo[80:128]                                             // 共48张图片
-		runningSize := 6                                                         // 每个方向6张图片
-		runningI := running[(i * runningSize):((i * runningSize) + runningSize)] // 当前方向中的6张
-		fmt.Printf("第 %d 组奔跑资源为 %s到%s \n", i, runningI[0].Name, runningI[len(runningI)-1].Name)
-		runningItem := Animation{
-			Frames: make([]Frame, 0),
-			Loop:   true,
-			Speed:  fps,
-			Name:   runningNames[i],
-		}
-		for x := 0; x < len(runningI); x++ {
-			item := Frame{}
-			item.Texture = `ExtResource(` + runningI[x].Id + `)`
-			item.Duration = 1.0
-			runningItem.Frames = append(runningItem.Frames, item)
-		}
-		data.Animations = append(data.Animations, runningItem)
 	}
 
 	jsonBytes, err := json.MarshalIndent(data.Animations, "", "	")
