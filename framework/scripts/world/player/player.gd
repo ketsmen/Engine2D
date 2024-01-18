@@ -13,6 +13,9 @@ extends CharacterBody2D
 @onready var player_header_magic:TextureProgressBar = $Father/Header/Magic
 @onready var player_nickname:Label = $Father/NickName
 
+# 自定义属性
+@export var is_control: bool
+
 # 初始化节点数据
 var player_career: String
 var player_gender: String
@@ -21,9 +24,17 @@ var player_action: String
 var player_action_speed: int
 var player_step_length: int
 
+# 如果鼠标事件未被其他场景、节点等资源消耗则触发该函数
+func _unhandled_input(event):
+	if event is InputEventMouseButton:
+		if (event.button_index == 1 and event.pressed) or (event.button_index == 2 and event.pressed):
+			is_control = true
+		else:
+			is_control = false
+
 func _ready():
 	# 默认禁用控制
-	Global.data["is_control"] = false
+	is_control = false
 	# 默认隐藏玩家主体
 	player_father.visible = false
 	# 初始化玩家数据
@@ -47,8 +58,6 @@ func loader_player_resources():
 	loader_player_clothe()
 	# 加载玩家武器
 	# 加载玩家装饰
-	# 更新至允许控制状态
-	Global.data["is_control"] = true
 	# 显示玩家主体
 	player_father.visible = true
 
@@ -66,7 +75,7 @@ func loader_player_clothe():
 	player_body.move_child(clothe_loader, 0)
 
 func _physics_process(_delta):
-	if Global.data["is_control"] and player_father:
+	if is_control and player_father:
 		# 获取窗口的边界
 		var viewport_rect = get_viewport_rect()
 		# 获取鼠标的位置

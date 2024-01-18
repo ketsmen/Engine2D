@@ -14,12 +14,18 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
-	"log"
 	"os"
 	"path/filepath"
 	"strconv"
 	"strings"
 	"time"
+)
+
+const (
+	Error   = "\033[31m"
+	Success = "\033[32m"
+	Warning = "\033[33m"
+	Info    = "\033[34m"
 )
 
 type FileInfo struct {
@@ -55,56 +61,53 @@ type Action struct {
 }
 
 func main() {
-	var filesInfo []FileInfo
 
-	strContentUid, strContentId := GenerateUniqueIDs("418")
+	args := os.Args
+	if len(args) < 3 {
+		Print(fmt.Sprintf("请指定服饰ID和玩家性别，示例：clothe 000 men"), Warning)
+		return
+	}
 
-	strContent := `[gd_scene load_steps=418 format=3 uid="uid://` + strContentUid + `"]` + "\n\n"
+	pngInfo := make([]FileInfo, 0)
 
-	targetI := 0
-	targetDir := "framework/statics/scenes/world/player/clothe/000/men"
-	err := filepath.Walk("../"+targetDir, func(path string, info os.FileInfo, err error) error {
-		if err != nil {
-			return err
-		}
-		if !info.IsDir() && !strings.HasSuffix(info.Name(), ".import") {
-			file, err := os.Open("../" + targetDir + "/" + info.Name() + ".import")
+	dirPath := "framework/statics/scenes/world/player/clothe/" + args[1] + "/" + args[2]
+	outputPath := "framework/scenes/world/player/clothe/" + args[1] + "/" + args[2] + ".tscn"
+
+	outputUid, outputId := GenerateUniqueIDs("2024")
+	outputContent := `[gd_scene load_steps=418 format=3 uid="uid://` + outputUid + `"]` + "\n\n"
+
+	files, _ := os.ReadDir("../" + dirPath)
+	for i, file := range files {
+		item := FileInfo{}
+		item.Name = file.Name()
+		item.Path = "res://" + dirPath + "/" + item.Name
+		item.Suffix = filepath.Ext(item.Name)
+		item.Prefix = strings.TrimSuffix(item.Name, item.Suffix)
+		if item.Suffix == ".png" {
+			uid, id := GenerateUniqueIDs(item.Name)
+			importFile, err := os.Open("../" + dirPath + "/" + item.Name + ".import")
 			if err != nil {
-				fmt.Println("Error opening file:", err)
+				Print(fmt.Sprintf("Error opening file"), Error)
+				return
 			}
-			defer file.Close()
-			uid, id := GenerateUniqueIDs(info.Name())
-			scanner := bufio.NewScanner(file)
+			scanner := bufio.NewScanner(importFile)
 			for scanner.Scan() {
 				line := scanner.Text()
 				if strings.HasPrefix(line, "uid=") {
 					uid = strings.TrimPrefix(line, "uid=")
 				}
 			}
-			ext := filepath.Ext(info.Name())
-			prefix := strings.TrimSuffix(info.Name(), ext)
-			fileInfo := FileInfo{
-				Name:   info.Name(),
-				Prefix: prefix,
-				Suffix: ext,
-				Path:   "res://" + targetDir + "/" + info.Name(),
-				Uid:    uid,
-				Id:     strconv.Itoa(targetI) + "_" + id,
-			}
-			strContent += `[ext_resource type="Texture2D" uid=` + fileInfo.Uid + ` path="` + fileInfo.Path + `" id="` + fileInfo.Id + `"]` + "\n"
-			filesInfo = append(filesInfo, fileInfo)
-			targetI++
+			item.Id = strconv.Itoa(i) + "_" + id
+			item.Uid = uid
+			outputContent += `[ext_resource type="Texture2D" uid=` + item.Uid + ` path="` + item.Path + `" id="` + item.Id + `"]` + "\n"
+			pngInfo = append(pngInfo, item)
 		}
-		return nil
-	})
-	if err != nil {
-		fmt.Printf("Error walking through directory: %v\n", err)
 	}
 
-	strContent += "\n"
-	strContent += `[sub_resource type="SpriteFrames" id="SpriteFrames_` + strContentId + `"]` + "\n"
+	outputContent += "\n"
+	outputContent += `[sub_resource type="SpriteFrames" id="SpriteFrames_` + outputId + `"]` + "\n"
 
-	fmt.Printf("共找到 %d 个文件，开始预处理...\n", len(filesInfo))
+	Print(fmt.Sprintf("共找到 %d 个文件，开始预处理...", len(pngInfo)), Success)
 
 	data := Data{}
 	data.Animations = make([]Animation, 0)
@@ -128,10 +131,10 @@ func main() {
 	)
 	for i := 0; i < direction; i++ {
 		for x := 0; x < len(action); x++ {
-			itemRange := filesInfo[action[x].Start:action[x].End]
+			itemRange := pngInfo[action[x].Start:action[x].End]
 			itemSize := action[x].Size
 			itemI := itemRange[(i * itemSize):((i * itemSize) + itemSize)]
-			fmt.Printf("%d 方向 %s 资源文件为 %s到%s \n", i, action[x].Names[i], itemI[0].Name, itemI[len(itemI)-1].Name)
+			Print(fmt.Sprintf("%d 方向 %s 资源文件为 %s到%s", i, action[x].Names[i], itemI[0].Name, itemI[len(itemI)-1].Name), Success)
 			item := Animation{
 				Frames: make([]Frame, 0),
 				Loop:   true,
@@ -150,26 +153,31 @@ func main() {
 
 	jsonBytes, err := json.MarshalIndent(data.Animations, "", "	")
 	if err != nil {
-		log.Fatalf("Error occurred during marshaling. Error: %s", err.Error())
+		Print(fmt.Sprintf("解析JSON出错"), Error)
+		return
 	}
 
-	filePath := "./output.tscn"
-	strContent += "animations = " + string(jsonBytes)
-	strContent = strings.ReplaceAll(strContent, `"ExtResource(`, `ExtResource("`)
-	strContent = strings.ReplaceAll(strContent, `)"`, `")`)
-	strContent = strings.ReplaceAll(strContent, `"name": "`, `"name": &"`)
+	outputContent += "animations = " + string(jsonBytes)
+	outputContent = strings.ReplaceAll(outputContent, `"ExtResource(`, `ExtResource("`)
+	outputContent = strings.ReplaceAll(outputContent, `)"`, `")`)
+	outputContent = strings.ReplaceAll(outputContent, `"name": "`, `"name": &"`)
 
-	strContent += "\n\n"
-	strContent += `[node name="Animate" type="AnimatedSprite2D"]` + "\n"
-	strContent += `sprite_frames = SubResource("SpriteFrames_` + strContentId + `")` + "\n"
-	strContent += `animation = &"0_stand"` + "\n"
-	strContent += `autoplay = "0_stand"` + "\n"
-	strContent += `offset = Vector2(18.5, -28)` + "\n"
+	outputContent += "\n\n"
+	outputContent += `[node name="Animate" type="AnimatedSprite2D"]` + "\n"
+	outputContent += `sprite_frames = SubResource("SpriteFrames_` + outputId + `")` + "\n"
+	outputContent += `animation = &"0_stand"` + "\n"
+	outputContent += `autoplay = "0_stand"` + "\n"
+	outputContent += `offset = Vector2(18.5, -28)` + "\n"
 
-	err = ioutil.WriteFile(filePath, []byte(strContent), 0644)
+	err = ioutil.WriteFile("../"+outputPath, []byte(outputContent), 0644)
 	if err != nil {
-		log.Fatalf("Error occurred while writing to file. Error: %s", err.Error())
+		Print(fmt.Sprintf("文件生成失败"), Error)
+		return
 	}
+}
+
+func Print(content string, color string) {
+	fmt.Printf("%s%s%s\n", color, content, "\033[0m")
 }
 
 func GenerateUniqueIDs(fileName string) (string, string) {

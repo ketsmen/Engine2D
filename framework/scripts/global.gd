@@ -7,7 +7,6 @@ extends Node
 # TODO 后续将从服务端获取、同步数据
 var data = {
 	"debug": true,
-	"is_control": true,
 	"config": {
 		"version": "1.0.0",
 		"user_path": "user://userdata/",
@@ -27,7 +26,7 @@ var data = {
 				"life_max": 1599,
 				"magic": 800,
 				"magic_max": 1000,
-				"experience": 250000,
+				"experience": 490000,
 				"experience_max": 500000,
 				"backpack": []
 			},
@@ -42,10 +41,6 @@ var data = {
 func _ready():
 	# 限制窗口最小尺寸
 	DisplayServer.window_set_min_size(Vector2(1280, 720))
-
-# 设置玩家是否可以控制
-func set_player_control(status: bool):
-	data["is_control"] = status
 
 # 地图根路径
 func get_map_root_path() -> String:
@@ -96,10 +91,10 @@ func get_player_experience_max_value():
 func get_player_experience(page: int) -> Array:
 	var bar_states = []
 	# 每个子节点代表的经验值量
-	var exp_per_bar = int(data["world"]["player"]["asset"]["experience_max"]) / page
+	var exp_per_bar = float(data["world"]["player"]["asset"]["experience_max"]) / page
 	# 计算当前经验值对应的子节点索引
 	var active_bar_index = int(int(data["world"]["player"]["asset"]["experience"]) / exp_per_bar)
-	var remainder_exp = int(data["world"]["player"]["asset"]["experience"]) % exp_per_bar
+	var remainder_exp = int(data["world"]["player"]["asset"]["experience"]) % int(exp_per_bar)
 	# 计算
 	for i in range(page):
 		var state = {"visible": false, "value": 0}

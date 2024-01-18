@@ -39,12 +39,6 @@ func update_footer_experience():
 		child.visible = child_status["visible"]
 		child.value = child_status["value"]
 
-func _on_max_show_button_button_down():
-	Global.set_player_control(false)
-
-func _on_max_show_button_button_up():
-	Global.set_player_control(true)
-
 func _on_max_show_button_pressed():
 	if !max_box.visible:
 		max_box.visible = true
