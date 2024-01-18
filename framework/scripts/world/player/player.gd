@@ -58,6 +58,7 @@ func loader_player_resources():
 	# 加载玩家服饰
 	loader_player_clothe()
 	# 加载玩家武器
+	loader_player_weapon()
 	# 加载玩家装饰
 	loader_player_wing()
 	# 显示玩家主体
@@ -76,6 +77,20 @@ func loader_player_clothe():
 	# 设置服饰资源层级
 	player_body.move_child(clothe_loader, 0)
 
+func loader_player_weapon():
+	# 当前玩家武器的编号
+	var weapon_id = Global.get_player_weapon_value()
+	if weapon_id != "000":
+		# 武器资源路径
+		var weapon_path = Global.get_player_current_weapon(weapon_id, player_gender)
+		# 加载武器资源
+		var weapon_loader = load(weapon_path).instantiate()
+		weapon_loader.name = "Weapon"
+		# 将武器资源添加到玩家Body节点
+		player_body.add_child(weapon_loader)
+		# 设置武器资源层级
+		player_body.move_child(weapon_loader, 1)
+
 func loader_player_wing():
 	# 当前玩家翅膀的编号
 	var wing_id = Global.get_player_wing_value()
@@ -85,10 +100,10 @@ func loader_player_wing():
 		# 加载翅膀资源
 		var wing_loader = load(wing_path).instantiate()
 		wing_loader.name = "Wing"
-		# 将翅膀源添加到玩家Body节点
+		# 将翅膀资添加到玩家Body节点
 		player_body.add_child(wing_loader)
 		# 设置翅膀资源层级
-		player_body.move_child(wing_loader, 1)
+		player_body.move_child(wing_loader, 2)
 
 func _physics_process(_delta):
 	if is_control and player_father:
@@ -136,6 +151,7 @@ func _physics_process(_delta):
 					if mouse_position.length() > 10:
 						player_body.get_child(0).animation = str(player_angle) + "_" + player_action
 						player_body.get_child(1).animation = str(player_angle) + "_" + player_action
+						player_body.get_child(2).animation = str(player_angle) + "_" + player_action
 						velocity = direction.normalized() * player_action_speed
 						move_and_slide()
 			if Input.is_action_just_released("walking") or Input.is_action_just_released("running"):
@@ -150,6 +166,7 @@ func on_action_stop():
 	player_action = "stand"
 	player_body.get_child(0).animation = str(player_angle) + "_" + player_action
 	player_body.get_child(1).animation = str(player_angle) + "_" + player_action
+	player_body.get_child(2).animation = str(player_angle) + "_" + player_action
 
 func on_sound_play(sound_file):
 	if sound.stream != sound_file:

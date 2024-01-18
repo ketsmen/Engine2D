@@ -12,6 +12,7 @@ var data = {
 		"user_path": "user://userdata/",
 		"map_root_path": "res://framework/scenes/world/map/",
 		"clothe_root_path": "res://framework/scenes/world/player/clothe/",
+		"weapon_root_path": "res://framework/scenes/world/player/weapon/",
 		"wing_root_path": "res://framework/scenes/world/player/wing/"
 	},
 	"world": {
@@ -19,7 +20,7 @@ var data = {
 		"player": {
 			"nickname": "游戏管理员",
 			"career": "warrior",
-			"gender": "women",
+			"gender": "men",
 			"angle": 2,
 			"asset": {
 				"level": 42,
@@ -32,8 +33,8 @@ var data = {
 				"backpack": []
 			},
 			"body": {
-				"clothe": "010",
-				"weapon": "000",
+				"clothe": "009",
+				"weapon": "034",
 				"wing": "010",
 			}
 		}
@@ -60,6 +61,14 @@ func get_clothe_root_path() -> String:
 func get_player_current_clothe(clothe_id: String, player_gender: String) -> String:
 	return data["config"]["clothe_root_path"] + clothe_id + "/" + player_gender + ".tscn"
 
+# 武器根路径
+func get_weapon_root_path() -> String:
+	return data["config"]["weapon_root_path"]
+
+# 获取玩家武器
+func get_player_current_weapon(weapon_id: String, player_gender: String) -> String:
+	return data["config"]["weapon_root_path"] + weapon_id + "/" + player_gender + ".tscn"
+
 # 翅膀根路径
 func get_wing_root_path() -> String:
 	return data["config"]["wing_root_path"]
@@ -83,6 +92,10 @@ func get_player_gender_value() -> String:
 # 获取玩家服饰
 func get_player_clothe_value() -> String:
 	return data["world"]["player"]["body"]["clothe"]
+
+# 获取玩家武器
+func get_player_weapon_value() -> String:
+	return data["world"]["player"]["body"]["weapon"]
 
 # 获取玩家翅膀装饰
 func get_player_wing_value() -> String:

@@ -64,7 +64,7 @@ func Start(args []string) {
 	outputPath := "framework/scenes/world/player/clothe/" + args[2] + "/" + args[3] + ".tscn"
 
 	outputUid, outputId := Base.GenerateUniqueIDs("2024")
-	outputContent := `[gd_scene load_steps=418 format=3 uid="uid://` + outputUid + `"]` + "\n\n"
+	outputContent := `[gd_scene load_steps=416 format=3 uid="uid://` + outputUid + `"]` + "\n\n"
 
 	files, _ := os.ReadDir("../" + dirPath)
 	for i, file := range files {

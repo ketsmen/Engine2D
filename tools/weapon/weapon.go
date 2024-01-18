@@ -5,7 +5,7 @@
  ******************************************************************************
  */
 
-package Clothe
+package Weapon
 
 import (
 	"Tools/base"
@@ -53,15 +53,15 @@ type Action struct {
 
 func Start(args []string) {
 
-	if len(args) < 3 {
-		Base.Print(fmt.Sprintf("请指定资源ID，示例：clothe 000"), Base.Warning)
+	if len(args) < 4 {
+		Base.Print(fmt.Sprintf("请指定资源ID和玩家性别，示例：weapon 000 men"), Base.Warning)
 		return
 	}
 
 	pngInfo := make([]FileInfo, 0)
 
-	dirPath := "framework/statics/scenes/world/player/weapon/" + args[2]
-	outputPath := "framework/scenes/world/player/weapon/" + args[2] + "/" + args[2] + ".tscn"
+	dirPath := "framework/statics/scenes/world/player/weapon/" + args[2] + "/" + args[3]
+	outputPath := "framework/scenes/world/player/weapon/" + args[2] + "/" + args[3] + ".tscn"
 
 	outputUid, outputId := Base.GenerateUniqueIDs("2024")
 	outputContent := `[gd_scene load_steps=416 format=3 uid="uid://` + outputUid + `"]` + "\n\n"
@@ -157,7 +157,7 @@ func Start(args []string) {
 	outputContent += `sprite_frames = SubResource("SpriteFrames_` + outputId + `")` + "\n"
 	outputContent += `animation = &"0_stand"` + "\n"
 	outputContent += `autoplay = "0_stand"` + "\n"
-	outputContent += `offset = Vector2(18.5, -28)` + "\n"
+	outputContent += `offset = Vector2(0, -28)` + "\n"
 
 	err = ioutil.WriteFile("../"+outputPath, []byte(outputContent), 0644)
 	if err != nil {
