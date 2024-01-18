@@ -1,16 +1,15 @@
 /**
  ******************************************************************************
  * @file    clothe.go
- * @author  ARMCNC site:www.armcnc.net github:armcnc.github.io
+ * @author  MakerYang
  ******************************************************************************
  */
 
-package main
+package Clothe
 
 import (
+	"Tools/base"
 	"bufio"
-	"crypto/md5"
-	"encoding/hex"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
@@ -18,14 +17,6 @@ import (
 	"path/filepath"
 	"strconv"
 	"strings"
-	"time"
-)
-
-const (
-	Error   = "\033[31m"
-	Success = "\033[32m"
-	Warning = "\033[33m"
-	Info    = "\033[34m"
 )
 
 type FileInfo struct {
@@ -60,20 +51,19 @@ type Action struct {
 	End   int      `json:"end"`
 }
 
-func main() {
+func Start(args []string) {
 
-	args := os.Args
-	if len(args) < 3 {
-		Print(fmt.Sprintf("请指定服饰ID和玩家性别，示例：clothe 000 men"), Warning)
+	if len(args) < 4 {
+		Base.Print(fmt.Sprintf("请指定服饰ID和玩家性别，示例：clothe 000 men"), Base.Warning)
 		return
 	}
 
 	pngInfo := make([]FileInfo, 0)
 
-	dirPath := "framework/statics/scenes/world/player/clothe/" + args[1] + "/" + args[2]
-	outputPath := "framework/scenes/world/player/clothe/" + args[1] + "/" + args[2] + ".tscn"
+	dirPath := "framework/statics/scenes/world/player/clothe/" + args[2] + "/" + args[3]
+	outputPath := "framework/scenes/world/player/clothe/" + args[2] + "/" + args[3] + ".tscn"
 
-	outputUid, outputId := GenerateUniqueIDs("2024")
+	outputUid, outputId := Base.GenerateUniqueIDs("2024")
 	outputContent := `[gd_scene load_steps=418 format=3 uid="uid://` + outputUid + `"]` + "\n\n"
 
 	files, _ := os.ReadDir("../" + dirPath)
@@ -84,10 +74,10 @@ func main() {
 		item.Suffix = filepath.Ext(item.Name)
 		item.Prefix = strings.TrimSuffix(item.Name, item.Suffix)
 		if item.Suffix == ".png" {
-			uid, id := GenerateUniqueIDs(item.Name)
+			uid, id := Base.GenerateUniqueIDs(item.Name)
 			importFile, err := os.Open("../" + dirPath + "/" + item.Name + ".import")
 			if err != nil {
-				Print(fmt.Sprintf("Error opening file"), Error)
+				Base.Print(fmt.Sprintf("Error opening file"), Base.Error)
 				return
 			}
 			scanner := bufio.NewScanner(importFile)
@@ -107,7 +97,7 @@ func main() {
 	outputContent += "\n"
 	outputContent += `[sub_resource type="SpriteFrames" id="SpriteFrames_` + outputId + `"]` + "\n"
 
-	Print(fmt.Sprintf("共找到 %d 个文件，开始预处理...", len(pngInfo)), Success)
+	Base.Print(fmt.Sprintf("共找到 %d 个文件，开始预处理...", len(pngInfo)), Base.Success)
 
 	data := Data{}
 	data.Animations = make([]Animation, 0)
@@ -134,7 +124,7 @@ func main() {
 			itemRange := pngInfo[action[x].Start:action[x].End]
 			itemSize := action[x].Size
 			itemI := itemRange[(i * itemSize):((i * itemSize) + itemSize)]
-			Print(fmt.Sprintf("%d 方向 %s 资源文件为 %s到%s", i, action[x].Names[i], itemI[0].Name, itemI[len(itemI)-1].Name), Success)
+			Base.Print(fmt.Sprintf("%d 方向 %s 资源文件为 %s到%s", i, action[x].Names[i], itemI[0].Name, itemI[len(itemI)-1].Name), Base.Success)
 			item := Animation{
 				Frames: make([]Frame, 0),
 				Loop:   true,
@@ -153,7 +143,7 @@ func main() {
 
 	jsonBytes, err := json.MarshalIndent(data.Animations, "", "	")
 	if err != nil {
-		Print(fmt.Sprintf("解析JSON出错"), Error)
+		Base.Print(fmt.Sprintf("解析JSON出错"), Base.Error)
 		return
 	}
 
@@ -171,21 +161,7 @@ func main() {
 
 	err = ioutil.WriteFile("../"+outputPath, []byte(outputContent), 0644)
 	if err != nil {
-		Print(fmt.Sprintf("文件生成失败"), Error)
+		Base.Print(fmt.Sprintf("文件生成失败"), Base.Error)
 		return
 	}
-}
-
-func Print(content string, color string) {
-	fmt.Printf("%s%s%s\n", color, content, "\033[0m")
-}
-
-func GenerateUniqueIDs(fileName string) (string, string) {
-	timestamp := time.Now().UnixNano()
-	input := fmt.Sprintf("%s%d", fileName, timestamp)
-	hash := md5.Sum([]byte(input))
-	hashStr := hex.EncodeToString(hash[:])
-	uniqueID12 := hashStr[:12]
-	uniqueID5 := hashStr[:5]
-	return uniqueID12, uniqueID5
 }
