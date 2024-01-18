@@ -11,8 +11,8 @@ var data = {
 		"version": "1.0.0",
 		"user_path": "user://userdata/",
 		"map_root_path": "res://framework/scenes/world/map/",
-		"clothe_path": "res://framework/scenes/world/player/clothe/",
-		"wing_path": "res://framework/scenes/world/player/wing/"
+		"clothe_root_path": "res://framework/scenes/world/player/clothe/",
+		"wing_root_path": "res://framework/scenes/world/player/wing/"
 	},
 	"world": {
 		"current_map": "001",
@@ -48,9 +48,25 @@ func _ready():
 func get_map_root_path() -> String:
 	return data["config"]["map_root_path"]
 
-# 获取玩家所在地图
+# 获取玩家地图
 func get_player_current_map() -> String:
 	return data["config"]["map_root_path"] + data["world"]["current_map"] + ".tscn"
+
+# 服饰根路径
+func get_clothe_root_path() -> String:
+	return data["config"]["clothe_root_path"]
+
+# 获取玩家服饰
+func get_player_current_clothe(clothe_id: String, player_gender: String) -> String:
+	return data["config"]["clothe_root_path"] + clothe_id + "/" + player_gender + ".tscn"
+
+# 翅膀根路径
+func get_wing_root_path() -> String:
+	return data["config"]["wing_root_path"]
+
+# 获取玩家翅膀
+func get_player_current_wing(wing_id: String, player_gender: String) -> String:
+	return data["config"]["wing_root_path"] + wing_id + "/" + player_gender + ".tscn"
 
 # 获取玩家昵称
 func get_player_nickname_value() -> String:
@@ -64,7 +80,15 @@ func get_player_career_value() -> String:
 func get_player_gender_value() -> String:
 	return data["world"]["player"]["gender"]
 
-# 获取玩家当前角度
+# 获取玩家服饰
+func get_player_clothe_value() -> String:
+	return data["world"]["player"]["body"]["clothe"]
+
+# 获取玩家翅膀装饰
+func get_player_wing_value() -> String:
+	return data["world"]["player"]["body"]["wing"]
+
+# 获取玩家角度
 func get_player_angle_value() -> int:
 	return data["world"]["player"]["angle"]
 

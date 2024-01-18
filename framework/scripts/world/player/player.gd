@@ -65,9 +65,9 @@ func loader_player_resources():
 
 func loader_player_clothe():
 	# 当前玩家服饰的编号
-	var clothe_id = Global.data["world"]["player"]["body"]["clothe"]
+	var clothe_id = Global.get_player_clothe_value()
 	# 服饰资源路径
-	var clothe_path = Global.data["config"]["clothe_path"] + clothe_id + "/" + player_gender + ".tscn"
+	var clothe_path = Global.get_player_current_clothe(clothe_id, player_gender)
 	# 加载服饰资源
 	var clothe_loader = load(clothe_path).instantiate()
 	clothe_loader.name = "Clothe"
@@ -78,9 +78,9 @@ func loader_player_clothe():
 
 func loader_player_wing():
 	# 当前玩家翅膀的编号
-	var wing_id = Global.data["world"]["player"]["body"]["wing"]
+	var wing_id = Global.get_player_wing_value()
 	# 翅膀资源路径
-	var wing_path = Global.data["config"]["wing_path"] + wing_id + "/" + player_gender + ".tscn"
+	var wing_path = Global.get_player_current_wing(wing_id, player_gender)
 	# 加载翅膀资源
 	var wing_loader = load(wing_path).instantiate()
 	wing_loader.name = "Wing"
