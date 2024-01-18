@@ -11,15 +11,16 @@ var data = {
 		"version": "1.0.0",
 		"user_path": "user://userdata/",
 		"map_root_path": "res://framework/scenes/world/map/",
-		"clothe_path": "res://framework/scenes/world/player/clothe/"
+		"clothe_path": "res://framework/scenes/world/player/clothe/",
+		"wing_path": "res://framework/scenes/world/player/wing/"
 	},
 	"world": {
 		"current_map": "001",
 		"player": {
 			"nickname": "游戏管理员",
 			"career": "warrior",
-			"gender": "men",
-			"angle": 1,
+			"gender": "women",
+			"angle": 2,
 			"asset": {
 				"level": 42,
 				"life": 1500,
@@ -31,8 +32,9 @@ var data = {
 				"backpack": []
 			},
 			"body": {
-				"clothe": "000",
-				"weapon": "000"
+				"clothe": "009",
+				"weapon": "000",
+				"wing": "009",
 			}
 		}
 	}
@@ -61,6 +63,10 @@ func get_player_career_value() -> String:
 # 获取玩家性别
 func get_player_gender_value() -> String:
 	return data["world"]["player"]["gender"]
+
+# 获取玩家当前角度
+func get_player_angle_value() -> int:
+	return data["world"]["player"]["angle"]
 
 # 获取玩家生命值
 func get_player_life_value():
@@ -95,7 +101,7 @@ func get_player_experience(page: int) -> Array:
 	# 计算当前经验值对应的子节点索引
 	var active_bar_index = int(int(data["world"]["player"]["asset"]["experience"]) / exp_per_bar)
 	var remainder_exp = int(data["world"]["player"]["asset"]["experience"]) % int(exp_per_bar)
-	# 计算
+	# 计算每个子节点数据
 	for i in range(page):
 		var state = {"visible": false, "value": 0}
 		if i < active_bar_index:

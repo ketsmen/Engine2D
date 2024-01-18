@@ -53,15 +53,15 @@ type Action struct {
 
 func Start(args []string) {
 
-	if len(args) < 3 {
-		Base.Print(fmt.Sprintf("请指定翅膀ID，示例：wing 000"), Base.Warning)
+	if len(args) < 4 {
+		Base.Print(fmt.Sprintf("请指定服饰ID和玩家性别，示例：wing 000 men"), Base.Warning)
 		return
 	}
 
 	pngInfo := make([]FileInfo, 0)
 
-	dirPath := "framework/statics/scenes/world/player/clothe/" + args[1] + "/" + args[2]
-	outputPath := "framework/scenes/world/player/clothe/" + args[1] + "/" + args[2] + ".tscn"
+	dirPath := "framework/statics/scenes/world/player/wing/" + args[2] + "/" + args[3]
+	outputPath := "framework/scenes/world/player/wing/" + args[2] + "/" + args[3] + ".tscn"
 
 	outputUid, outputId := Base.GenerateUniqueIDs("2024")
 	outputContent := `[gd_scene load_steps=418 format=3 uid="uid://` + outputUid + `"]` + "\n\n"
@@ -107,17 +107,17 @@ func Start(args []string) {
 	action := make([]Action, 0)
 	action = append(
 		action,
-		Action{Start: 0, End: 32, Size: 4, Names: []string{"6_stand", "7_stand", "0_stand", "1_stand", "2_stand", "3_stand", "4_stand", "5_stand"}},
-		Action{Start: 32, End: 80, Size: 6, Names: []string{"6_walking", "7_walking", "0_walking", "1_walking", "2_walking", "3_walking", "4_walking", "5_walking"}},
-		Action{Start: 80, End: 128, Size: 6, Names: []string{"6_running", "7_running", "0_running", "1_running", "2_running", "3_running", "4_running", "5_running"}},
-		Action{Start: 128, End: 136, Size: 1, Names: []string{"6_attack_stand", "7_attack_stand", "0_attack_stand", "1_attack_stand", "2_attack_stand", "3_attack_stand", "4_attack_stand", "5_attack_stand"}},
-		Action{Start: 136, End: 184, Size: 6, Names: []string{"6_attack", "7_attack", "0_attack", "1_attack", "2_attack", "3_attack", "4_attack", "5_attack"}},
-		Action{Start: 184, End: 232, Size: 6, Names: []string{"6_digging", "7_digging", "0_digging", "1_digging", "2_digging", "3_digging", "4_digging", "5_digging"}},
-		Action{Start: 232, End: 296, Size: 8, Names: []string{"6_jump", "7_jump", "0_jump", "1_jump", "2_jump", "3_jump", "4_jump", "5_jump"}},
-		Action{Start: 296, End: 344, Size: 6, Names: []string{"6_launch", "7_launch", "0_launch", "1_launch", "2_launch", "3_launch", "4_launch", "5_launch"}},
-		Action{Start: 344, End: 360, Size: 2, Names: []string{"6_pickup", "7_pickup", "0_pickup", "1_pickup", "2_pickup", "3_pickup", "4_pickup", "5_pickup"}},
-		Action{Start: 360, End: 384, Size: 3, Names: []string{"6_damage", "7_damage", "0_damage", "1_damage", "2_damage", "3_damage", "4_damage", "5_damage"}},
-		Action{Start: 384, End: 416, Size: 4, Names: []string{"6_death", "7_death", "0_death", "1_death", "2_death", "3_death", "4_death", "5_death"}},
+		Action{Start: 0, End: 64, Size: 8, Names: []string{"6_stand", "7_stand", "0_stand", "1_stand", "2_stand", "3_stand", "4_stand", "5_stand"}},
+		Action{Start: 64, End: 112, Size: 6, Names: []string{"6_walking", "7_walking", "0_walking", "1_walking", "2_walking", "3_walking", "4_walking", "5_walking"}},
+		Action{Start: 112, End: 160, Size: 6, Names: []string{"6_running", "7_running", "0_running", "1_running", "2_running", "3_running", "4_running", "5_running"}},
+		Action{Start: 160, End: 168, Size: 1, Names: []string{"6_attack_stand", "7_attack_stand", "0_attack_stand", "1_attack_stand", "2_attack_stand", "3_attack_stand", "4_attack_stand", "5_attack_stand"}},
+		Action{Start: 168, End: 216, Size: 6, Names: []string{"6_attack", "7_attack", "0_attack", "1_attack", "2_attack", "3_attack", "4_attack", "5_attack"}},
+		Action{Start: 216, End: 264, Size: 6, Names: []string{"6_digging", "7_digging", "0_digging", "1_digging", "2_digging", "3_digging", "4_digging", "5_digging"}},
+		Action{Start: 264, End: 328, Size: 8, Names: []string{"6_jump", "7_jump", "0_jump", "1_jump", "2_jump", "3_jump", "4_jump", "5_jump"}},
+		Action{Start: 328, End: 376, Size: 6, Names: []string{"6_launch", "7_launch", "0_launch", "1_launch", "2_launch", "3_launch", "4_launch", "5_launch"}},
+		Action{Start: 376, End: 392, Size: 2, Names: []string{"6_pickup", "7_pickup", "0_pickup", "1_pickup", "2_pickup", "3_pickup", "4_pickup", "5_pickup"}},
+		Action{Start: 392, End: 416, Size: 3, Names: []string{"6_damage", "7_damage", "0_damage", "1_damage", "2_damage", "3_damage", "4_damage", "5_damage"}},
+		Action{Start: 416, End: 448, Size: 4, Names: []string{"6_death", "7_death", "0_death", "1_death", "2_death", "3_death", "4_death", "5_death"}},
 	)
 	for i := 0; i < direction; i++ {
 		for x := 0; x < len(action); x++ {
@@ -157,7 +157,7 @@ func Start(args []string) {
 	outputContent += `sprite_frames = SubResource("SpriteFrames_` + outputId + `")` + "\n"
 	outputContent += `animation = &"0_stand"` + "\n"
 	outputContent += `autoplay = "0_stand"` + "\n"
-	outputContent += `offset = Vector2(18.5, -28)` + "\n"
+	outputContent += `offset = Vector2(0, -28)` + "\n"
 
 	err = ioutil.WriteFile("../"+outputPath, []byte(outputContent), 0644)
 	if err != nil {

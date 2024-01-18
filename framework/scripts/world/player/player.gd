@@ -5,6 +5,7 @@
 extends CharacterBody2D
 
 # 实例化控件
+@onready var sound:AudioStreamPlayer = $Sound
 @onready var player_father:Control = $Father
 @onready var player_body:Control = $Father/Body
 @onready var player_header:Control = $Father/Header
@@ -41,7 +42,7 @@ func _ready():
 	player_nickname.text = Global.get_player_nickname_value()
 	player_career = Global.get_player_career_value()
 	player_gender = Global.get_player_gender_value()
-	player_angle = Global.data["world"]["player"]["angle"]
+	player_angle = Global.get_player_angle_value()
 	player_header_life_value.text = Global.get_player_life_format_value()
 	player_header_life.value = Global.get_player_life_percentage()
 	player_header_magic.value = Global.get_player_magic_percentage()
@@ -58,6 +59,7 @@ func loader_player_resources():
 	loader_player_clothe()
 	# 加载玩家武器
 	# 加载玩家装饰
+	loader_player_wing()
 	# 显示玩家主体
 	player_father.visible = true
 
@@ -73,6 +75,19 @@ func loader_player_clothe():
 	player_body.add_child(clothe_loader)
 	# 设置服饰资源层级
 	player_body.move_child(clothe_loader, 0)
+
+func loader_player_wing():
+	# 当前玩家翅膀的编号
+	var wing_id = Global.data["world"]["player"]["body"]["wing"]
+	# 翅膀资源路径
+	var wing_path = Global.data["config"]["wing_path"] + wing_id + "/" + player_gender + ".tscn"
+	# 加载翅膀资源
+	var wing_loader = load(wing_path).instantiate()
+	wing_loader.name = "Wing"
+	# 将翅膀源添加到玩家Body节点
+	player_body.add_child(wing_loader)
+	# 设置翅膀资源层级
+	player_body.move_child(wing_loader, 1)
 
 func _physics_process(_delta):
 	if is_control and player_father:
@@ -109,14 +124,17 @@ func _physics_process(_delta):
 					player_action = "walking"
 					# 鼠标左键行走
 					player_action_speed = 60
+					on_sound_play(load("res://framework/statics/musics/walking.wav"))
 				if Input.is_action_pressed("running"):
 					player_action = "running"
 					# 鼠标左键奔跑
 					player_action_speed = 120
+					on_sound_play(load("res://framework/statics/musics/running.wav"))
 				if player_action_speed > 0:
 					# 鼠标位置距离玩家多远才触发
 					if mouse_position.length() > 10:
 						player_body.get_child(0).animation = str(player_angle) + "_" + player_action
+						player_body.get_child(1).animation = str(player_angle) + "_" + player_action
 						velocity = direction.normalized() * player_action_speed
 						move_and_slide()
 			if Input.is_action_just_released("walking") or Input.is_action_just_released("running"):
@@ -124,11 +142,25 @@ func _physics_process(_delta):
 	else:
 		on_action_stop()
 
-func on_action():
-	pass
-
 func on_action_stop():
+	on_sound_stop()
 	player_action_speed = 0
 	velocity = Vector2.ZERO
 	player_action = "stand"
 	player_body.get_child(0).animation = str(player_angle) + "_" + player_action
+	player_body.get_child(1).animation = str(player_angle) + "_" + player_action
+
+func on_sound_play(sound_file):
+	if sound.stream != sound_file:
+		sound.stream = sound_file
+		if not sound.playing:
+			sound.play()
+			
+func on_sound_stop():
+	if not sound.playing:
+		sound.stop()
+		sound.stream = null
+		
+func _on_sound_finished():
+	if player_action != "stand":
+		sound.play()
