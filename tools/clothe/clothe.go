@@ -54,7 +54,7 @@ type Action struct {
 func Start(args []string) {
 
 	if len(args) < 4 {
-		Base.Print(fmt.Sprintf("请指定服饰ID和玩家性别，示例：clothe 000 men"), Base.Warning)
+		Base.Print(fmt.Sprintf("请指定资源ID和玩家性别，示例：clothe 000 men"), Base.Warning)
 		return
 	}
 

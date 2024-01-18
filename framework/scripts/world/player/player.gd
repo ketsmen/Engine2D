@@ -79,15 +79,16 @@ func loader_player_clothe():
 func loader_player_wing():
 	# 当前玩家翅膀的编号
 	var wing_id = Global.get_player_wing_value()
-	# 翅膀资源路径
-	var wing_path = Global.get_player_current_wing(wing_id, player_gender)
-	# 加载翅膀资源
-	var wing_loader = load(wing_path).instantiate()
-	wing_loader.name = "Wing"
-	# 将翅膀源添加到玩家Body节点
-	player_body.add_child(wing_loader)
-	# 设置翅膀资源层级
-	player_body.move_child(wing_loader, 1)
+	if wing_id != "000":
+		# 翅膀资源路径
+		var wing_path = Global.get_player_current_wing(wing_id, player_gender)
+		# 加载翅膀资源
+		var wing_loader = load(wing_path).instantiate()
+		wing_loader.name = "Wing"
+		# 将翅膀源添加到玩家Body节点
+		player_body.add_child(wing_loader)
+		# 设置翅膀资源层级
+		player_body.move_child(wing_loader, 1)
 
 func _physics_process(_delta):
 	if is_control and player_father:
@@ -123,12 +124,12 @@ func _physics_process(_delta):
 				if Input.is_action_pressed("walking"):
 					player_action = "walking"
 					# 鼠标左键行走
-					player_action_speed = 60
+					player_action_speed = 70
 					on_sound_play(load("res://framework/statics/musics/walking.wav"))
 				if Input.is_action_pressed("running"):
 					player_action = "running"
 					# 鼠标左键奔跑
-					player_action_speed = 120
+					player_action_speed = 140
 					on_sound_play(load("res://framework/statics/musics/running.wav"))
 				if player_action_speed > 0:
 					# 鼠标位置距离玩家多远才触发

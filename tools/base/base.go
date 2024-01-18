@@ -11,6 +11,7 @@ import (
 	"crypto/md5"
 	"encoding/hex"
 	"fmt"
+	"os"
 	"time"
 )
 
@@ -23,6 +24,17 @@ const (
 
 func Print(content string, color string) {
 	fmt.Printf("%s%s%s\n", color, content, "\033[0m")
+}
+
+func PathExists(path string) (bool, error) {
+	_, err := os.Stat(path)
+	if err == nil {
+		return true, nil
+	}
+	if os.IsNotExist(err) {
+		return false, nil
+	}
+	return false, err
 }
 
 func GenerateUniqueIDs(fileName string) (string, string) {
