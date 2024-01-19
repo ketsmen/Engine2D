@@ -134,7 +134,7 @@ func _physics_process(_delta):
 			if player_angle == 7:
 				direction = Vector2(0.7, -0.4)
 			on_switch_layer()
-			# 鼠标左按下时触发
+			# 鼠标按下时触发
 			if Input.is_action_pressed("walking") or Input.is_action_pressed("running"):
 				# 更新速度和动作
 				if Input.is_action_pressed("walking"):

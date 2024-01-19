@@ -15,9 +15,13 @@ var data = {
 		"weapon_root_path": "res://framework/scenes/world/player/weapon/",
 		"wing_root_path": "res://framework/scenes/world/player/wing/"
 	},
+	"user": {
+		"token": ""
+	},
 	"world": {
 		"current_map": "001",
 		"player": {
+			"token": "",
 			"nickname": "游戏管理员",
 			"career": "warrior",
 			"gender": "men",
@@ -48,6 +52,10 @@ func _ready():
 # 地图根路径
 func get_map_root_path() -> String:
 	return data["config"]["map_root_path"]
+
+# 获取玩家Token
+func get_player_token_value() -> String:
+	return data["world"]["player"]["token"]
 
 # 获取玩家地图
 func get_player_current_map() -> String:
@@ -106,7 +114,7 @@ func get_player_angle_value() -> int:
 	return data["world"]["player"]["angle"]
 
 # 获取玩家生命值
-func get_player_life_value():
+func get_player_life_value() -> int:
 	return data["world"]["player"]["asset"]["life"]
 
 func get_player_life_percentage() -> float:
@@ -116,18 +124,18 @@ func get_player_life_format_value() -> String:
 	return str(data["world"]["player"]["asset"]["life"]) + "/" + str(data["world"]["player"]["asset"]["life_max"])
 
 # 获取玩家魔法值
-func get_player_magic_value():
+func get_player_magic_value() -> int:
 	return data["world"]["player"]["asset"]["magic"]
 
 func get_player_magic_percentage() -> float:
 	return (float(data["world"]["player"]["asset"]["magic"]) / float(data["world"]["player"]["asset"]["magic_max"])) * 100
 
 # 获取玩家经验值
-func get_player_experience_value():
+func get_player_experience_value() -> int:
 	return data["world"]["player"]["asset"]["experience"]
 
 # 获取玩家最大经验值
-func get_player_experience_max_value():
+func get_player_experience_max_value() -> int:
 	return data["world"]["player"]["asset"]["experience_max"]
 
 # 获取玩家经验条数据
@@ -152,6 +160,10 @@ func get_player_experience(page: int) -> Array:
 			state["value"] = 0
 		bar_states.append(state)
 	return bar_states
+
+# 获取用户Token
+func get_user_token_value() -> String:
+	return data["user"]["token"]
 
 # 更新玩家数据
 func on_update_player_data(parameter: String, value):

@@ -24,12 +24,18 @@ func _process(_delta):
 
 func _on_login_submit_button_pressed(mail: String, password: String, status: bool):
 	print(mail, password, status)
-	var dialog = get_node("Dialog")
-	if status:
-		login.visible = false
-		server.visible = true
-	else:
-		dialog.show_message("登录信息不完整", 0)
+	Request.on_service("/ping", 0, {}, func (_result, code, _headers, body):
+		var dialog = get_node("Dialog")
+		if code == 200:
+			var data = JSON.parse_string(body.get_string_from_utf8())
+			if data["code"] == 0:
+				login.visible = false
+				server.visible = true
+			else:
+				dialog.show_message(data["msg"], 0)
+		else:
+			dialog.show_message("登录信息失败", 0)
+	)
 
 func _on_server_item_pressed(server_token: String):
 	print(server_token)
