@@ -8,7 +8,7 @@ extends SubViewport
 
 func _ready():
 	# 动态加载地图
-	var map_path = Global.get_player_current_map()
+	var map_path = Player.get_map()
 	var map_loader = load(map_path).instantiate()
 	# 获取当前场景
 	var current_scene = get_tree().current_scene

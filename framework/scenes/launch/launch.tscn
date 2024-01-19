@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://sy05ev3urdih"]
+[gd_scene load_steps=7 format=3 uid="uid://sy05ev3urdih"]
 
 [ext_resource type="Script" path="res://framework/scripts/launch/launch.gd" id="1_tw44y"]
 [ext_resource type="Texture2D" uid="uid://dmu4swbbk57va" path="res://framework/statics/scenes/launch/launch.jpeg" id="3_xcjg8"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://mnolno0phv7x" path="res://framework/scenes/launch/nodes/server.tscn" id="5_fde8w"]
 [ext_resource type="PackedScene" uid="uid://dhjpyghfgls38" path="res://framework/scenes/launch/nodes/roles.tscn" id="5_pan11"]
 [ext_resource type="PackedScene" uid="uid://cku4qinwl4ji1" path="res://framework/scenes/launch/nodes/loading.tscn" id="6_08m3p"]
-[ext_resource type="PackedScene" uid="uid://uioqkvjb3k18" path="res://framework/scenes/common/dialog.tscn" id="6_wvvyk"]
 
 [node name="Launch" type="Control"]
 layout_mode = 3
@@ -38,9 +37,6 @@ layout_mode = 1
 layout_mode = 1
 
 [node name="Loading" parent="." instance=ExtResource("6_08m3p")]
-layout_mode = 1
-
-[node name="Dialog" parent="." instance=ExtResource("6_wvvyk")]
 layout_mode = 1
 
 [connection signal="submit_button_pressed" from="Login" to="." method="_on_login_submit_button_pressed"]

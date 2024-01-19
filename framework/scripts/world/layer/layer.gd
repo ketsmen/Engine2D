@@ -32,7 +32,7 @@ func _process(_delta):
 		# TODO 显示周边人物、NPC、怪物
 
 func update_footer_experience():
-	var status = Global.get_player_experience(footer_experience.get_child_count())
+	var status = Player.get_experience(footer_experience.get_child_count())
 	for i in range(footer_experience.get_child_count()):
 		var child = footer_experience.get_child(i) as TextureProgressBar
 		var child_status = status[i]

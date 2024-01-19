@@ -27,7 +27,7 @@ func _ready():
 
 func on_loader_map():
 	# 加载地图资源
-	var map_loader = load(Global.get_player_current_map()).instantiate()
+	var map_loader = load(Player.get_map()).instantiate()
 	map_loader.name = "Map"
 	# 将地图资源添加到场景中
 	current_scene.add_child(map_loader)

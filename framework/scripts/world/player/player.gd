@@ -39,13 +39,13 @@ func _ready():
 	# 默认隐藏玩家主体
 	player_father.visible = false
 	# 初始化玩家数据
-	player_nickname.text = Global.get_player_nickname_value()
-	player_career = Global.get_player_career_value()
-	player_gender = Global.get_player_gender_value()
-	player_angle = Global.get_player_angle_value()
-	player_header_life_value.text = Global.get_player_life_format_value()
-	player_header_life.value = Global.get_player_life_percentage()
-	player_header_magic.value = Global.get_player_magic_percentage()
+	player_nickname.text = Player.get_nickname_value()
+	player_career = Player.get_career_value()
+	player_gender = Player.get_gender_value()
+	player_angle = Player.get_angle_value()
+	player_header_life_value.text = Player.get_life_format()
+	player_header_life.value = Player.get_life_percentage()
+	player_header_magic.value = Player.get_magic_percentage()
 	player_action = "stand"
 	player_action_speed = 0
 	player_step_length = 10
@@ -65,10 +65,8 @@ func loader_player_resources():
 	player_father.visible = true
 
 func loader_player_clothe():
-	# 当前玩家服饰的编号
-	var clothe_id = Global.get_player_clothe_value()
 	# 服饰资源路径
-	var clothe_path = Global.get_player_current_clothe(clothe_id, player_gender)
+	var clothe_path = Player.get_clothe()
 	# 加载服饰资源
 	var clothe_loader = load(clothe_path).instantiate()
 	clothe_loader.name = "Clothe"
@@ -79,10 +77,10 @@ func loader_player_clothe():
 
 func loader_player_weapon():
 	# 当前玩家武器的编号
-	var weapon_id = Global.get_player_weapon_value()
+	var weapon_id = Player.get_weapon_value()
 	if weapon_id != "000":
 		# 武器资源路径
-		var weapon_path = Global.get_player_current_weapon(weapon_id, player_gender)
+		var weapon_path = Player.get_weapon()
 		# 加载武器资源
 		var weapon_loader = load(weapon_path).instantiate()
 		weapon_loader.name = "Weapon"
@@ -93,10 +91,10 @@ func loader_player_weapon():
 
 func loader_player_wing():
 	# 当前玩家翅膀的编号
-	var wing_id = Global.get_player_wing_value()
+	var wing_id = Player.get_wing_value()
 	if wing_id != "000":
 		# 翅膀资源路径
-		var wing_path = Global.get_player_current_wing(wing_id, player_gender)
+		var wing_path = Player.get_wing()
 		# 加载翅膀资源
 		var wing_loader = load(wing_path).instantiate()
 		wing_loader.name = "Wing"
@@ -151,10 +149,10 @@ func _physics_process(_delta):
 					# 鼠标位置距离玩家多远才触发
 					if mouse_position.length() > 30:
 						player_body.get_child(0).animation = str(player_angle) + "_" + player_action
-						var weapon_id = Global.get_player_weapon_value()
+						var weapon_id = Player.get_weapon_value()
 						if weapon_id != "000":
 							player_body.get_child(1).animation = str(player_angle) + "_" + player_action
-						var wing_id = Global.get_player_wing_value()
+						var wing_id = Player.get_wing_value()
 						if wing_id != "000":
 							player_body.get_child(2).animation = str(player_angle) + "_" + player_action
 						velocity = direction.normalized() * player_action_speed
@@ -178,10 +176,10 @@ func on_action_stop():
 	velocity = Vector2.ZERO
 	player_action = "stand"
 	player_body.get_child(0).animation = str(player_angle) + "_" + player_action
-	var weapon_id = Global.get_player_weapon_value()
+	var weapon_id = Player.get_weapon_value()
 	if weapon_id != "000":
 		player_body.get_child(1).animation = str(player_angle) + "_" + player_action
-	var wing_id = Global.get_player_wing_value()
+	var wing_id = Player.get_wing_value()
 	if wing_id != "000":
 		player_body.get_child(2).animation = str(player_angle) + "_" + player_action
 

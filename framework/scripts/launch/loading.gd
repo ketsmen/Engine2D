@@ -16,7 +16,7 @@ var is_loader = false
 
 func _ready():
 	is_loader = false
-	player_current_map = Global.get_player_current_map()
+	player_current_map = Player.get_map()
 	ResourceLoader.load_threaded_request(world_scene_path)
 
 func _process(_delta):
