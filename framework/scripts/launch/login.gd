@@ -66,11 +66,10 @@ func _on_submit_button_pressed():
 		Request.on_service("/game/user/login", HTTPClient.METHOD_POST, login_data, func (_result, code, _headers, body):
 			if code == 200:
 				var response = JSON.parse_string(body.get_string_from_utf8())
-				print(response)
 				if response["code"] == 0:
-					User.data["token"] = response["data"]["token"]
-					User.data["areas"] = response["data"]["areas"]
 					dialog.show_message("账号登录成功", 0)
+					User.data["token"] = response["data"]["token"]
+					User.data["area"]["list"] = response["data"]["areas"]
 					submit_button.disabled = false
 					email_input.text = ""
 					password_input.text = ""

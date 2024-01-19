@@ -24,11 +24,12 @@ func _process(_delta):
 
 func _on_login_submit_button_pressed(status: bool):
 	if status:
+		server.update_server()
 		login.visible = false
 		server.visible = true
 
-func _on_server_item_pressed(server_token: String):
-	print(server_token)
+func _on_server_item_pressed(area_token: String):
+	User.data["area"]["token"] = area_token
 	# 创建补间动画
 	var tween = get_tree().create_tween()
 	tween.set_parallel(true)

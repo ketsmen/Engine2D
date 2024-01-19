@@ -1,16 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://mnolno0phv7x"]
+[gd_scene load_steps=4 format=3 uid="uid://mnolno0phv7x"]
 
 [ext_resource type="Script" path="res://framework/scripts/launch/server.gd" id="1_ncr6l"]
 [ext_resource type="Texture2D" uid="uid://b3kfonxce1k5s" path="res://framework/statics/scenes/launch/server/server.png" id="2_xcs0t"]
-[ext_resource type="Texture2D" uid="uid://dkhr4gstfc1ei" path="res://framework/statics/scenes/launch/server/server_button_0.png" id="3_hbt0c"]
-[ext_resource type="Texture2D" uid="uid://cd5sj68ts85uo" path="res://framework/statics/scenes/launch/server/server_button_1.png" id="4_tk43r"]
-[ext_resource type="Texture2D" uid="uid://c6oygeauwd5ox" path="res://framework/statics/scenes/launch/server/server_button_2.png" id="5_fhqx7"]
 [ext_resource type="Texture2D" uid="uid://b4tofbbanewdc" path="res://framework/statics/scenes/common/adolescent_icon.png" id="6_qlb65"]
-[ext_resource type="FontFile" uid="uid://b8ippc7k3ew6o" path="res://framework/statics/fonts/msyh.ttc" id="6_xuhoe"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_28x8p"]
-font_size = 12
-font_color = Color(0.8, 0.701961, 0.560784, 1)
 
 [node name="Server" type="Control"]
 layout_mode = 3
@@ -56,136 +48,6 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 
-[node name="Item1" type="TextureButton" parent="Main/ListBox/List"]
-layout_mode = 2
-texture_normal = ExtResource("3_hbt0c")
-texture_pressed = ExtResource("4_tk43r")
-texture_hover = ExtResource("5_fhqx7")
-
-[node name="Label" type="Label" parent="Main/ListBox/List/Item1"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -75.0
-offset_top = -12.0
-offset_right = 77.0
-offset_bottom = 11.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("6_xuhoe")
-theme_override_font_sizes/font_size = 12
-text = "天下一区"
-label_settings = SubResource("LabelSettings_28x8p")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Item2" type="TextureButton" parent="Main/ListBox/List"]
-layout_mode = 2
-texture_normal = ExtResource("3_hbt0c")
-texture_pressed = ExtResource("4_tk43r")
-texture_hover = ExtResource("5_fhqx7")
-
-[node name="Label" type="Label" parent="Main/ListBox/List/Item2"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -75.0
-offset_top = -12.0
-offset_right = 77.0
-offset_bottom = 11.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("6_xuhoe")
-theme_override_font_sizes/font_size = 12
-text = "天下二区"
-label_settings = SubResource("LabelSettings_28x8p")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Item3" type="TextureButton" parent="Main/ListBox/List"]
-layout_mode = 2
-texture_normal = ExtResource("3_hbt0c")
-texture_pressed = ExtResource("4_tk43r")
-texture_hover = ExtResource("5_fhqx7")
-
-[node name="Label" type="Label" parent="Main/ListBox/List/Item3"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -75.0
-offset_top = -12.0
-offset_right = 77.0
-offset_bottom = 11.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("6_xuhoe")
-theme_override_font_sizes/font_size = 12
-text = "天下三区"
-label_settings = SubResource("LabelSettings_28x8p")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Item4" type="TextureButton" parent="Main/ListBox/List"]
-layout_mode = 2
-texture_normal = ExtResource("3_hbt0c")
-texture_pressed = ExtResource("4_tk43r")
-texture_hover = ExtResource("5_fhqx7")
-
-[node name="Label" type="Label" parent="Main/ListBox/List/Item4"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -75.0
-offset_top = -12.0
-offset_right = 77.0
-offset_bottom = 11.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("6_xuhoe")
-theme_override_font_sizes/font_size = 12
-text = "天下四区"
-label_settings = SubResource("LabelSettings_28x8p")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Item5" type="TextureButton" parent="Main/ListBox/List"]
-layout_mode = 2
-texture_normal = ExtResource("3_hbt0c")
-texture_pressed = ExtResource("4_tk43r")
-texture_hover = ExtResource("5_fhqx7")
-
-[node name="Label" type="Label" parent="Main/ListBox/List/Item5"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -75.0
-offset_top = -12.0
-offset_right = 77.0
-offset_bottom = 11.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("6_xuhoe")
-theme_override_font_sizes/font_size = 12
-text = "赛事专区"
-label_settings = SubResource("LabelSettings_28x8p")
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Icon" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 1
@@ -198,9 +60,3 @@ offset_bottom = 145.0
 grow_horizontal = 0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_qlb65")
-
-[connection signal="pressed" from="Main/ListBox/List/Item1" to="." method="_on_item_pressed"]
-[connection signal="pressed" from="Main/ListBox/List/Item2" to="." method="_on_item_pressed"]
-[connection signal="pressed" from="Main/ListBox/List/Item3" to="." method="_on_item_pressed"]
-[connection signal="pressed" from="Main/ListBox/List/Item4" to="." method="_on_item_pressed"]
-[connection signal="pressed" from="Main/ListBox/List/Item5" to="." method="_on_item_pressed"]
