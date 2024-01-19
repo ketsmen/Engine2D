@@ -34,14 +34,14 @@ func update_server():
 		item.texture_normal = texture_normal
 		item.texture_pressed = texture_pressed
 		item.texture_hover = texture_hover
-		item_label.text = server_list[i]["area_name"]
 		item_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		item_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-		item_label.layout_mode = 1
-		item_label.anchors_preset = PRESET_CENTER
-		item_label["theme_override_font_sizes/font_size"] = "12"
-		item_label["theme_override_colors/font_color"] = Color("#cba368")
-		item_label["theme_override_fonts/font"] = font_path
+		item_label.text = server_list[i]["area_name"]
+		item_label.size = Vector2(157, 24)
+		item_label.position = Vector2(10, 11)
+		item_label.add_theme_font_size_override("font_size", 12)
+		item_label.add_theme_color_override("font_color", Color("#cba368"))
+		item_label.add_theme_font_override("font", font_path)
 		item.add_child(item_label)
 		item.connect("pressed", _on_item_pressed.bind(server_list[i]["token"]))
 		server_list_box.add_child(item)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dxko355fkpwmk"]
+[gd_scene load_steps=26 format=3 uid="uid://dxko355fkpwmk"]
 
 [ext_resource type="Script" path="res://framework/scripts/launch/login.gd" id="1_kcqpe"]
 [ext_resource type="AudioStream" uid="uid://bvbw65l1ymwxq" path="res://framework/statics/musics/launch.wav" id="2_pmerm"]
@@ -23,7 +23,6 @@
 [ext_resource type="Texture2D" uid="uid://dst2y6mrjudl5" path="res://framework/statics/scenes/launch/login/register.png" id="20_e3h1n"]
 [ext_resource type="Texture2D" uid="uid://cu1upo5o7ne2c" path="res://framework/statics/scenes/common/cancel_button_2.png" id="20_ydat7"]
 [ext_resource type="Texture2D" uid="uid://b4tofbbanewdc" path="res://framework/statics/scenes/common/adolescent_icon.png" id="22_iuwnv"]
-[ext_resource type="PackedScene" uid="uid://uioqkvjb3k18" path="res://framework/scenes/common/dialog.tscn" id="24_ee4ew"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_3msj6"]
 color = Color(0, 0, 0, 0)
@@ -197,6 +196,7 @@ grow_vertical = 2
 texture = ExtResource("20_e3h1n")
 
 [node name="AccountInput" type="LineEdit" parent="Register/Box"]
+layout_mode = 0
 offset_left = 109.0
 offset_top = 60.0
 offset_right = 294.0
@@ -216,6 +216,7 @@ drag_and_drop_selection_enabled = false
 flat = true
 
 [node name="PasswordInput" type="LineEdit" parent="Register/Box"]
+layout_mode = 0
 offset_left = 109.0
 offset_top = 90.0
 offset_right = 294.0
@@ -235,6 +236,7 @@ flat = true
 secret = true
 
 [node name="ConfirmPasswordInput" type="LineEdit" parent="Register/Box"]
+layout_mode = 0
 offset_left = 109.0
 offset_top = 120.0
 offset_right = 294.0
@@ -254,6 +256,7 @@ flat = true
 secret = true
 
 [node name="NameInput" type="LineEdit" parent="Register/Box"]
+layout_mode = 0
 offset_left = 109.0
 offset_top = 163.0
 offset_right = 294.0
@@ -273,6 +276,7 @@ drag_and_drop_selection_enabled = false
 flat = true
 
 [node name="NumberInput" type="LineEdit" parent="Register/Box"]
+layout_mode = 0
 offset_left = 109.0
 offset_top = 193.0
 offset_right = 294.0
@@ -292,6 +296,7 @@ drag_and_drop_selection_enabled = false
 flat = true
 
 [node name="QuestionAInput" type="LineEdit" parent="Register/Box"]
+layout_mode = 0
 offset_left = 109.0
 offset_top = 245.0
 offset_right = 294.0
@@ -311,6 +316,7 @@ drag_and_drop_selection_enabled = false
 flat = true
 
 [node name="AnswerAInput" type="LineEdit" parent="Register/Box"]
+layout_mode = 0
 offset_left = 109.0
 offset_top = 275.0
 offset_right = 294.0
@@ -330,6 +336,7 @@ drag_and_drop_selection_enabled = false
 flat = true
 
 [node name="QuestionBInput" type="LineEdit" parent="Register/Box"]
+layout_mode = 0
 offset_left = 109.0
 offset_top = 305.0
 offset_right = 294.0
@@ -349,6 +356,7 @@ drag_and_drop_selection_enabled = false
 flat = true
 
 [node name="AnswerBInput" type="LineEdit" parent="Register/Box"]
+layout_mode = 0
 offset_left = 109.0
 offset_top = 335.0
 offset_right = 294.0
@@ -427,6 +435,7 @@ grow_vertical = 2
 texture = ExtResource("13_2imjr")
 
 [node name="AccountInput" type="LineEdit" parent="ChangePassword/Box"]
+layout_mode = 0
 offset_left = 138.0
 offset_top = 60.0
 offset_right = 323.0
@@ -446,6 +455,7 @@ drag_and_drop_selection_enabled = false
 flat = true
 
 [node name="PasswordInput" type="LineEdit" parent="ChangePassword/Box"]
+layout_mode = 0
 offset_left = 138.0
 offset_top = 90.0
 offset_right = 323.0
@@ -465,6 +475,7 @@ flat = true
 secret = true
 
 [node name="NewPasswordInput" type="LineEdit" parent="ChangePassword/Box"]
+layout_mode = 0
 offset_left = 138.0
 offset_top = 120.0
 offset_right = 323.0
@@ -484,6 +495,7 @@ flat = true
 secret = true
 
 [node name="ConfirmNewPasswordInput" type="LineEdit" parent="ChangePassword/Box"]
+layout_mode = 0
 offset_left = 138.0
 offset_top = 150.0
 offset_right = 323.0
@@ -550,9 +562,6 @@ offset_bottom = 145.0
 grow_horizontal = 0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("22_iuwnv")
-
-[node name="Dialog" parent="." instance=ExtResource("24_ee4ew")]
-layout_mode = 1
 
 [connection signal="finished" from="Sound" to="." method="_on_sound_finished"]
 [connection signal="pressed" from="Main/SubmitButton" to="." method="_on_submit_button_pressed"]

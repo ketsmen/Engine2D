@@ -6,7 +6,6 @@ extends Control
 
 # 实例化节点树中的资源
 @onready var sound:AudioStreamPlayer = $Sound
-@onready var dialog:Control = $Dialog
 @onready var main:TextureRect = $Main
 @onready var email_input:LineEdit = $Main/EmailInput
 @onready var password_input:LineEdit = $Main/PasswordInput
@@ -46,8 +45,6 @@ func _ready():
 	register.visible = false
 	# 登录游戏按钮允许点击
 	submit_button.disabled = false
-	# 实例化弹出层
-	dialog = find_child("Dialog")
 
 func _on_submit_button_pressed():
 	# 校验用户登录数据
@@ -56,7 +53,7 @@ func _on_submit_button_pressed():
 		var regex = RegEx.new()
 		regex.compile("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$")
 		if !regex.search(email_input.text):
-			dialog.show_message("邮箱格式不正确", 0)
+			Dialog.on_message("邮箱格式不正确", 0)
 			return
 		var login_data = {
 			"account": email_input.text,
@@ -67,7 +64,7 @@ func _on_submit_button_pressed():
 			if code == 200:
 				var response = JSON.parse_string(body.get_string_from_utf8())
 				if response["code"] == 0:
-					dialog.show_message("账号登录成功", 0)
+					Dialog.on_message("账号登录成功", 0)
 					User.data["token"] = response["data"]["token"]
 					User.data["area"]["list"] = response["data"]["areas"]
 					submit_button.disabled = false
@@ -76,13 +73,13 @@ func _on_submit_button_pressed():
 					submit_button_pressed.emit(true)
 				else:
 					submit_button.disabled = false
-					dialog.show_message(response["msg"], 0)
+					Dialog.on_message(response["msg"], 0)
 			else:
 				submit_button.disabled = false
-				dialog.show_message("登录失败，请重新尝试", 0)
+				Dialog.on_message("登录失败，请重新尝试", 0)
 		)
 	else:
-		dialog.show_message("登录信息不完整", 0)
+		Dialog.on_message("登录信息不完整", 0)
 
 func _on_change_password_button_pressed():
 	# 显示密码修改窗口
@@ -107,11 +104,11 @@ func _on_confirm_button_pressed(type: String):
 			var regex = RegEx.new()
 			regex.compile("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$")
 			if !regex.search(register_account.text):
-				dialog.show_message("邮箱格式不正确", 0)
+				Dialog.on_message("邮箱格式不正确", 0)
 				return
 			# 验证密码
 			if register_password.text != register_confirm_password.text:
-				dialog.show_message("登录密码不一致", 0)
+				Dialog.on_message("登录密码不一致", 0)
 				return
 			register_confirm_button.disabled = true
 			var register_data = {
@@ -128,18 +125,18 @@ func _on_confirm_button_pressed(type: String):
 				if code == 200:
 					var response = JSON.parse_string(body.get_string_from_utf8())
 					if response["code"] == 0:
-						dialog.show_message("账号注册成功", 0)
+						Dialog.on_message("账号注册成功", 0)
 						register_confirm_button.disabled = false
 						_on_cancel_button_pressed()
 					else:
 						register_confirm_button.disabled = false
-						dialog.show_message(response["msg"], 0)
+						Dialog.on_message(response["msg"], 0)
 				else:
 					register_confirm_button.disabled = false
-					dialog.show_message("注册失败，请重新尝试", 0)
+					Dialog.on_message("注册失败，请重新尝试", 0)
 			)
 		else:
-			dialog.show_message("注册信息不完整", 0)
+			Dialog.on_message("注册信息不完整", 0)
 			
 func _on_cancel_button_pressed():
 	# 隐藏窗口
