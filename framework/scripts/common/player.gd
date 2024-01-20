@@ -22,7 +22,7 @@ var data = {
 		"backpack": []
 	},
 	"body": {
-		"clothe": "009",
+		"clothe": "010",
 		"weapon": "034",
 		"wing": "010",
 	}

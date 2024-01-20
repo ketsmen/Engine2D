@@ -19,9 +19,6 @@ func _ready():
 	login.visible = true
 	login.sound.play()
 
-func _process(_delta):
-	pass
-
 func _on_login_submit_button_pressed(status: bool):
 	if status:
 		server.update_server()

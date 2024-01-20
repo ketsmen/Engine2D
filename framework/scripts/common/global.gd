@@ -35,3 +35,12 @@ func get_weapon_root_path() -> String:
 # 翅膀根路径
 func get_wing_root_path() -> String:
 	return data["config"]["wing_root_path"]
+
+# 验证邮箱格式
+func check_mail_format(mail:String) -> bool:
+	var check:bool = true
+	var regex = RegEx.new()
+	regex.compile("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$")
+	if !regex.search(mail):
+		check = false
+	return check
