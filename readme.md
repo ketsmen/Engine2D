@@ -15,6 +15,8 @@ git clone --depth=1 git@github.com:aithority/engine.git
 
 ### 🛸 Running Requirements
 
+> To ensure your smooth use, please install software that meets the requirements.
+
 | Software | Version |
 | - | - |
 | Godot | 4.2.1+ |
