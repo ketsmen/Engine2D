@@ -28,8 +28,8 @@ git clone --depth=1 git@github.com:aithority/engine.git
 
 ### 💡 About the Author
 
-🔗 Wechat: makeryang8080
+🔗 Wechat: `makeryang8080`
 
-🔗 Bilibili: https://space.bilibili.com/596334734
+🔗 Bilibili: `https://space.bilibili.com/596334734`
 
-🔗 DouYin&Tiktok: MakerYang
+🔗 DouYin&Tiktok: `MakerYang`
