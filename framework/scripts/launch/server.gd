@@ -23,6 +23,11 @@ func _ready():
 
 func update_server():
 	server_list = User.get_area_list()
+	# 清空服务器列表
+	while server_list_box.get_child_count() > 0:
+		var last_child = server_list_box.get_child(server_list_box.get_child_count() - 1)
+		server_list_box.remove_child(last_child)
+		last_child.queue_free()
 	# 渲染服务器列表
 	var font_path = load("res://framework/statics/fonts/msyh.ttc")
 	var texture_normal = load("res://framework/statics/scenes/launch/server/server_button_0.png")

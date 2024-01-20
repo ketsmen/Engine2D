@@ -65,8 +65,8 @@ func _on_submit_button_pressed():
 				var response = JSON.parse_string(body.get_string_from_utf8())
 				if response["code"] == 0:
 					Dialog.on_message("账号登录成功", 0)
-					User.data["token"] = response["data"]["token"]
-					User.data["area"]["list"] = response["data"]["areas"]
+					User.set_token_value(response["data"]["token"])
+					User.set_area_list(response["data"]["areas"])
 					submit_button.disabled = false
 					email_input.text = ""
 					password_input.text = ""

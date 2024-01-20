@@ -19,7 +19,8 @@ var data = {
 		"magic_max": 1000,
 		"experience": 490000,
 		"experience_max": 500000,
-		"backpack": []
+		"backpack": [],
+		"skill": []
 	},
 	"body": {
 		"clothe": "010",

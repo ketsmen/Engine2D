@@ -16,12 +16,12 @@ func _ready():
 	$Mage.visible = false
 	$Taoist.visible = false
 	$Career.visible = false
-	$Gender.visible = false
+	$Info/Gender.visible = false
 	# 性别切换控件的初始配置
-	$Gender/Men.toggle_mode = true
-	$Gender/Men.keep_pressed_outside = true
-	$Gender/Women.toggle_mode = true
-	$Gender/Women.keep_pressed_outside = true
+	$Info/Gender/Men.toggle_mode = true
+	$Info/Gender/Men.keep_pressed_outside = true
+	$Info/Gender/Women.toggle_mode = true
+	$Info/Gender/Women.keep_pressed_outside = true
 	pass
 	
 func _process(_delta):
@@ -29,15 +29,15 @@ func _process(_delta):
 	if !$Career.visible:
 		$Career.visible = true
 	# 显示性别切换控件
-	if !$Gender.visible:
-		$Gender.visible = true
+	if !$Info/Gender.visible:
+		$Info/Gender.visible = true
 	# 性别切换控件状态检测
 	if current_gender == 0:
-		$Gender/Men.button_pressed = true
-		$Gender/Women.button_pressed = false
+		$Info/Gender/Men.button_pressed = true
+		$Info/Gender/Women.button_pressed = false
 	else:
-		$Gender/Men.button_pressed = false
-		$Gender/Women.button_pressed = true
+		$Info/Gender/Men.button_pressed = false
+		$Info/Gender/Women.button_pressed = true
 	# 根据性别和职业展示节点
 	if current_career == 0:
 		$Mage.visible = false

@@ -1,10 +1,12 @@
-[gd_scene load_steps=21 format=3 uid="uid://dhjpyghfgls38"]
+[gd_scene load_steps=22 format=3 uid="uid://dwi6nplfjjxtu"]
 
 [ext_resource type="Script" path="res://framework/scripts/launch/roles.gd" id="1_txevj"]
 [ext_resource type="AudioStream" uid="uid://jweokr186bpu" path="res://framework/statics/musics/launch_login.wav" id="2_gbjyi"]
 [ext_resource type="Texture2D" uid="uid://dod2e70888b7" path="res://framework/statics/scenes/launch/roles/roles.png" id="3_khr8p"]
 [ext_resource type="Texture2D" uid="uid://b7t5sb1nlfm7t" path="res://framework/statics/scenes/launch/roles/start_background.png" id="4_wpp1t"]
+[ext_resource type="PackedScene" uid="uid://y4tq0q7gv4im" path="res://framework/scenes/launch/node/role/create.tscn" id="4_ycujo"]
 [ext_resource type="Texture2D" uid="uid://dj4xwniefgxbq" path="res://framework/statics/scenes/launch/roles/start_button_0.png" id="5_66nb2"]
+[ext_resource type="PackedScene" uid="uid://v1xajsv55en2" path="res://framework/scenes/launch/node/role/list.tscn" id="5_a0l0a"]
 [ext_resource type="Texture2D" uid="uid://ourqe47e6hap" path="res://framework/statics/scenes/launch/roles/start_button_1.png" id="6_hmoen"]
 [ext_resource type="Texture2D" uid="uid://bmeenxxqmf7o8" path="res://framework/statics/scenes/launch/roles/start_button_2.png" id="7_qxh16"]
 [ext_resource type="Texture2D" uid="uid://cuhxcalgkg1gv" path="res://framework/statics/scenes/launch/roles/return_button_0.png" id="8_gyqld"]
@@ -19,9 +21,8 @@
 [ext_resource type="Texture2D" uid="uid://bm8yafdcmxjgw" path="res://framework/statics/scenes/launch/roles/delete_button_0.png" id="17_gc6uh"]
 [ext_resource type="Texture2D" uid="uid://lm3rngcyngdu" path="res://framework/statics/scenes/launch/roles/delete_button_1.png" id="18_oa0ep"]
 [ext_resource type="Texture2D" uid="uid://b3rl7th14f47a" path="res://framework/statics/scenes/launch/roles/delete_button_2.png" id="19_geosi"]
-[ext_resource type="PackedScene" uid="uid://y4tq0q7gv4im" path="res://framework/scenes/launch/animations/character.tscn" id="20_hc36g"]
 
-[node name="Roles" type="Control"]
+[node name="Role" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,11 +30,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_txevj")
-metadata/_edit_vertical_guides_ = [642.0]
+metadata/_edit_vertical_guides_ = [640.0]
 
 [node name="Sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_gbjyi")
-volume_db = -10.0
+volume_db = -20.0
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
@@ -63,13 +64,33 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Start" type="Control" parent="."]
+[node name="Node" type="Control" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 0
+offset_left = 641.0
+offset_top = 365.0
+offset_right = 641.0
+offset_bottom = 365.0
+
+[node name="Create" parent="Node" instance=ExtResource("4_ycujo")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="List" parent="Node" instance=ExtResource("5_a0l0a")]
+layout_mode = 1
+
+[node name="Start" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 640.0
+offset_top = 723.0
+offset_right = 640.0
+offset_bottom = 723.0
 
 [node name="Background" type="TextureRect" parent="Start"]
 layout_mode = 1
@@ -148,6 +169,7 @@ grow_vertical = 2
 texture_normal = ExtResource("11_6m2dc")
 texture_pressed = ExtResource("12_w43ph")
 texture_hover = ExtResource("13_r48ur")
+texture_disabled = ExtResource("11_6m2dc")
 
 [node name="RestoreButton" type="TextureButton" parent="Right"]
 layout_mode = 1
@@ -162,9 +184,11 @@ offset_right = -58.0
 offset_bottom = 116.0
 grow_horizontal = 0
 grow_vertical = 2
+disabled = true
 texture_normal = ExtResource("14_id7oa")
 texture_pressed = ExtResource("15_yk0jp")
 texture_hover = ExtResource("16_u7box")
+texture_disabled = ExtResource("14_id7oa")
 
 [node name="DeleteButton" type="TextureButton" parent="Right"]
 layout_mode = 1
@@ -182,19 +206,7 @@ grow_vertical = 2
 texture_normal = ExtResource("17_gc6uh")
 texture_pressed = ExtResource("18_oa0ep")
 texture_hover = ExtResource("19_geosi")
-
-[node name="Character" parent="." instance=ExtResource("20_hc36g")]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 17.0001
-offset_top = -2.0
-offset_right = 17.0001
-offset_bottom = -2.0
-scale = Vector2(0.8, 0.8)
+texture_disabled = ExtResource("17_gc6uh")
 
 [connection signal="resized" from="." to="." method="_on_resized"]
 [connection signal="finished" from="Sound" to="." method="_on_sound_finished"]

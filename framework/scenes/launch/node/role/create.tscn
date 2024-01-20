@@ -1,7 +1,7 @@
-[gd_scene load_steps=140 format=3 uid="uid://y4tq0q7gv4im"]
+[gd_scene load_steps=143 format=3 uid="uid://y4tq0q7gv4im"]
 
 [ext_resource type="Texture2D" uid="uid://6acfgi3i18er" path="res://framework/statics/scenes/launch/roles/warrior/000000.png" id="1_iy5y1"]
-[ext_resource type="Script" path="res://framework/scripts/launch/animations/character.gd" id="1_uogar"]
+[ext_resource type="Script" path="res://framework/scripts/launch/animations/create.gd" id="1_uogar"]
 [ext_resource type="Texture2D" uid="uid://bqcg7f34k3iwb" path="res://framework/statics/scenes/launch/roles/warrior/000001.png" id="2_nskhk"]
 [ext_resource type="Texture2D" uid="uid://b2nriu3bv0x6f" path="res://framework/statics/scenes/launch/roles/warrior/000002.png" id="3_mfu7o"]
 [ext_resource type="Texture2D" uid="uid://bii0v1pcfwdro" path="res://framework/statics/scenes/launch/roles/warrior/000003.png" id="4_dhgll"]
@@ -128,7 +128,9 @@
 [ext_resource type="Texture2D" uid="uid://bpm4yxn15ajwj" path="res://framework/statics/scenes/launch/roles/switch_button_1.png" id="125_c5yft"]
 [ext_resource type="Texture2D" uid="uid://dvcd76bctd8d" path="res://framework/statics/scenes/launch/roles/switch_button_2.png" id="126_vg3v7"]
 [ext_resource type="Texture2D" uid="uid://bpwgjksmipvnq" path="res://framework/statics/scenes/launch/roles/men_button_0.png" id="128_anxs1"]
+[ext_resource type="Texture2D" uid="uid://dd3d3eylsh8wa" path="res://framework/statics/scenes/launch/roles/nickname.png" id="128_sjq01"]
 [ext_resource type="Texture2D" uid="uid://0i7i1eh1v0iq" path="res://framework/statics/scenes/launch/roles/men_button_1.png" id="129_dxqop"]
+[ext_resource type="FontFile" uid="uid://b8ippc7k3ew6o" path="res://framework/statics/fonts/msyh.ttc" id="129_lq4in"]
 [ext_resource type="Texture2D" uid="uid://b0cojtx2m0kcd" path="res://framework/statics/scenes/launch/roles/men_button_2.png" id="130_klhov"]
 [ext_resource type="Texture2D" uid="uid://bb81nym6xmxmm" path="res://framework/statics/scenes/launch/roles/women_button_0.png" id="131_2ko1s"]
 [ext_resource type="Texture2D" uid="uid://1gl0qhpotuvh" path="res://framework/statics/scenes/launch/roles/women_button_1.png" id="132_xar7c"]
@@ -572,18 +574,18 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="Character" type="Control"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wkp1c"]
+
+[node name="Create" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
 script = ExtResource("1_uogar")
 
 [node name="Warrior" type="Control" parent="."]
-layout_mode = 1
 anchors_preset = 0
+offset_left = 5.0
+offset_right = 5.0
+scale = Vector2(0.8, 0.8)
 
 [node name="Men" type="AnimatedSprite2D" parent="Warrior"]
 position = Vector2(5, 0)
@@ -598,16 +600,18 @@ autoplay = "default"
 
 [node name="Brand" type="TextureRect" parent="Warrior"]
 layout_mode = 0
-offset_left = -729.0
-offset_top = -349.0
-offset_right = -497.0
-offset_bottom = -51.0
+offset_left = -727.75
+offset_top = -340.25
+offset_right = -495.75
+offset_bottom = -42.25
 texture = ExtResource("41_y0tfg")
 
 [node name="Mage" type="Control" parent="."]
 anchors_preset = 0
-offset_right = 40.0
+offset_left = 5.0
+offset_right = 45.0
 offset_bottom = 40.0
+scale = Vector2(0.8, 0.8)
 
 [node name="Men" type="AnimatedSprite2D" parent="Mage"]
 position = Vector2(-65, -22)
@@ -624,19 +628,21 @@ autoplay = "default"
 
 [node name="Brand" type="TextureRect" parent="Mage"]
 layout_mode = 0
-offset_left = -729.0
-offset_top = -349.0
-offset_right = -496.0
-offset_bottom = 23.0
+offset_left = -727.75
+offset_top = -344.0
+offset_right = -494.75
+offset_bottom = 28.0
 texture = ExtResource("82_kgflv")
 
 [node name="Taoist" type="Control" parent="."]
 anchors_preset = 0
-offset_right = 40.0
+offset_left = 5.0
+offset_right = 45.0
 offset_bottom = 40.0
+scale = Vector2(0.8, 0.8)
 
 [node name="Men" type="AnimatedSprite2D" parent="Taoist"]
-position = Vector2(-18, -35)
+position = Vector2(0.749995, -35)
 sprite_frames = SubResource("SpriteFrames_g0wkd")
 autoplay = "default"
 
@@ -656,15 +662,14 @@ texture = ExtResource("83_71ebr")
 
 [node name="Career" type="Control" parent="."]
 anchors_preset = 0
-offset_left = -43.0
-offset_top = -54.0
-offset_right = -3.0
-offset_bottom = -14.0
+offset_top = -24.0
+offset_right = 40.0
+offset_bottom = 16.0
 
 [node name="LeftButton" type="TextureButton" parent="Career"]
 layout_mode = 0
-offset_left = -380.0
-offset_right = -331.0
+offset_left = -267.0
+offset_right = -218.0
 offset_bottom = 45.0
 texture_normal = ExtResource("124_yxaby")
 texture_pressed = ExtResource("125_c5yft")
@@ -674,36 +679,83 @@ flip_h = true
 
 [node name="RightButton" type="TextureButton" parent="Career"]
 layout_mode = 0
-offset_left = 310.0
-offset_right = 359.0
+offset_left = 181.0
+offset_right = 230.0
 offset_bottom = 45.0
 texture_normal = ExtResource("124_yxaby")
 texture_pressed = ExtResource("125_c5yft")
 texture_hover = ExtResource("126_vg3v7")
 texture_disabled = ExtResource("124_yxaby")
 
-[node name="Gender" type="Control" parent="."]
+[node name="Info" type="Control" parent="."]
 anchors_preset = 0
-offset_left = -537.0
-offset_top = 65.0
-offset_right = -497.0
-offset_bottom = 105.0
+offset_left = -430.0
+offset_top = 103.0
+offset_right = -430.0
+offset_bottom = 103.0
 
-[node name="Men" type="TextureButton" parent="Gender"]
+[node name="NickName" type="Control" parent="Info"]
+anchors_preset = 0
+
+[node name="Background" type="TextureRect" parent="Info/NickName"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 230.0
+offset_bottom = 31.0
+texture = ExtResource("128_sjq01")
+
+[node name="Input" type="LineEdit" parent="Info/NickName/Background"]
+layout_mode = 0
+offset_left = 34.0
+offset_right = 193.0
+offset_bottom = 31.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("129_lq4in")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wkp1c")
+placeholder_text = "输入角色昵称"
+alignment = 1
+max_length = 12
+flat = true
+
+[node name="Gender" type="Control" parent="Info"]
+anchors_preset = 0
+offset_left = 93.0
+offset_top = 46.0
+offset_right = 133.0
+offset_bottom = 86.0
+
+[node name="Men" type="TextureButton" parent="Info/Gender"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -20.0
+offset_right = -18.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
 texture_normal = ExtResource("128_anxs1")
 texture_pressed = ExtResource("130_klhov")
 texture_hover = ExtResource("129_dxqop")
 texture_disabled = ExtResource("128_anxs1")
 texture_focused = ExtResource("130_klhov")
 
-[node name="Women" type="TextureButton" parent="Gender"]
-layout_mode = 0
-offset_left = 66.0
-offset_right = 106.0
-offset_bottom = 40.0
+[node name="Women" type="TextureButton" parent="Info/Gender"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 18.0
+offset_top = -20.0
+offset_right = 58.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
 texture_normal = ExtResource("131_2ko1s")
 texture_pressed = ExtResource("133_j6i0h")
 texture_hover = ExtResource("132_xar7c")
@@ -712,5 +764,5 @@ texture_focused = ExtResource("133_j6i0h")
 
 [connection signal="pressed" from="Career/LeftButton" to="." method="_on_left_button_pressed"]
 [connection signal="pressed" from="Career/RightButton" to="." method="_on_right_button_pressed"]
-[connection signal="pressed" from="Gender/Men" to="." method="_on_men_pressed"]
-[connection signal="pressed" from="Gender/Women" to="." method="_on_women_pressed"]
+[connection signal="pressed" from="Info/Gender/Men" to="." method="_on_men_pressed"]
+[connection signal="pressed" from="Info/Gender/Women" to="." method="_on_women_pressed"]
