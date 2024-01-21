@@ -34,7 +34,7 @@ func _on_server_item_pressed(area_token: String):
 		if code == 200:
 			var response = JSON.parse_string(body.get_string_from_utf8())
 			if response["code"] == 0:
-				print(response["data"])
+				User.set_role_list(response["data"]["roles"])
 				# 创建补间动画
 				var tween = get_tree().create_tween()
 				tween.set_parallel(true)

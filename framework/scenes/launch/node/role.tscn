@@ -79,6 +79,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -120,7 +124,6 @@ offset_right = 135.5
 offset_bottom = -76.0
 grow_horizontal = 2
 grow_vertical = 0
-disabled = true
 texture_normal = ExtResource("5_66nb2")
 texture_pressed = ExtResource("6_hmoen")
 texture_hover = ExtResource("7_qxh16")
@@ -166,10 +169,13 @@ offset_right = -38.0
 offset_bottom = 62.0
 grow_horizontal = 0
 grow_vertical = 2
+toggle_mode = true
+keep_pressed_outside = true
 texture_normal = ExtResource("11_6m2dc")
 texture_pressed = ExtResource("12_w43ph")
 texture_hover = ExtResource("13_r48ur")
 texture_disabled = ExtResource("11_6m2dc")
+texture_focused = ExtResource("12_w43ph")
 
 [node name="RestoreButton" type="TextureButton" parent="Right"]
 layout_mode = 1
@@ -210,5 +216,7 @@ texture_disabled = ExtResource("17_gc6uh")
 
 [connection signal="resized" from="." to="." method="_on_resized"]
 [connection signal="finished" from="Sound" to="." method="_on_sound_finished"]
+[connection signal="cancel_button_pressed" from="Node/Create" to="." method="_on_create_cancel_button_pressed"]
 [connection signal="pressed" from="Start/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="Right/ReturnButton" to="." method="_on_return_button_pressed"]
+[connection signal="pressed" from="Right/CreateButton" to="." method="_on_create_button_pressed"]

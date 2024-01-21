@@ -8,9 +8,9 @@ var data = {
 	"token": "",
 	"area": {
 		"token": "",
-		"list": [],
-		"role": []
-	}
+		"list": []
+	},
+	"role": []
 }
 
 # 获取用户Token
@@ -36,3 +36,11 @@ func get_area_list() -> Array:
 # 设置服务区列表
 func set_area_list(list: Array):
 	data["area"]["list"] = list
+
+# 获取角色列表
+func get_role_list() -> Array:
+	return data["role"]
+
+# 设置角色列表
+func set_role_list(list: Array):
+	data["role"] = list

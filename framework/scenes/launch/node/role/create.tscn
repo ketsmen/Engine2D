@@ -1,4 +1,4 @@
-[gd_scene load_steps=143 format=3 uid="uid://y4tq0q7gv4im"]
+[gd_scene load_steps=149 format=3 uid="uid://y4tq0q7gv4im"]
 
 [ext_resource type="Texture2D" uid="uid://6acfgi3i18er" path="res://framework/statics/scenes/launch/roles/warrior/000000.png" id="1_iy5y1"]
 [ext_resource type="Script" path="res://framework/scripts/launch/animations/create.gd" id="1_uogar"]
@@ -135,14 +135,15 @@
 [ext_resource type="Texture2D" uid="uid://bb81nym6xmxmm" path="res://framework/statics/scenes/launch/roles/women_button_0.png" id="131_2ko1s"]
 [ext_resource type="Texture2D" uid="uid://1gl0qhpotuvh" path="res://framework/statics/scenes/launch/roles/women_button_1.png" id="132_xar7c"]
 [ext_resource type="Texture2D" uid="uid://l68qa1wa48ym" path="res://framework/statics/scenes/launch/roles/women_button_2.png" id="133_j6i0h"]
+[ext_resource type="Texture2D" uid="uid://b07jqd5kkeh0s" path="res://framework/statics/scenes/launch/roles/submit_button_0.png" id="136_gkdxv"]
+[ext_resource type="Texture2D" uid="uid://vfl20psx4dyg" path="res://framework/statics/scenes/launch/roles/submit_button_1.png" id="137_bqrfy"]
+[ext_resource type="Texture2D" uid="uid://ba6i881msq5ow" path="res://framework/statics/scenes/launch/roles/submit_button_2.png" id="138_ao7r0"]
+[ext_resource type="Texture2D" uid="uid://by63hcs0fnrp4" path="res://framework/statics/scenes/launch/roles/cancel_button_0.png" id="139_csa04"]
+[ext_resource type="Texture2D" uid="uid://bcno0lw3kj0en" path="res://framework/statics/scenes/launch/roles/cancel_button_1.png" id="140_j0mqp"]
+[ext_resource type="Texture2D" uid="uid://bp337pfa3k7oc" path="res://framework/statics/scenes/launch/roles/cancel_button_2.png" id="141_iddb2"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ahhg5"]
 animations = [{
-"frames": [],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_iy5y1")
@@ -211,11 +212,6 @@ animations = [{
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tr7hm"]
 animations = [{
-"frames": [],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("21_8oi4s")
@@ -284,11 +280,6 @@ animations = [{
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qalfe"]
 animations = [{
-"frames": [],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("42_g5gek")
@@ -357,11 +348,6 @@ animations = [{
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_883gh"]
 animations = [{
-"frames": [],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("62_1g34r")
@@ -430,11 +416,6 @@ animations = [{
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g0wkd"]
 animations = [{
-"frames": [],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("84_c1e6x")
@@ -503,11 +484,6 @@ animations = [{
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ctoca"]
 animations = [{
-"frames": [],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("104_nl1vw")
@@ -579,6 +555,10 @@ animations = [{
 [node name="Create" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+offset_left = 629.0
+offset_top = 362.0
+offset_right = 629.0
+offset_bottom = 362.0
 script = ExtResource("1_uogar")
 
 [node name="Warrior" type="Control" parent="."]
@@ -590,13 +570,15 @@ scale = Vector2(0.8, 0.8)
 [node name="Men" type="AnimatedSprite2D" parent="Warrior"]
 position = Vector2(5, 0)
 sprite_frames = SubResource("SpriteFrames_ahhg5")
-autoplay = "default"
+animation = &"play"
+autoplay = "play"
 
 [node name="Women" type="AnimatedSprite2D" parent="Warrior"]
 position = Vector2(7, 11)
 scale = Vector2(1.05, 1.05)
 sprite_frames = SubResource("SpriteFrames_tr7hm")
-autoplay = "default"
+animation = &"play"
+autoplay = "play"
 
 [node name="Brand" type="TextureRect" parent="Warrior"]
 layout_mode = 0
@@ -617,14 +599,14 @@ scale = Vector2(0.8, 0.8)
 position = Vector2(-65, -22)
 sprite_frames = SubResource("SpriteFrames_qalfe")
 animation = &"play"
-autoplay = "default"
+autoplay = "play"
 
 [node name="Women" type="AnimatedSprite2D" parent="Mage"]
 position = Vector2(-43, -7)
 scale = Vector2(1.05, 1.05)
 sprite_frames = SubResource("SpriteFrames_883gh")
 animation = &"play"
-autoplay = "default"
+autoplay = "play"
 
 [node name="Brand" type="TextureRect" parent="Mage"]
 layout_mode = 0
@@ -644,13 +626,15 @@ scale = Vector2(0.8, 0.8)
 [node name="Men" type="AnimatedSprite2D" parent="Taoist"]
 position = Vector2(0.749995, -35)
 sprite_frames = SubResource("SpriteFrames_g0wkd")
-autoplay = "default"
+animation = &"play"
+autoplay = "play"
 
 [node name="Women" type="AnimatedSprite2D" parent="Taoist"]
 position = Vector2(-97, 7)
 scale = Vector2(1.08, 1.08)
 sprite_frames = SubResource("SpriteFrames_ctoca")
-autoplay = "default"
+animation = &"play"
+autoplay = "play"
 
 [node name="Brand" type="TextureRect" parent="Taoist"]
 layout_mode = 0
@@ -690,20 +674,22 @@ texture_disabled = ExtResource("124_yxaby")
 [node name="Info" type="Control" parent="."]
 anchors_preset = 0
 offset_left = -430.0
-offset_top = 103.0
+offset_top = 116.0
 offset_right = -430.0
-offset_bottom = 103.0
+offset_bottom = 116.0
 
-[node name="NickName" type="Control" parent="Info"]
+[node name="Nickname" type="Control" parent="Info"]
 anchors_preset = 0
+offset_top = 11.0
+offset_bottom = 11.0
 
-[node name="Background" type="TextureRect" parent="Info/NickName"]
+[node name="Background" type="TextureRect" parent="Info/Nickname"]
 layout_mode = 0
 offset_right = 230.0
 offset_bottom = 31.0
 texture = ExtResource("128_sjq01")
 
-[node name="Input" type="LineEdit" parent="Info/NickName/Background"]
+[node name="Input" type="LineEdit" parent="Info/Nickname/Background"]
 layout_mode = 0
 offset_left = 34.0
 offset_right = 193.0
@@ -716,13 +702,14 @@ placeholder_text = "输入角色昵称"
 alignment = 1
 max_length = 12
 flat = true
+caret_blink = true
 
 [node name="Gender" type="Control" parent="Info"]
 anchors_preset = 0
 offset_left = 93.0
-offset_top = 46.0
+offset_top = 57.0
 offset_right = 133.0
-offset_bottom = 86.0
+offset_bottom = 97.0
 
 [node name="Men" type="TextureButton" parent="Info/Gender"]
 layout_mode = 1
@@ -737,6 +724,8 @@ offset_right = -18.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+toggle_mode = true
+keep_pressed_outside = true
 texture_normal = ExtResource("128_anxs1")
 texture_pressed = ExtResource("130_klhov")
 texture_hover = ExtResource("129_dxqop")
@@ -756,13 +745,39 @@ offset_right = 58.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+toggle_mode = true
+keep_pressed_outside = true
 texture_normal = ExtResource("131_2ko1s")
 texture_pressed = ExtResource("133_j6i0h")
 texture_hover = ExtResource("132_xar7c")
 texture_disabled = ExtResource("131_2ko1s")
 texture_focused = ExtResource("133_j6i0h")
 
+[node name="SubmitButton" type="TextureButton" parent="Info"]
+layout_mode = 0
+offset_left = 311.0
+offset_top = 128.0
+offset_right = 408.0
+offset_bottom = 160.0
+texture_normal = ExtResource("136_gkdxv")
+texture_pressed = ExtResource("137_bqrfy")
+texture_hover = ExtResource("138_ao7r0")
+texture_disabled = ExtResource("136_gkdxv")
+
+[node name="CancelButton" type="TextureButton" parent="Info"]
+layout_mode = 0
+offset_left = 449.0
+offset_top = 128.0
+offset_right = 546.0
+offset_bottom = 160.0
+texture_normal = ExtResource("139_csa04")
+texture_pressed = ExtResource("140_j0mqp")
+texture_hover = ExtResource("141_iddb2")
+texture_disabled = ExtResource("139_csa04")
+
 [connection signal="pressed" from="Career/LeftButton" to="." method="_on_left_button_pressed"]
 [connection signal="pressed" from="Career/RightButton" to="." method="_on_right_button_pressed"]
 [connection signal="pressed" from="Info/Gender/Men" to="." method="_on_men_pressed"]
 [connection signal="pressed" from="Info/Gender/Women" to="." method="_on_women_pressed"]
+[connection signal="pressed" from="Info/SubmitButton" to="." method="_on_submit_button_pressed"]
+[connection signal="pressed" from="Info/CancelButton" to="." method="_on_cancel_button_pressed"]

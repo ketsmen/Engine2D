@@ -138,12 +138,12 @@ func _physics_process(_delta):
 				if Input.is_action_pressed("walking"):
 					player_action = "walking"
 					# 鼠标左键行走
-					player_action_speed = 70
+					player_action_speed = 80
 					on_sound_play(load("res://framework/statics/musics/walking.wav"))
 				if Input.is_action_pressed("running"):
 					player_action = "running"
 					# 鼠标左键奔跑
-					player_action_speed = 140
+					player_action_speed = 160
 					on_sound_play(load("res://framework/statics/musics/running.wav"))
 				if player_action_speed > 0:
 					# 鼠标位置距离玩家多远才触发
