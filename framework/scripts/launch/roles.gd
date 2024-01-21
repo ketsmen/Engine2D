@@ -19,11 +19,11 @@ func _ready():
 	# 隐藏当前节点场景
 	modulate.a = 0
 	# 默认隐藏节点
-	start.modulate.a = 0
+	start.modulate.a = 1
 	create.modulate.a = 0
 	list.modulate.a = 0
 	# 开始游戏按钮不允许点击
-	start_button.disabled = true
+	start_button.disabled = false
 
 func _on_sound_finished():
 	# 确保背景音效循环播放

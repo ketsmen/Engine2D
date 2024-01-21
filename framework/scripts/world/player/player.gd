@@ -147,7 +147,7 @@ func _physics_process(_delta):
 					on_sound_play(load("res://framework/statics/musics/running.wav"))
 				if player_action_speed > 0:
 					# 鼠标位置距离玩家多远才触发
-					if mouse_position.length() > 30:
+					if mouse_position.length() > 15:
 						player_body.get_child(0).animation = str(player_angle) + "_" + player_action
 						var weapon_id = Player.get_weapon_value()
 						if weapon_id != "000":
