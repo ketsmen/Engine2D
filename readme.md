@@ -20,7 +20,6 @@ git clone --depth=1 git@github.com:aithority/engine.git
 | Software | Version |
 | - | - |
 | Godot | 4.2.1+ |
-| Golang | 1.19.4+ |
 
 ### 🚀 Usage Method
 
