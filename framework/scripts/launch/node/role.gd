@@ -141,8 +141,23 @@ func _on_return_button_pressed():
 func _on_start_button_pressed():
 	# 开始游戏按钮
 	var select_role = User.get_role(node_role_index)
-	print(select_role)
-	return
+	# 更新玩家数据
+	Player.data["token"] = select_role["token"]
+	Player.data["nickname"] = select_role["role_nickname"]
+	Player.data["career"] = select_role["role_career"]
+	Player.data["gender"] = select_role["role_gender"]
+	Player.data["angle"] = select_role["role_angle"]
+	Player.data["map"] = select_role["role_map"]
+	Player.data["asset"]["level"] = select_role["role_asset_level"]
+	Player.data["asset"]["life"] = select_role["role_asset_life"]
+	Player.data["asset"]["life_max"] = select_role["role_asset_life_max"]
+	Player.data["asset"]["magic"] = select_role["role_asset_magic"]
+	Player.data["asset"]["magic_max"] = select_role["role_asset_magic_max"]
+	Player.data["asset"]["experience"] = select_role["role_asset_experience"]
+	Player.data["asset"]["experience_max"] = select_role["role_asset_experience_max"]
+	Player.data["body"]["clothe"] = select_role["role_body_clothe"]
+	Player.data["body"]["weapon"] = select_role["role_body_weapon"]
+	Player.data["body"]["wing"] = select_role["role_body_wing"]
 	start_button_pressed.emit()
 
 func _on_create_switch_left_button_pressed():

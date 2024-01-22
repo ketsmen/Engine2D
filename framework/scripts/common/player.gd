@@ -91,7 +91,14 @@ func get_life_percentage() -> float:
 
 # 获取玩家生命值格式化数据
 func get_life_format() -> String:
-	return str(data["asset"]["life"]) + "/" + str(data["asset"]["life_max"])
+	var career_level = ""
+	if data["career"] == "warrior":
+		career_level = "/Z" + str(data["asset"]["level"])
+	if data["career"] == "mage":
+		career_level = "/M" + str(data["asset"]["level"])
+	if data["career"] == "taoist":
+		career_level = "/T" + str(data["asset"]["level"])
+	return str(data["asset"]["life"]) + "/" + str(data["asset"]["life_max"]) + career_level
 
 # 获取玩家魔法值
 func get_magic_value() -> int:
