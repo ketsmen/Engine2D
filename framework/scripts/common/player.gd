@@ -81,6 +81,10 @@ func get_wing_value() -> String:
 func get_wing() -> String:
 	return Global.get_wing_root_path() + get_wing_value() + "/" + get_gender_value() + ".tscn"
 
+# 获取玩家等级
+func get_level_value() -> int:
+	return data["asset"]["level"]
+
 # 获取玩家生命值
 func get_life_value() -> int:
 	return data["asset"]["life"]
@@ -91,6 +95,10 @@ func get_life_percentage() -> float:
 
 # 获取玩家生命值格式化数据
 func get_life_format() -> String:
+	return str(data["asset"]["life"]) + "/" + str(data["asset"]["life_max"])
+
+# 获取玩家生命值格式化数据
+func get_life_career_format() -> String:
 	var career_level = ""
 	if data["career"] == "warrior":
 		career_level = "/Z" + str(data["asset"]["level"])

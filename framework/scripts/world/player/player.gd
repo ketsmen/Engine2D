@@ -43,7 +43,7 @@ func _ready():
 	player_career = Player.get_career_value()
 	player_gender = Player.get_gender_value()
 	player_angle = Player.get_angle_value()
-	player_header_life_value.text = Player.get_life_format()
+	player_header_life_value.text = Player.get_life_career_format()
 	player_header_life.value = Player.get_life_percentage()
 	player_header_magic.value = Player.get_magic_percentage()
 	player_action = "stand"
@@ -163,12 +163,14 @@ func _physics_process(_delta):
 		on_action_stop()
 
 func on_switch_layer():
-	if player_angle == 3 or player_angle == 4 or player_angle == 5:
-		if player_body.get_child(0).name == "Clothe":
-			player_body.move_child(player_body.get_child(1), 0)
-	else:
-		if player_body.get_child(0).name == "Weapon":
-			player_body.move_child(player_body.get_child(1), 0)
+	var weapon_id = Player.get_weapon_value()
+	if weapon_id != "000":
+		if player_angle == 3 or player_angle == 4 or player_angle == 5:
+			if player_body.get_child(0).name == "Clothe":
+				player_body.move_child(player_body.get_child(1), 0)
+		else:
+			if player_body.get_child(0).name == "Weapon":
+				player_body.move_child(player_body.get_child(1), 0)
 
 func on_action_stop():
 	on_sound_stop()
