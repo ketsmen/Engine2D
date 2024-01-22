@@ -38,6 +38,10 @@ func set_area_list(list: Array):
 	data["area"]["list"] = list
 
 # 获取角色列表
+func get_role(index: int):
+	return data["role"][index]
+	
+# 获取角色列表
 func get_role_list() -> Array:
 	return data["role"]
 

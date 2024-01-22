@@ -30,9 +30,9 @@ func update_server():
 		last_child.queue_free()
 	# 渲染服务器列表
 	var font_path = load("res://framework/statics/fonts/msyh.ttc")
-	var texture_normal = load("res://framework/statics/scenes/launch/server/server_button_0.png")
-	var texture_pressed = load("res://framework/statics/scenes/launch/server/server_button_1.png")
-	var texture_hover = load("res://framework/statics/scenes/launch/server/server_button_2.png")
+	var texture_normal = load("res://framework/statics/scenes/launch/node/server/server_button_0.png")
+	var texture_pressed = load("res://framework/statics/scenes/launch/node/server/server_button_1.png")
+	var texture_hover = load("res://framework/statics/scenes/launch/node/server/server_button_2.png")
 	for i in range(len(server_list)):
 		var item:TextureButton = TextureButton.new()
 		var item_label:Label = Label.new()
