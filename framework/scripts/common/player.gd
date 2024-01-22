@@ -131,8 +131,3 @@ func get_experience(page: int) -> Array:
 			state["value"] = 0
 		bar_states.append(state)
 	return bar_states
-
-# 更新玩家数据
-func on_update_player_data(parameter: String, value):
-	if data[parameter]:
-		data[parameter] = value

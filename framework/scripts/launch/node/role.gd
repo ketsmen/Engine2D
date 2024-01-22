@@ -139,7 +139,10 @@ func _on_return_button_pressed():
 	return_button_pressed.emit()
 
 func _on_start_button_pressed():
-	# 开始游戏按钮被点击
+	# 开始游戏按钮
+	var select_role = User.get_role(node_role_index)
+	print(select_role)
+	return
 	start_button_pressed.emit()
 
 func _on_create_switch_left_button_pressed():

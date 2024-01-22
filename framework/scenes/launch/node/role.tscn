@@ -1,4 +1,4 @@
-[gd_scene load_steps=163 format=3 uid="uid://dwi6nplfjjxtu"]
+[gd_scene load_steps=164 format=3 uid="uid://dwi6nplfjjxtu"]
 
 [ext_resource type="Script" path="res://framework/scripts/launch/node/role.gd" id="1_txevj"]
 [ext_resource type="AudioStream" uid="uid://jweokr186bpu" path="res://framework/statics/musics/launch_login.wav" id="2_gbjyi"]
@@ -160,6 +160,7 @@
 [ext_resource type="Texture2D" uid="uid://dnfmmqsuux28k" path="res://framework/statics/scenes/launch/node/role/taoist/000218.png" id="82_0a7w0"]
 [ext_resource type="Texture2D" uid="uid://uwf7m6fblq8a" path="res://framework/statics/scenes/launch/node/role/taoist/000219.png" id="83_fvrty"]
 [ext_resource type="Texture2D" uid="uid://dh81c2ij5y5f2" path="res://framework/statics/scenes/launch/node/role/role_background.png" id="144_3u4ri"]
+[ext_resource type="Texture2D" uid="uid://dfyq4q4hd5re4" path="res://framework/statics/scenes/launch/node/role/role_avatar.png" id="145_br6rm"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_n60kg"]
 animations = [{
@@ -869,6 +870,15 @@ offset_top = -210.0
 offset_right = -255.0
 offset_bottom = -128.0
 texture = ExtResource("144_3u4ri")
+
+[node name="Avatar" type="TextureRect" parent="Select/Data"]
+modulate = Color(1, 1, 1, 0.584314)
+layout_mode = 0
+offset_left = -492.0
+offset_top = -198.0
+offset_right = -434.0
+offset_bottom = -139.0
+texture = ExtResource("145_br6rm")
 
 [node name="Nickname" type="Label" parent="Select/Data"]
 layout_mode = 0
