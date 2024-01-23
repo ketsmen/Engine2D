@@ -1,6 +1,6 @@
-[gd_scene load_steps=97 format=3 uid="uid://xwmftefgbtfh"]
+[gd_scene load_steps=113 format=3 uid="uid://xwmftefgbtfh"]
 
-[ext_resource type="Texture2D" uid="uid://cn0jt4ujaa3q5" path="res://framework/statics/scenes/world/layer/footer.png" id="1_hedfk"]
+[ext_resource type="Texture2D" uid="uid://cn0jt4ujaa3q5" path="res://framework/statics/scenes/world/layer/footer_bottom.png" id="1_hedfk"]
 [ext_resource type="Script" path="res://framework/scripts/world/layer/layer.gd" id="1_mkbk8"]
 [ext_resource type="Texture2D" uid="uid://bxiqm5j3kpnv" path="res://framework/statics/scenes/world/layer/map/header_button_0.png" id="3_0px6j"]
 [ext_resource type="Texture2D" uid="uid://b8tlxb8vyo64x" path="res://framework/statics/scenes/world/layer/map/header_button_1.png" id="4_up2jr"]
@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://do62owv5m6h58" path="res://framework/statics/scenes/common/close_button_0.png" id="10_sfp4y"]
 [ext_resource type="Texture2D" uid="uid://caqfpcr8jf16q" path="res://framework/statics/scenes/common/close_button_1.png" id="11_v1g58"]
 [ext_resource type="Texture2D" uid="uid://dohcyay56kl35" path="res://framework/statics/scenes/common/close_button_2.png" id="12_218fs"]
+[ext_resource type="Texture2D" uid="uid://bktaa7rcberdc" path="res://framework/statics/scenes/world/layer/icon/001805.png" id="14_cc486"]
+[ext_resource type="Texture2D" uid="uid://bc455pqk8unv2" path="res://framework/statics/scenes/world/layer/footer_header.png" id="14_iep54"]
 [ext_resource type="Texture2D" uid="uid://b1g43ae7g22uq" path="res://framework/statics/scenes/world/layer/footer/experience/experience_0.png" id="14_kafia"]
 [ext_resource type="Texture2D" uid="uid://b6d1u5e07tecb" path="res://framework/statics/scenes/world/layer/footer/experience/background.png" id="14_tno8q"]
 [ext_resource type="Texture2D" uid="uid://c02t7fjeavbyi" path="res://framework/statics/scenes/world/layer/footer/centre/centre_round_1.png" id="14_xco1k"]
@@ -54,6 +56,7 @@
 [ext_resource type="Texture2D" uid="uid://cf15lhcwhyl1l" path="res://framework/statics/scenes/world/layer/icon/header_0_1.png" id="49_i5lvg"]
 [ext_resource type="Texture2D" uid="uid://dqukwt2mny6nt" path="res://framework/statics/scenes/world/layer/icon/header_0_2.png" id="49_qcdj3"]
 [ext_resource type="Texture2D" uid="uid://c6t3r858nnwyd" path="res://framework/statics/scenes/world/layer/icon/right_0_1.png" id="49_w5j8x"]
+[ext_resource type="Theme" uid="uid://mawjpico7qta" path="res://framework/statics/theme/tooltip.tres" id="50_7mynv"]
 [ext_resource type="Texture2D" uid="uid://clksufc7pl53u" path="res://framework/statics/scenes/world/layer/icon/right_1_0.png" id="50_rh8g8"]
 [ext_resource type="Texture2D" uid="uid://dmve4lm38m2ea" path="res://framework/statics/scenes/world/layer/icon/header_1_0.png" id="50_wycue"]
 [ext_resource type="Texture2D" uid="uid://dg4fqx5vo0yxu" path="res://framework/statics/scenes/world/layer/icon/right_1_1.png" id="51_l0qbc"]
@@ -94,6 +97,16 @@
 [ext_resource type="Texture2D" uid="uid://cfsd4hummkg5s" path="res://framework/statics/scenes/world/layer/icon/right_3_2.png" id="79_7vmww"]
 [ext_resource type="Texture2D" uid="uid://bl1jtlvw7jlhv" path="res://framework/statics/scenes/world/layer/icon/right_5_2.png" id="82_tk051"]
 [ext_resource type="Texture2D" uid="uid://b4mma07xwkxrv" path="res://framework/statics/scenes/world/layer/icon/right_7_2.png" id="84_34qmj"]
+[ext_resource type="Texture2D" uid="uid://34xp2wg743wk" path="res://framework/statics/scenes/world/layer/chat/chat_background.png" id="97_iri51"]
+[ext_resource type="Texture2D" uid="uid://d2i4otwt5xfty" path="res://framework/statics/scenes/world/layer/chat/001857.png" id="98_vufus"]
+[ext_resource type="Texture2D" uid="uid://dlbeg8jfcg7s0" path="res://framework/statics/scenes/world/layer/chat/001858.png" id="99_3wlo8"]
+[ext_resource type="Texture2D" uid="uid://cbriimlldtb6l" path="res://framework/statics/scenes/world/layer/chat/001859.png" id="100_wu5e1"]
+[ext_resource type="Texture2D" uid="uid://cjahuvct1ew1q" path="res://framework/statics/scenes/world/layer/chat/001861.png" id="101_om35f"]
+[ext_resource type="Texture2D" uid="uid://853lut3pdboa" path="res://framework/statics/scenes/world/layer/chat/001862.png" id="102_hgrt2"]
+[ext_resource type="Texture2D" uid="uid://garja6upwduu" path="res://framework/statics/scenes/world/layer/chat/001863.png" id="103_rvp0h"]
+[ext_resource type="Texture2D" uid="uid://2nfsa8rae4jb" path="res://framework/statics/scenes/world/layer/chat/001871.png" id="105_8cwxr"]
+[ext_resource type="StyleBox" uid="uid://bfv2gldciab7d" path="res://framework/statics/theme/scrollbar.tres" id="105_wm6xm"]
+[ext_resource type="Texture2D" uid="uid://ukeuorgvogw8" path="res://framework/statics/scenes/world/layer/chat/input.png" id="107_fhnvk"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5sgb7"]
 blend_mode = 1
@@ -196,6 +209,29 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jpy6t"]
+texture = ExtResource("105_8cwxr")
+
+[sub_resource type="Theme" id="Theme_kq6nk"]
+default_font_size = 0
+VScrollBar/icons/decrement = ExtResource("98_vufus")
+VScrollBar/icons/decrement_highlight = ExtResource("99_3wlo8")
+VScrollBar/icons/decrement_pressed = ExtResource("100_wu5e1")
+VScrollBar/icons/increment = ExtResource("101_om35f")
+VScrollBar/icons/increment_highlight = ExtResource("102_hgrt2")
+VScrollBar/icons/increment_pressed = ExtResource("103_rvp0h")
+VScrollBar/styles/grabber = ExtResource("105_wm6xm")
+VScrollBar/styles/grabber_highlight = ExtResource("105_wm6xm")
+VScrollBar/styles/grabber_pressed = ExtResource("105_wm6xm")
+VScrollBar/styles/scroll = SubResource("StyleBoxTexture_jpy6t")
+VScrollBar/styles/scroll_focus = null
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_nhcj3"]
+color = Color(0, 0, 0, 0)
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 0
+
 [node name="Layer" type="CanvasLayer"]
 script = ExtResource("1_mkbk8")
 
@@ -278,6 +314,17 @@ offset_right = -3.0
 offset_bottom = 166.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Coordinate" type="Label" parent="MinMap"]
+layout_mode = 0
+offset_left = -159.0
+offset_top = 4.0
+offset_right = -11.0
+offset_bottom = 21.0
+theme_override_fonts/font = ExtResource("47_dfvno")
+theme_override_font_sizes/font_size = 11
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="MaxMap" type="Control" parent="."]
 layout_mode = 3
@@ -369,7 +416,32 @@ grow_horizontal = 2
 grow_vertical = 0
 shortcut_context = NodePath(".")
 
-[node name="Background" type="TextureRect" parent="Footer"]
+[node name="Background" type="Control" parent="Footer"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Header" type="TextureRect" parent="Footer/Background"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -104.0
+offset_top = -218.0
+offset_right = 96.0
+offset_bottom = -78.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("14_iep54")
+
+[node name="Bottom" type="TextureRect" parent="Footer/Background"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -377,7 +449,7 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -492.0
-offset_top = -218.0
+offset_top = -78.0
 offset_right = 492.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -396,6 +468,32 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="TimeImage" type="TextureRect" parent="Footer/Left"]
+layout_mode = 0
+offset_left = -391.0
+offset_top = -28.0
+offset_right = -363.0
+offset_bottom = 14.0
+texture = ExtResource("14_cc486")
+
+[node name="Time" type="Label" parent="Footer/Left"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -476.0
+offset_top = -18.0
+offset_right = -421.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("47_dfvno")
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="Centre" type="Control" parent="Footer"]
 layout_mode = 1
@@ -533,9 +631,6 @@ vertical_alignment = 1
 
 [node name="Right" type="Control" parent="Footer"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
@@ -567,6 +662,7 @@ grow_horizontal = 2
 grow_vertical = 2
 tooltip_text = "切换地图(Tab)"
 mouse_default_cursor_shape = 2
+theme = ExtResource("50_7mynv")
 texture_normal = ExtResource("48_vshmp")
 texture_pressed = ExtResource("49_qcdj3")
 texture_hover = ExtResource("49_i5lvg")
@@ -586,6 +682,7 @@ grow_horizontal = 2
 grow_vertical = 2
 tooltip_text = "行会(G)"
 mouse_default_cursor_shape = 2
+theme = ExtResource("50_7mynv")
 texture_normal = ExtResource("50_wycue")
 texture_pressed = ExtResource("52_bjmbo")
 texture_hover = ExtResource("51_ugrm1")
@@ -605,6 +702,7 @@ grow_horizontal = 2
 grow_vertical = 2
 tooltip_text = "交易(T)"
 mouse_default_cursor_shape = 2
+theme = ExtResource("50_7mynv")
 texture_normal = ExtResource("52_6jkso")
 texture_pressed = ExtResource("55_q40r8")
 texture_hover = ExtResource("53_q1jfp")
@@ -624,6 +722,7 @@ grow_horizontal = 2
 grow_vertical = 2
 tooltip_text = "队伍控制"
 mouse_default_cursor_shape = 2
+theme = ExtResource("50_7mynv")
 texture_normal = ExtResource("54_f6ppf")
 texture_pressed = ExtResource("58_t8w60")
 texture_hover = ExtResource("55_3m4vn")
@@ -643,6 +742,7 @@ grow_horizontal = 2
 grow_vertical = 2
 tooltip_text = "好友/关系"
 mouse_default_cursor_shape = 2
+theme = ExtResource("50_7mynv")
 texture_normal = ExtResource("56_tj8a5")
 texture_pressed = ExtResource("61_ktogn")
 texture_hover = ExtResource("57_jaubv")
@@ -662,6 +762,7 @@ grow_horizontal = 2
 grow_vertical = 2
 tooltip_text = "挑战"
 mouse_default_cursor_shape = 2
+theme = ExtResource("50_7mynv")
 texture_normal = ExtResource("58_mp576")
 texture_pressed = ExtResource("64_hjs03")
 texture_hover = ExtResource("59_mnjvv")
@@ -681,6 +782,7 @@ grow_horizontal = 2
 grow_vertical = 2
 tooltip_text = "退出角色"
 mouse_default_cursor_shape = 2
+theme = ExtResource("50_7mynv")
 texture_normal = ExtResource("66_ym225")
 texture_pressed = ExtResource("67_5gq2y")
 texture_hover = ExtResource("68_5rwng")
@@ -700,6 +802,7 @@ grow_horizontal = 2
 grow_vertical = 2
 tooltip_text = "退出游戏"
 mouse_default_cursor_shape = 2
+theme = ExtResource("50_7mynv")
 texture_normal = ExtResource("69_t2ef7")
 texture_pressed = ExtResource("70_efqyu")
 texture_hover = ExtResource("71_cc7ie")
@@ -726,6 +829,7 @@ grow_horizontal = 2
 grow_vertical = 2
 tooltip_text = "装备(F9)"
 mouse_default_cursor_shape = 2
+theme = ExtResource("50_7mynv")
 texture_normal = ExtResource("48_sixab")
 texture_pressed = ExtResource("67_ynohe")
 texture_hover = ExtResource("49_w5j8x")
@@ -745,6 +849,7 @@ grow_horizontal = 2
 grow_vertical = 2
 tooltip_text = "背包(F10)"
 mouse_default_cursor_shape = 2
+theme = ExtResource("50_7mynv")
 texture_normal = ExtResource("50_rh8g8")
 texture_pressed = ExtResource("70_3i280")
 texture_hover = ExtResource("51_l0qbc")
@@ -764,6 +869,7 @@ grow_horizontal = 2
 grow_vertical = 2
 tooltip_text = "技能(F11)"
 mouse_default_cursor_shape = 2
+theme = ExtResource("50_7mynv")
 texture_normal = ExtResource("52_mppkq")
 texture_pressed = ExtResource("73_3c0rb")
 texture_hover = ExtResource("53_qxxr6")
@@ -783,6 +889,7 @@ grow_horizontal = 2
 grow_vertical = 2
 tooltip_text = "属性"
 mouse_default_cursor_shape = 2
+theme = ExtResource("50_7mynv")
 texture_normal = ExtResource("54_7ckx5")
 texture_pressed = ExtResource("76_dwd5p")
 texture_hover = ExtResource("55_s8tib")
@@ -802,6 +909,7 @@ grow_horizontal = 2
 grow_vertical = 2
 tooltip_text = "状态"
 mouse_default_cursor_shape = 2
+theme = ExtResource("50_7mynv")
 texture_normal = ExtResource("56_r2mvw")
 texture_pressed = ExtResource("79_7vmww")
 texture_hover = ExtResource("57_3o3pl")
@@ -821,6 +929,7 @@ grow_horizontal = 2
 grow_vertical = 2
 tooltip_text = "排行榜"
 mouse_default_cursor_shape = 2
+theme = ExtResource("50_7mynv")
 texture_normal = ExtResource("58_udbb3")
 texture_pressed = ExtResource("82_tk051")
 texture_hover = ExtResource("59_tf6bf")
@@ -840,9 +949,28 @@ grow_horizontal = 2
 grow_vertical = 2
 tooltip_text = "商城"
 mouse_default_cursor_shape = 2
+theme = ExtResource("50_7mynv")
 texture_normal = ExtResource("60_48xc1")
 texture_pressed = ExtResource("84_34qmj")
 texture_hover = ExtResource("61_2r5jw")
+
+[node name="AttackMode" type="Label" parent="Footer/Right"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 395.0
+offset_top = -19.0
+offset_right = 442.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("47_dfvno")
+theme_override_font_sizes/font_size = 10
+text = "[全体攻击]"
+vertical_alignment = 1
 
 [node name="Experience" type="HBoxContainer" parent="Footer"]
 modulate = Color(1, 1, 1, 0.537255)
@@ -973,6 +1101,66 @@ visible = false
 layout_mode = 2
 texture_over = ExtResource("14_tno8q")
 texture_progress = ExtResource("14_kafia")
+
+[node name="Chat" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+
+[node name="Background" type="TextureRect" parent="Chat"]
+layout_mode = 0
+offset_top = -270.0
+offset_right = 325.0
+offset_bottom = -65.0
+texture = ExtResource("97_iri51")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Chat"]
+layout_mode = 1
+offset_left = 3.0
+offset_top = -265.0
+offset_right = 321.0
+offset_bottom = -121.0
+theme = SubResource("Theme_kq6nk")
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Chat/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Chat/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 22)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.0941176, 0.0901961, 1)
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("47_dfvno")
+theme_override_font_sizes/font_size = 12
+text = "[通知]这是一个开源项目，目前还在基础框架的开发和构建阶段，我将尽可能的完美还原热血传奇，如果有想法和问题可以加入我们的QQ群：615610200"
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="Input" type="TextureRect" parent="Chat"]
+layout_mode = 0
+offset_top = -112.0
+offset_right = 324.0
+offset_bottom = -88.0
+texture = ExtResource("107_fhnvk")
+
+[node name="Content" type="LineEdit" parent="Chat/Input"]
+offset_left = 4.0
+offset_top = -1.0
+offset_right = 320.0
+offset_bottom = 24.0
+theme_override_fonts/font = ExtResource("47_dfvno")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/focus = SubResource("StyleBoxLine_nhcj3")
+placeholder_text = "你想说点什么？"
+max_length = 50
+flat = true
+caret_blink = true
 
 [connection signal="pressed" from="MinMap/MaxShowButton" to="." method="_on_max_show_button_pressed"]
 [connection signal="pressed" from="MaxMap/MaxHideButton" to="." method="_on_max_hide_button_pressed"]

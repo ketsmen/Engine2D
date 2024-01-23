@@ -26,7 +26,8 @@ var data = {
 		"clothe": "010",
 		"weapon": "034",
 		"wing": "010",
-	}
+	},
+	"coordinate": Vector2(0, 0)
 }
 
 # 获取玩家Token
@@ -146,3 +147,11 @@ func get_experience(page: int) -> Array:
 			state["value"] = 0
 		bar_states.append(state)
 	return bar_states
+
+# 获取玩家当前坐标
+func get_coordinate_value() -> Vector2:
+	return data["coordinate"]
+
+# 设置玩家当前坐标
+func set_coordinate_value(coordinate: Vector2) :
+	data["coordinate"] = coordinate

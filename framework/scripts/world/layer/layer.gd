@@ -5,27 +5,37 @@
 extends CanvasLayer
 
 # 实例化控件
-@onready var min_camera = $MinMap/Main/Min/Camera
-@onready var min_location = $MinMap/Main/Min/Location
-@onready var max_box = $MaxMap
-@onready var max_camera = $MaxMap/Main/Max/Camera
-@onready var max_location = $MaxMap/Main/Max/Location
-@onready var footer_box = $Footer
-@onready var footer_experience = $Footer/Experience
-@onready var footer_centre = $Footer/Centre
+@onready var min_box:Control = $MinMap
+@onready var min_camera:Camera2D = $MinMap/Main/Min/Camera
+@onready var min_location:TextureRect = $MinMap/Main/Min/Location
+@onready var min_coordinate:Label = $MinMap/Coordinate
+@onready var max_box:Control = $MaxMap
+@onready var max_camera:Camera2D = $MaxMap/Main/Max/Camera
+@onready var max_location:TextureRect = $MaxMap/Main/Max/Location
+@onready var footer_box:Control = $Footer
+@onready var footer_experience:BoxContainer = $Footer/Experience
+@onready var footer_centre:Control = $Footer/Centre
 @onready var footer_centre_round_left:TextureProgressBar = $Footer/Centre/Round/Left
 @onready var footer_centre_round_right:TextureProgressBar = $Footer/Centre/Round/Right
 @onready var footer_centre_round_light:AnimatedSprite2D = $Footer/Centre/Round/Light
 @onready var footer_centre_level:Label = $Footer/Centre/Level
 @onready var footer_centre_hp:Label = $Footer/Centre/Hp
 @onready var footer_centre_mp:Label = $Footer/Centre/Mp
+@onready var footer_left_box:Control = $Footer/Left
+@onready var footer_left_time:Label = $Footer/Left/Time
 
 func _ready():
 	# 默认隐藏大地图
 	max_box.visible = false
 
 func _process(_delta):
+	# 更新当前时间
+	footer_left_time.text = Global.get_current_time()
 	if owner.get_child(4):
+		# 更新玩家当前位置
+		Player.set_coordinate_value(owner.get_child(4).position)
+		var current_coordinate = Player.get_coordinate_value()
+		min_coordinate.text = "盟重省" + " " + str(int(current_coordinate.x)) + " " + str(int(current_coordinate.y))
 		# 更新玩家等级
 		footer_centre_level.text = str(Player.get_level_value())
 		# 更新玩家生命值
