@@ -10,14 +10,22 @@ extends Control
 @onready var server:Control = $Server
 @onready var role:Control = $Role
 @onready var loading:Control = $Loading
+@onready var dialog:Control = $Dialog
+@onready var dialog_message:Control = $Dialog/Message
+@onready var dialog_message_content:Control = $Dialog/Message/Background/Content
 
 func _ready():
 	# 初始化子节点状态
+	dialog_message.modulate.a = 0
 	server.visible = false
 	role.visible = false
 	loading.visible = false
 	login.visible = true
 	login.sound.play()
+	# 如果加载来源是游戏主界面
+	if Global.data["source"] == "world":
+		_on_server_item_pressed(User.get_area_token_value())
+		Global.data["source"] = ""
 
 func _on_login_submit_button_pressed(status: bool):
 	if status:
@@ -49,9 +57,9 @@ func _on_server_item_pressed(area_token: String):
 				# 播放角色界面音乐
 				role.sound.play()
 			else:
-				Dialog.on_message(response["msg"], 0)
+				on_message(response["msg"], 0)
 		else:
-			Dialog.on_message("服务器请求失败，请重新尝试", 0)
+			on_message("服务器请求失败，请重新尝试", 0)
 	)
 
 func _on_roles_return_button_pressed():
@@ -78,3 +86,12 @@ func _on_roles_start_button_pressed():
 	tween.tween_property(background, "modulate:a", 1, 1)
 	loading.visible = true
 	loading.on_loader()
+
+func on_message(content: String, duration: int):
+	dialog_message_content.text = content
+	dialog_message.modulate.a = 1
+	var tween = get_tree().create_tween()
+	tween.set_parallel(true)
+	if duration == 0:
+		duration = 2
+	tween.tween_property(dialog_message, "modulate:a", 0, 0.5).set_delay(duration)

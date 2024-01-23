@@ -21,7 +21,7 @@ func on_service(path: String, method: int, data, callback):
 	var json_data = JSON.stringify(data)
 	http_headers[1] = "Game-Token: " + http_token
 	http_headers[2] = "User-Token: " + User.get_token_value()
-	if http_callback:
+	if http_callback and http_request.is_connected("request_completed", http_callback):
 		http_request.request_completed.disconnect(http_callback)
 	http_request.request_completed.connect(callback)
 	http_callback = callback

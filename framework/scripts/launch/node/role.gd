@@ -117,7 +117,7 @@ func _on_submit_button_pressed():
 			if code == 200:
 				var response = JSON.parse_string(body.get_string_from_utf8())
 				if response["code"] == 0:
-					Dialog.on_message("角色创建成功", 0)
+					get_parent().on_message("角色创建成功", 0)
 					var current_role:Array = User.get_role_list()
 					current_role.push_front(response["data"]["role"])
 					User.set_role_list(current_role)
@@ -126,13 +126,13 @@ func _on_submit_button_pressed():
 					_on_cancel_button_pressed()
 				else:
 					create_submit_button.disabled = false
-					Dialog.on_message(response["msg"], 0)
+					get_parent().on_message(response["msg"], 0)
 			else:
 				create_submit_button.disabled = false
-				Dialog.on_message("角色创建失败，请重新尝试", 0)
+				get_parent().on_message("角色创建失败，请重新尝试", 0)
 		)
 	else:
-		Dialog.on_message("角色信息不完整", 0)
+		get_parent().on_message("角色信息不完整", 0)
 
 func _on_return_button_pressed():
 	# 返回登录界面

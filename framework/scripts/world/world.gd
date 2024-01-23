@@ -66,3 +66,8 @@ func on_loader_player():
 func on_loader_layer():
 	# 更新layer层级
 	current_scene.move_child(layer, 5)
+
+func on_return_launch():
+	var launch_path = "res://framework/scenes/launch/launch.tscn"
+	Global.data["source"] = "world"
+	get_tree().change_scene_to_file(launch_path)

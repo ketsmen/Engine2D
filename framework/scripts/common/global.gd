@@ -13,7 +13,8 @@ var data = {
 		"clothe_root_path": "res://framework/scenes/world/player/clothe/",
 		"weapon_root_path": "res://framework/scenes/world/player/weapon/",
 		"wing_root_path": "res://framework/scenes/world/player/wing/"
-	}
+	},
+	"source": ""
 }
 
 func _ready():

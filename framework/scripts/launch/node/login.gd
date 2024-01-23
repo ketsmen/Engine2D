@@ -53,7 +53,7 @@ func _on_submit_button_pressed():
 		# 校验邮箱格式
 		var check = Global.check_mail_format(email_input.text)
 		if !check:
-			Dialog.on_message("邮箱格式不正确", 0)
+			get_parent().on_message("邮箱格式不正确", 0)
 			return
 		var login_data = {
 			"account": email_input.text,
@@ -64,7 +64,7 @@ func _on_submit_button_pressed():
 			if code == 200:
 				var response = JSON.parse_string(body.get_string_from_utf8())
 				if response["code"] == 0:
-					Dialog.on_message("账号登录成功", 0)
+					get_parent().on_message("账号登录成功", 0)
 					User.set_token_value(response["data"]["token"])
 					User.set_area_list(response["data"]["areas"])
 					submit_button.disabled = false
@@ -73,13 +73,13 @@ func _on_submit_button_pressed():
 					submit_button_pressed.emit(true)
 				else:
 					submit_button.disabled = false
-					Dialog.on_message(response["msg"], 0)
+					get_parent().on_message(response["msg"], 0)
 			else:
 				submit_button.disabled = false
-				Dialog.on_message("登录失败，请重新尝试", 0)
+				get_parent().on_message("登录失败，请重新尝试", 0)
 		)
 	else:
-		Dialog.on_message("登录信息不完整", 0)
+		get_parent().on_message("登录信息不完整", 0)
 
 func _on_change_password_button_pressed():
 	# 显示密码修改窗口
@@ -100,11 +100,11 @@ func _on_confirm_button_pressed(type: String):
 			# 校验邮箱格式
 			var check = Global.check_mail_format(change_account.text)
 			if !check:
-				Dialog.on_message("邮箱格式不正确", 0)
+				get_parent().on_message("邮箱格式不正确", 0)
 				return
 			# 校验新密码
 			if change_new_password.text != change_confirm_new_password.text:
-				Dialog.on_message("新密码输入不一致", 0)
+				get_parent().on_message("新密码输入不一致", 0)
 				return
 			var change_password_data = {
 				"account": change_account.text,
@@ -116,18 +116,18 @@ func _on_confirm_button_pressed(type: String):
 				if code == 200:
 					var response = JSON.parse_string(body.get_string_from_utf8())
 					if response["code"] == 0:
-						Dialog.on_message("密码修改成功", 0)
+						get_parent().on_message("密码修改成功", 0)
 						change_password_confirm_button.disabled = false
 						_on_cancel_button_pressed()
 					else:
 						change_password_confirm_button.disabled = false
-						Dialog.on_message(response["msg"], 0)
+						get_parent().on_message(response["msg"], 0)
 				else:
 					change_password_confirm_button.disabled = false
-					Dialog.on_message("密码修改失败，请重新尝试", 0)
+					get_parent().on_message("密码修改失败，请重新尝试", 0)
 			)
 		else:
-			Dialog.on_message("修改密码信息不完整", 0)
+			get_parent().on_message("修改密码信息不完整", 0)
 	if type == "register":
 		# 注册账号
 		var register_status = true
@@ -138,11 +138,11 @@ func _on_confirm_button_pressed(type: String):
 			# 校验邮箱格式
 			var check = Global.check_mail_format(register_account.text)
 			if !check:
-				Dialog.on_message("邮箱格式不正确", 0)
+				get_parent().on_message("邮箱格式不正确", 0)
 				return
 			# 校验密码
 			if register_password.text != register_confirm_password.text:
-				Dialog.on_message("登录密码输入不一致", 0)
+				get_parent().on_message("登录密码输入不一致", 0)
 				return
 			var register_data = {
 				"account": register_account.text,
@@ -159,18 +159,18 @@ func _on_confirm_button_pressed(type: String):
 				if code == 200:
 					var response = JSON.parse_string(body.get_string_from_utf8())
 					if response["code"] == 0:
-						Dialog.on_message("账号注册成功", 0)
+						get_parent().on_message("账号注册成功", 0)
 						register_confirm_button.disabled = false
 						_on_cancel_button_pressed()
 					else:
 						register_confirm_button.disabled = false
-						Dialog.on_message(response["msg"], 0)
+						get_parent().on_message(response["msg"], 0)
 				else:
 					register_confirm_button.disabled = false
-					Dialog.on_message("注册失败，请重新尝试", 0)
+					get_parent().on_message("注册失败，请重新尝试", 0)
 			)
 		else:
-			Dialog.on_message("注册信息不完整", 0)
+			get_parent().on_message("注册信息不完整", 0)
 			
 func _on_cancel_button_pressed():
 	# 隐藏窗口

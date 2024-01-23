@@ -12,6 +12,9 @@ extends CanvasLayer
 @onready var max_box:Control = $MaxMap
 @onready var max_camera:Camera2D = $MaxMap/Main/Max/Camera
 @onready var max_location:TextureRect = $MaxMap/Main/Max/Location
+@onready var chat_box:Control = $Chat
+@onready var chat_left_button:Control = $Chat/Button/ChatLeftButton
+@onready var chat_right_button:Control = $Chat/Button/ChatRightButton
 @onready var footer_box:Control = $Footer
 @onready var footer_experience:BoxContainer = $Footer/Experience
 @onready var footer_centre:Control = $Footer/Centre
@@ -23,14 +26,31 @@ extends CanvasLayer
 @onready var footer_centre_mp:Label = $Footer/Centre/Mp
 @onready var footer_left_box:Control = $Footer/Left
 @onready var footer_left_time:Label = $Footer/Left/Time
+@onready var dialog_box:Control = $Dialog
+@onready var dialog_confirm:Control = $Dialog/Confirm
+@onready var dialog_confirm_content:Label = $Dialog/Confirm/ConfirmContent
+
+# 初始化节点数据
+var chat_box_status:bool = true
+var dialog_callback:Callable = Callable()
 
 func _ready():
 	# 默认隐藏大地图
 	max_box.visible = false
+	# 默认隐藏Dialog资源
+	dialog_box.visible = false
+	dialog_confirm.visible = false
 
 func _process(_delta):
 	# 更新当前时间
 	footer_left_time.text = Global.get_current_time()
+	# 聊天框隐藏显示状态
+	if chat_box_status:
+		chat_right_button.visible = false
+		chat_left_button.visible= true
+	else:
+		chat_left_button.visible = false
+		chat_right_button.visible= true
 	if owner.get_child(4):
 		# 更新玩家当前位置
 		Player.set_coordinate_value(owner.get_child(4).position)
@@ -75,3 +95,50 @@ func _on_max_show_button_pressed():
 func _on_max_hide_button_pressed():
 	if max_box.visible:
 		max_box.visible = false
+
+func _on_chat_left_button_pressed():
+	var tween = get_tree().create_tween()
+	tween.set_parallel(true)
+	tween.tween_property(chat_box, "position:x", (chat_box.position.x - 325), 0.2)
+	chat_box_status = false
+
+func _on_chat_right_button_pressed():
+	var tween = get_tree().create_tween()
+	tween.set_parallel(true)
+	tween.tween_property(chat_box, "position:x", (chat_box.position.x + 325), 0.2)
+	chat_box_status = true
+
+func _on_out_role_pressed():
+	on_dialog_confirm("是否确认退出当前角色？", func ():
+		get_parent().on_return_launch()
+	)
+
+func _on_out_game_pressed():
+	on_dialog_confirm("是否确认退出游戏？", func ():
+		get_tree().quit()
+	)
+
+func on_dialog_confirm(content: String, callback):
+	dialog_confirm_content.text = content
+	if callback:
+		dialog_callback = callback
+	dialog_confirm.visible = true
+	dialog_box.visible = true
+
+func _on_dialog_confirm_button_pressed():
+	if dialog_callback:
+		dialog_callback.call()
+
+func _on_dialog_cancel_button_pressed():
+	if not dialog_callback.is_null():
+		dialog_callback = Callable()
+	dialog_confirm_content.text = ""
+	dialog_confirm.visible = false
+	dialog_box.visible = false
+
+func _notification(what):
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		# 阻止默认退出事件
+		get_tree().set_auto_accept_quit(false)
+		# 弹窗确认
+		_on_out_game_pressed()
