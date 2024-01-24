@@ -5,13 +5,16 @@
 extends CanvasLayer
 
 # 实例化控件
-@onready var min_box:Control = $MinMap
-@onready var min_camera:Camera2D = $MinMap/Main/Min/Camera
-@onready var min_location:TextureRect = $MinMap/Main/Min/Location
-@onready var min_coordinate:Label = $MinMap/Coordinate
-@onready var max_box:Control = $MaxMap
-@onready var max_camera:Camera2D = $MaxMap/Main/Max/Camera
-@onready var max_location:TextureRect = $MaxMap/Main/Max/Location
+@onready var min_map_box:Control = $MinMap
+@onready var min_map_main:Control = $MinMap/Main
+@onready var min_map_camera:Camera2D = $MinMap/Main/Map/Min/Camera
+@onready var min_map_location:TextureRect = $MinMap/Main/Map/Min/Location
+@onready var min_map_coordinate:Label = $MinMap/Header/Coordinate
+@onready var min_map_show_button:TextureButton = $MinMap/Header/Button/MinMapShow
+@onready var min_map_hide_button:TextureButton = $MinMap/Header/Button/MinMapHide
+@onready var max_map_box:Control = $MaxMap
+@onready var max_map_camera:Camera2D = $MaxMap/Main/Map/Max/Camera
+@onready var max_map_location:TextureRect = $MaxMap/Main/Map/Max/Location
 @onready var chat_box:Control = $Chat
 @onready var chat_left_button:Control = $Chat/Button/ChatLeftButton
 @onready var chat_right_button:Control = $Chat/Button/ChatRightButton
@@ -31,12 +34,13 @@ extends CanvasLayer
 @onready var dialog_confirm_content:Label = $Dialog/Confirm/ConfirmContent
 
 # 初始化节点数据
+var min_map_status:bool = true
 var chat_box_status:bool = true
 var dialog_callback:Callable = Callable()
 
 func _ready():
 	# 默认隐藏大地图
-	max_box.visible = false
+	max_map_box.visible = false
 	# 默认隐藏Dialog资源
 	dialog_box.visible = false
 	dialog_confirm.visible = false
@@ -44,7 +48,14 @@ func _ready():
 func _process(_delta):
 	# 更新当前时间
 	footer_left_time.text = Global.get_current_time()
-	# 聊天框隐藏显示状态
+	# 更新小地图按钮状态
+	if min_map_status:
+		min_map_show_button.visible = false
+		min_map_hide_button.visible = true
+	else:
+		min_map_hide_button.visible = false
+		min_map_show_button.visible = true
+	# 更新聊天框隐藏显示状态
 	if chat_box_status:
 		chat_right_button.visible = false
 		chat_left_button.visible= true
@@ -55,7 +66,7 @@ func _process(_delta):
 		# 更新玩家当前位置
 		Player.set_coordinate_value(owner.get_child(4).position)
 		var current_coordinate = Player.get_coordinate_value()
-		min_coordinate.text = "盟重省" + " " + str(int(current_coordinate.x)) + " " + str(int(current_coordinate.y))
+		min_map_coordinate.text = "盟重省" + " " + str(int(current_coordinate.x)) + " " + str(int(current_coordinate.y))
 		# 更新玩家等级
 		footer_centre_level.text = str(Player.get_level_value())
 		# 更新玩家生命值
@@ -72,12 +83,12 @@ func _process(_delta):
 		# 更新玩家经验数据
 		update_footer_experience()
 		# 相机位置同步
-		min_camera.position = owner.get_child(4).position
+		min_map_camera.position = owner.get_child(4).position
 		# 人物位置同步 TODO 待人物动画确定后需要计算人物偏移量
-		min_location.position = owner.get_child(4).position
-		if max_box.visible:
+		min_map_location.position = owner.get_child(4).position
+		if max_map_box.visible:
 			# 如果大图显示，则生效
-			max_location.position = owner.get_child(4).position
+			max_map_location.position = owner.get_child(4).position
 		# TODO 显示周边人物、NPC、怪物
 
 func update_footer_experience():
@@ -88,13 +99,25 @@ func update_footer_experience():
 		child.visible = child_status["visible"]
 		child.value = child_status["value"]
 
+func _on_min_map_show_pressed():
+	var tween = get_tree().create_tween()
+	tween.set_parallel(true)
+	tween.tween_property(min_map_main, "position:y", (min_map_main.position.y + 145), 0.2)
+	min_map_status = true
+
+func _on_min_map_hide_pressed():
+	var tween = get_tree().create_tween()
+	tween.set_parallel(true)
+	tween.tween_property(min_map_main, "position:y", (min_map_main.position.y - 145), 0.2)
+	min_map_status = false
+
 func _on_max_show_button_pressed():
-	if !max_box.visible:
-		max_box.visible = true
+	if !max_map_box.visible:
+		max_map_box.visible = true
 		
 func _on_max_hide_button_pressed():
-	if max_box.visible:
-		max_box.visible = false
+	if max_map_box.visible:
+		max_map_box.visible = false
 
 func _on_chat_left_button_pressed():
 	var tween = get_tree().create_tween()
