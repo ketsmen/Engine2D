@@ -1,4 +1,4 @@
-[gd_scene load_steps=130 format=3 uid="uid://xwmftefgbtfh"]
+[gd_scene load_steps=136 format=3 uid="uid://xwmftefgbtfh"]
 
 [ext_resource type="Texture2D" uid="uid://cn0jt4ujaa3q5" path="res://framework/statics/scenes/world/layer/footer_bottom.png" id="1_hedfk"]
 [ext_resource type="Script" path="res://framework/scripts/world/layer/layer.gd" id="1_mkbk8"]
@@ -103,11 +103,17 @@
 [ext_resource type="Texture2D" uid="uid://b4mma07xwkxrv" path="res://framework/statics/scenes/world/layer/icon/right_7_2.png" id="84_34qmj"]
 [ext_resource type="Texture2D" uid="uid://cilg0ri6nrum2" path="res://framework/statics/scenes/world/layer/chat/chat_background.png" id="97_iri51"]
 [ext_resource type="Texture2D" uid="uid://b2rr5cftiqrb3" path="res://framework/statics/scenes/world/layer/chat/scroll_top_arrow_0.png" id="99_u1ml6"]
+[ext_resource type="Texture2D" uid="uid://b76imqk52gh3v" path="res://framework/statics/scenes/world/layer/icon/volume_button_0.png" id="100_1e53o"]
 [ext_resource type="Texture2D" uid="uid://ccbqhwor4ngi5" path="res://framework/statics/scenes/world/layer/chat/scroll_top_arrow_1.png" id="100_us7vy"]
+[ext_resource type="Texture2D" uid="uid://byrwv780ep6fn" path="res://framework/statics/scenes/world/layer/icon/volume_button_1.png" id="101_eucxl"]
 [ext_resource type="Texture2D" uid="uid://sh88cvw686v3" path="res://framework/statics/scenes/world/layer/chat/scroll_top_arrow_2.png" id="101_i6y3a"]
+[ext_resource type="Texture2D" uid="uid://b3nbow4hqk18l" path="res://framework/statics/scenes/world/layer/icon/volume_button_2.png" id="102_bi4yq"]
 [ext_resource type="Texture2D" uid="uid://vj56rrphr2fw" path="res://framework/statics/scenes/world/layer/chat/scroll_dow_arrow_0.png" id="102_ykmyc"]
+[ext_resource type="Texture2D" uid="uid://htpkjppoyjer" path="res://framework/statics/scenes/world/layer/icon/mode_button_0.png" id="103_ey5qr"]
 [ext_resource type="Texture2D" uid="uid://bglydpdvrmjfp" path="res://framework/statics/scenes/world/layer/chat/scroll_dow_arrow_1.png" id="103_ua621"]
 [ext_resource type="Texture2D" uid="uid://b2tnyugirfbi5" path="res://framework/statics/scenes/world/layer/chat/scroll_dow_arrow_2.png" id="104_ablc8"]
+[ext_resource type="Texture2D" uid="uid://d1gquufg63ikj" path="res://framework/statics/scenes/world/layer/icon/mode_button_1.png" id="104_g0nuk"]
+[ext_resource type="Texture2D" uid="uid://burufgqr3m28a" path="res://framework/statics/scenes/world/layer/icon/mode_button_2.png" id="105_gyvnl"]
 [ext_resource type="StyleBox" uid="uid://bfv2gldciab7d" path="res://framework/statics/theme/scrollbar.tres" id="105_wm6xm"]
 [ext_resource type="Texture2D" uid="uid://cpofxcagm3psv" path="res://framework/statics/scenes/world/layer/chat/scroll_background.png" id="106_2idur"]
 [ext_resource type="Texture2D" uid="uid://d3c5g8w0sorob" path="res://framework/statics/scenes/world/layer/chat/input.png" id="107_fhnvk"]
@@ -361,6 +367,7 @@ texture_pressed = ExtResource("8_t0n4m")
 texture_hover = ExtResource("9_gnwy5")
 
 [node name="MinMapHide" type="TextureButton" parent="MinMap/Header/Button"]
+layout_mode = 0
 offset_left = -189.0
 offset_top = 3.0
 offset_right = -171.0
@@ -381,35 +388,6 @@ offset_bottom = -112.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Background" type="TextureRect" parent="MaxMap"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -292.0
-offset_top = -222.5
-offset_right = 292.0
-offset_bottom = 222.5
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("9_j7vhp")
-
-[node name="MaxHideButton" type="TextureButton" parent="MaxMap"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = 247.0
-offset_top = -196.0
-offset_right = 268.0
-offset_bottom = -174.0
-grow_horizontal = 0
-texture_normal = ExtResource("10_sfp4y")
-texture_pressed = ExtResource("11_v1g58")
-texture_hover = ExtResource("12_218fs")
-
 [node name="Main" type="Control" parent="MaxMap"]
 layout_mode = 1
 anchors_preset = 8
@@ -427,17 +405,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -267.0
-offset_top = -161.5
-offset_right = 267.0
-offset_bottom = 203.5
+offset_left = -268.0
+offset_top = -161.0
+offset_right = 269.0
+offset_bottom = 203.0
 grow_horizontal = 2
 grow_vertical = 2
 stretch = true
 
 [node name="Max" type="SubViewport" parent="MaxMap/Main/Map"]
 handle_input_locally = false
-size = Vector2i(534, 365)
+size = Vector2i(537, 364)
 render_target_update_mode = 4
 script = ExtResource("8_7agls")
 
@@ -457,7 +435,36 @@ scale = Vector2(10, 10)
 texture = ExtResource("4_txy7e")
 
 [node name="Camera" type="Camera2D" parent="MaxMap/Main/Map/Max"]
-zoom = Vector2(0.081, 0.081)
+zoom = Vector2(0.054, 0.054)
+
+[node name="Background" type="TextureRect" parent="MaxMap/Main"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -292.0
+offset_top = -222.5
+offset_right = 292.0
+offset_bottom = 222.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_j7vhp")
+
+[node name="MaxHideButton" type="TextureButton" parent="MaxMap/Main"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 247.0
+offset_top = -196.0
+offset_right = 268.0
+offset_bottom = -174.0
+grow_horizontal = 0
+texture_normal = ExtResource("10_sfp4y")
+texture_pressed = ExtResource("11_v1g58")
+texture_hover = ExtResource("12_218fs")
 
 [node name="Footer" type="Control" parent="." node_paths=PackedStringArray("shortcut_context")]
 layout_mode = 3
@@ -690,8 +697,8 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
 offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -1016,16 +1023,52 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 395.0
-offset_top = -19.0
-offset_right = 442.0
-offset_bottom = -5.0
+offset_left = 414.0
+offset_top = 1.0
+offset_right = 461.0
+offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("47_dfvno")
 theme_override_font_sizes/font_size = 10
 text = "[全体攻击]"
 vertical_alignment = 1
+
+[node name="VolumeButton" type="TextureButton" parent="Footer/Right"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 390.0
+offset_top = -32.0
+offset_right = 412.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("100_1e53o")
+texture_pressed = ExtResource("101_eucxl")
+texture_hover = ExtResource("102_bi4yq")
+
+[node name="ModeButton" type="TextureButton" parent="Footer/Right"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 390.0
+offset_top = -9.0
+offset_right = 412.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("103_ey5qr")
+texture_pressed = ExtResource("104_g0nuk")
+texture_hover = ExtResource("105_gyvnl")
 
 [node name="Experience" type="HBoxContainer" parent="Footer"]
 modulate = Color(1, 1, 1, 0.537255)
@@ -1385,7 +1428,7 @@ vertical_alignment = 1
 [connection signal="pressed" from="MinMap/Main/MaxShowButton" to="." method="_on_max_show_button_pressed"]
 [connection signal="pressed" from="MinMap/Header/Button/MinMapShow" to="." method="_on_min_map_show_pressed"]
 [connection signal="pressed" from="MinMap/Header/Button/MinMapHide" to="." method="_on_min_map_hide_pressed"]
-[connection signal="pressed" from="MaxMap/MaxHideButton" to="." method="_on_max_hide_button_pressed"]
+[connection signal="pressed" from="MaxMap/Main/MaxHideButton" to="." method="_on_max_hide_button_pressed"]
 [connection signal="pressed" from="Footer/Right/Header/OutRole" to="." method="_on_out_role_pressed"]
 [connection signal="pressed" from="Footer/Right/Header/OutGame" to="." method="_on_out_game_pressed"]
 [connection signal="pressed" from="Chat/Button/ChatLeftButton" to="." method="_on_chat_left_button_pressed"]
