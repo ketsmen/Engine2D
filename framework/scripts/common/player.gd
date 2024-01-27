@@ -125,33 +125,14 @@ func get_magic_format() -> String:
 func get_experience_value() -> int:
 	return data["asset"]["experience"]
 
-# 获取玩家经验条数据
-func get_experience(page: int) -> Array:
-	var bar_states = []
-	# 每个子节点代表的经验值量
-	var exp_per_bar = float(data["asset"]["experience_max"]) / page
-	# 计算当前经验值对应的子节点索引
-	var active_bar_index = int(int(data["asset"]["experience"]) / exp_per_bar)
-	var remainder_exp = int(data["asset"]["experience"]) % int(exp_per_bar)
-	# 计算每个子节点数据
-	for i in range(page):
-		var state = {"visible": false, "value": 0}
-		if i < active_bar_index:
-			state["visible"] = true
-			state["value"] = 100
-		elif i == active_bar_index:
-			state["visible"] = true
-			state["value"] = (float(remainder_exp) / float(exp_per_bar)) * 100
-		else:
-			state["visible"] = false
-			state["value"] = 0
-		bar_states.append(state)
-	return bar_states
+# 获取玩家经验值百分比
+func get_experience() -> float:
+	return (float(data["asset"]["experience"]) / float(data["asset"]["experience_max"])) * 100
 
 # 获取玩家当前坐标
 func get_coordinate_value() -> Vector2:
 	return data["coordinate"]
 
 # 设置玩家当前坐标
-func set_coordinate_value(coordinate: Vector2) :
+func set_coordinate_value(coordinate: Vector2):
 	data["coordinate"] = coordinate

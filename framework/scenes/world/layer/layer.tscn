@@ -1,4 +1,4 @@
-[gd_scene load_steps=136 format=3 uid="uid://xwmftefgbtfh"]
+[gd_scene load_steps=135 format=3 uid="uid://xwmftefgbtfh"]
 
 [ext_resource type="Texture2D" uid="uid://cn0jt4ujaa3q5" path="res://framework/statics/scenes/world/layer/footer_bottom.png" id="1_hedfk"]
 [ext_resource type="Script" path="res://framework/scripts/world/layer/layer.gd" id="1_mkbk8"]
@@ -19,8 +19,6 @@
 [ext_resource type="Texture2D" uid="uid://cj2f7ltwqhqhx" path="res://framework/statics/scenes/world/layer/map/arrow_top_button_1.png" id="12_nrrcd"]
 [ext_resource type="Texture2D" uid="uid://bktaa7rcberdc" path="res://framework/statics/scenes/world/layer/icon/001805.png" id="14_cc486"]
 [ext_resource type="Texture2D" uid="uid://bc455pqk8unv2" path="res://framework/statics/scenes/world/layer/footer_header.png" id="14_iep54"]
-[ext_resource type="Texture2D" uid="uid://b1g43ae7g22uq" path="res://framework/statics/scenes/world/layer/footer/experience/experience_0.png" id="14_kafia"]
-[ext_resource type="Texture2D" uid="uid://b6d1u5e07tecb" path="res://framework/statics/scenes/world/layer/footer/experience/background.png" id="14_tno8q"]
 [ext_resource type="Texture2D" uid="uid://c02t7fjeavbyi" path="res://framework/statics/scenes/world/layer/footer/centre/centre_round_1.png" id="14_xco1k"]
 [ext_resource type="Texture2D" uid="uid://0cs5h12pk8ui" path="res://framework/statics/scenes/world/layer/footer/centre/centre_round_2.png" id="15_xcyu4"]
 [ext_resource type="Texture2D" uid="uid://d1iyn5178mpf7" path="res://framework/statics/scenes/world/layer/footer/centre/round/centre_round_a_0.png" id="16_827ko"]
@@ -116,6 +114,7 @@
 [ext_resource type="Texture2D" uid="uid://burufgqr3m28a" path="res://framework/statics/scenes/world/layer/icon/mode_button_2.png" id="105_gyvnl"]
 [ext_resource type="StyleBox" uid="uid://bfv2gldciab7d" path="res://framework/statics/theme/scrollbar.tres" id="105_wm6xm"]
 [ext_resource type="Texture2D" uid="uid://cpofxcagm3psv" path="res://framework/statics/scenes/world/layer/chat/scroll_background.png" id="106_2idur"]
+[ext_resource type="Texture2D" uid="uid://cf1cbcxdxsq06" path="res://framework/statics/scenes/world/layer/footer/experience/experience_4.png" id="106_dkcg2"]
 [ext_resource type="Texture2D" uid="uid://d3c5g8w0sorob" path="res://framework/statics/scenes/world/layer/chat/input.png" id="107_fhnvk"]
 [ext_resource type="Texture2D" uid="uid://c3d5gv1kmfje5" path="res://framework/statics/scenes/world/layer/chat/left_button_0.png" id="108_nlua6"]
 [ext_resource type="Texture2D" uid="uid://bl5htth6kxr47" path="res://framework/statics/scenes/world/layer/chat/left_button_2.png" id="109_3term"]
@@ -1070,135 +1069,20 @@ texture_normal = ExtResource("103_ey5qr")
 texture_pressed = ExtResource("104_g0nuk")
 texture_hover = ExtResource("105_gyvnl")
 
-[node name="Experience" type="HBoxContainer" parent="Footer"]
-modulate = Color(1, 1, 1, 0.537255)
+[node name="Experience" type="TextureProgressBar" parent="Footer"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -349.0
-offset_top = -5.99999
-offset_right = 349.0
-offset_bottom = -1.99999
+offset_left = -352.0
+offset_top = -7.0
+offset_right = 352.0
+offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_constants/separation = 5
-
-[node name="0" type="TextureProgressBar" parent="Footer/Experience"]
-visible = false
-layout_mode = 2
-texture_over = ExtResource("14_tno8q")
-texture_progress = ExtResource("14_kafia")
-
-[node name="1" type="TextureProgressBar" parent="Footer/Experience"]
-visible = false
-layout_mode = 2
-texture_over = ExtResource("14_tno8q")
-texture_progress = ExtResource("14_kafia")
-
-[node name="2" type="TextureProgressBar" parent="Footer/Experience"]
-visible = false
-layout_mode = 2
-texture_over = ExtResource("14_tno8q")
-texture_progress = ExtResource("14_kafia")
-
-[node name="3" type="TextureProgressBar" parent="Footer/Experience"]
-visible = false
-layout_mode = 2
-texture_over = ExtResource("14_tno8q")
-texture_progress = ExtResource("14_kafia")
-
-[node name="4" type="TextureProgressBar" parent="Footer/Experience"]
-visible = false
-layout_mode = 2
-texture_over = ExtResource("14_tno8q")
-texture_progress = ExtResource("14_kafia")
-
-[node name="5" type="TextureProgressBar" parent="Footer/Experience"]
-visible = false
-layout_mode = 2
-texture_over = ExtResource("14_tno8q")
-texture_progress = ExtResource("14_kafia")
-
-[node name="6" type="TextureProgressBar" parent="Footer/Experience"]
-visible = false
-layout_mode = 2
-texture_over = ExtResource("14_tno8q")
-texture_progress = ExtResource("14_kafia")
-
-[node name="7" type="TextureProgressBar" parent="Footer/Experience"]
-visible = false
-layout_mode = 2
-texture_over = ExtResource("14_tno8q")
-texture_progress = ExtResource("14_kafia")
-
-[node name="8" type="TextureProgressBar" parent="Footer/Experience"]
-visible = false
-layout_mode = 2
-texture_over = ExtResource("14_tno8q")
-texture_progress = ExtResource("14_kafia")
-
-[node name="9" type="TextureProgressBar" parent="Footer/Experience"]
-visible = false
-layout_mode = 2
-texture_over = ExtResource("14_tno8q")
-texture_progress = ExtResource("14_kafia")
-
-[node name="10" type="TextureProgressBar" parent="Footer/Experience"]
-visible = false
-layout_mode = 2
-texture_over = ExtResource("14_tno8q")
-texture_progress = ExtResource("14_kafia")
-
-[node name="11" type="TextureProgressBar" parent="Footer/Experience"]
-visible = false
-layout_mode = 2
-texture_over = ExtResource("14_tno8q")
-texture_progress = ExtResource("14_kafia")
-
-[node name="12" type="TextureProgressBar" parent="Footer/Experience"]
-visible = false
-layout_mode = 2
-texture_over = ExtResource("14_tno8q")
-texture_progress = ExtResource("14_kafia")
-
-[node name="13" type="TextureProgressBar" parent="Footer/Experience"]
-visible = false
-layout_mode = 2
-texture_over = ExtResource("14_tno8q")
-texture_progress = ExtResource("14_kafia")
-
-[node name="14" type="TextureProgressBar" parent="Footer/Experience"]
-visible = false
-layout_mode = 2
-texture_over = ExtResource("14_tno8q")
-texture_progress = ExtResource("14_kafia")
-
-[node name="15" type="TextureProgressBar" parent="Footer/Experience"]
-visible = false
-layout_mode = 2
-texture_over = ExtResource("14_tno8q")
-texture_progress = ExtResource("14_kafia")
-
-[node name="16" type="TextureProgressBar" parent="Footer/Experience"]
-visible = false
-layout_mode = 2
-texture_over = ExtResource("14_tno8q")
-texture_progress = ExtResource("14_kafia")
-
-[node name="17" type="TextureProgressBar" parent="Footer/Experience"]
-visible = false
-layout_mode = 2
-texture_over = ExtResource("14_tno8q")
-texture_progress = ExtResource("14_kafia")
-
-[node name="18" type="TextureProgressBar" parent="Footer/Experience"]
-visible = false
-layout_mode = 2
-texture_over = ExtResource("14_tno8q")
-texture_progress = ExtResource("14_kafia")
+texture_progress = ExtResource("106_dkcg2")
 
 [node name="Chat" type="Control" parent="."]
 layout_mode = 3
@@ -1228,15 +1112,45 @@ vertical_scroll_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_constants/separation = 2
 
 [node name="Label" type="Label" parent="Chat/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 22)
+custom_minimum_size = Vector2(0, 1)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.0941176, 0.0901961, 1)
-theme_override_constants/line_spacing = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 6
+theme_override_constants/line_spacing = -2
 theme_override_fonts/font = ExtResource("47_dfvno")
 theme_override_font_sizes/font_size = 12
 text = "[通知]这是一个开源项目，目前还在基础框架的开发和构建阶段，我将尽可能的完美还原热血传奇，如果有想法和问题可以加入我们的QQ群：615610200"
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="Label2" type="Label" parent="Chat/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.643137, 0.431373, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 6
+theme_override_constants/line_spacing = -2
+theme_override_fonts/font = ExtResource("47_dfvno")
+theme_override_font_sizes/font_size = 12
+text = "带颜色高亮文字示例带颜色高亮文字示例带颜色高亮文字示例带颜色高亮文字示例"
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="Label3" type="Label" parent="Chat/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -2
+theme_override_fonts/font = ExtResource("47_dfvno")
+theme_override_font_sizes/font_size = 12
+text = "普通文字示例普通文字示例普通文字示例普通文字示例普通文字示例"
 vertical_alignment = 1
 autowrap_mode = 1
 

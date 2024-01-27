@@ -19,7 +19,7 @@ extends CanvasLayer
 @onready var chat_left_button:Control = $Chat/Button/ChatLeftButton
 @onready var chat_right_button:Control = $Chat/Button/ChatRightButton
 @onready var footer_box:Control = $Footer
-@onready var footer_experience:BoxContainer = $Footer/Experience
+@onready var footer_experience:TextureProgressBar = $Footer/Experience
 @onready var footer_centre:Control = $Footer/Centre
 @onready var footer_centre_round_left:TextureProgressBar = $Footer/Centre/Round/Left
 @onready var footer_centre_round_right:TextureProgressBar = $Footer/Centre/Round/Right
@@ -81,7 +81,7 @@ func _process(_delta):
 		else:
 			footer_centre_round_light.visible = false
 		# 更新玩家经验数据
-		update_footer_experience()
+		footer_experience.value = Player.get_experience()
 		# 相机位置同步
 		min_map_camera.position = owner.get_child(4).position
 		# 人物位置同步 TODO 待人物动画确定后需要计算人物偏移量
@@ -90,14 +90,6 @@ func _process(_delta):
 			# 如果大图显示，则生效
 			max_map_location.position = Vector2(owner.get_child(4).position.x - 4995, owner.get_child(4).position.y - 3386)
 		# TODO 显示周边人物、NPC、怪物
-
-func update_footer_experience():
-	var status = Player.get_experience(footer_experience.get_child_count())
-	for i in range(footer_experience.get_child_count()):
-		var child = footer_experience.get_child(i) as TextureProgressBar
-		var child_status = status[i]
-		child.visible = child_status["visible"]
-		child.value = child_status["value"]
 
 func _on_min_map_show_pressed():
 	var tween = get_tree().create_tween()
