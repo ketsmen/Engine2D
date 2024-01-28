@@ -62,6 +62,8 @@ func on_loader_player():
 	current_scene.add_child(player_loader)
 	# 设置玩家资源层级
 	current_scene.move_child(player_loader, 4)
+	# 初始化玩家位置
+	player_loader.position = get_child(0).get_child(0).map_to_local(Player.get_coordinate_value())
 
 func on_loader_layer():
 	# 更新layer层级

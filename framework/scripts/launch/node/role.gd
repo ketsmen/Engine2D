@@ -141,6 +141,7 @@ func _on_return_button_pressed():
 func _on_start_button_pressed():
 	# 开始游戏按钮
 	var select_role = Account.get_role(node_role_index)
+	print(select_role)
 	# 更新玩家数据
 	Player.data["token"] = select_role["token"]
 	Player.data["nickname"] = select_role["role_nickname"]
@@ -158,6 +159,7 @@ func _on_start_button_pressed():
 	Player.data["body"]["clothe"] = select_role["role_body_clothe"]
 	Player.data["body"]["weapon"] = select_role["role_body_weapon"]
 	Player.data["body"]["wing"] = select_role["role_body_wing"]
+	Player.data["coordinate"] = Vector2(select_role["role_map_x"], select_role["role_map_y"])
 	start_button_pressed.emit()
 
 func _on_create_switch_left_button_pressed():
