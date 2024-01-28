@@ -11,6 +11,7 @@ var data = {
 	"gender": "men",
 	"angle": 2,
 	"map": "001",
+	"map_name": "",
 	"asset": {
 		"level": 42,
 		"life": 1500,
@@ -57,6 +58,14 @@ func get_map_value() -> String:
 # 获取玩家地图资源
 func get_map() -> String:
 	return Utils.get_map_root_path() + get_map_value() + ".tscn"
+
+# 获取玩家地图名称
+func get_map_name_value() -> String:
+	return data["map_name"]
+
+# 更新玩家地图名称
+func update_map_name_value(new_name: String):
+	data["map_name"] = new_name
 
 # 获取玩家服饰
 func get_clothe_value() -> String:

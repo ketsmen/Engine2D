@@ -149,6 +149,7 @@ func _on_start_button_pressed():
 	Player.data["gender"] = select_role["role_gender"]
 	Player.data["angle"] = select_role["role_angle"]
 	Player.data["map"] = select_role["role_map"]
+	Player.data["map_name"] = select_role["role_map_name"]
 	Player.data["asset"]["level"] = select_role["role_asset_level"]
 	Player.data["asset"]["life"] = select_role["role_asset_life"]
 	Player.data["asset"]["life_max"] = select_role["role_asset_life_max"]

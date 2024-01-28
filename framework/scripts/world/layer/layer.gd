@@ -66,7 +66,7 @@ func _process(_delta):
 		# 更新坐标信息
 		Player.set_coordinate_value(owner.get_child(0).get_child(0).local_to_map(owner.get_child(4).position))
 		var current_coordinate = Player.get_coordinate_value()
-		min_map_coordinate.text = "盟重省" + " " + str(int(current_coordinate.x)) + " " + str(int(current_coordinate.y))
+		min_map_coordinate.text = Player.get_map_name_value() + " " + str(int(current_coordinate.x)) + " " + str(int(current_coordinate.y))
 		# 更新玩家等级
 		footer_centre_level.text = str(Player.get_level_value())
 		# 更新玩家生命值
