@@ -23,9 +23,9 @@ func _ready():
 	login.visible = true
 	login.sound.play()
 	# 如果加载来源是游戏主界面
-	if Global.data["source"] == "world":
-		_on_server_item_pressed(User.get_area_token_value())
-		Global.data["source"] = ""
+	if Utils.data["source"] == "world":
+		_on_server_item_pressed(Account.get_area_token_value())
+		Utils.data["source"] = ""
 
 func _on_login_submit_button_pressed(status: bool):
 	if status:
@@ -35,14 +35,14 @@ func _on_login_submit_button_pressed(status: bool):
 
 func _on_server_item_pressed(area_token: String):
 	# 更新服务区Token
-	User.set_area_token_value(area_token)
-	User.set_area_list([])
+	Account.set_area_token_value(area_token)
+	Account.set_area_list([])
 	# 获取用户所在服务区的玩家角色
 	Request.on_service("/game/user/role/list?token=" + area_token, HTTPClient.METHOD_GET, {}, func (_result, code, _headers, body):
 		if code == 200:
 			var response = JSON.parse_string(body.get_string_from_utf8())
 			if response["code"] == 0:
-				User.set_role_list(response["data"]["roles"])
+				Account.set_role_list(response["data"]["roles"])
 				# 创建补间动画
 				var tween = get_tree().create_tween()
 				tween.set_parallel(true)

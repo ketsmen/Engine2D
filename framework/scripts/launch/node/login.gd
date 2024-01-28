@@ -51,7 +51,7 @@ func _on_submit_button_pressed():
 	# 校验用户登录数据
 	if email_input.text != "" and password_input.text != "":
 		# 校验邮箱格式
-		var check = Global.check_mail_format(email_input.text)
+		var check = Utils.check_mail_format(email_input.text)
 		if !check:
 			get_parent().on_message("邮箱格式不正确", 0)
 			return
@@ -65,8 +65,8 @@ func _on_submit_button_pressed():
 				var response = JSON.parse_string(body.get_string_from_utf8())
 				if response["code"] == 0:
 					get_parent().on_message("账号登录成功", 0)
-					User.set_token_value(response["data"]["token"])
-					User.set_area_list(response["data"]["areas"])
+					Account.set_token_value(response["data"]["token"])
+					Account.set_area_list(response["data"]["areas"])
 					submit_button.disabled = false
 					email_input.text = ""
 					password_input.text = ""
@@ -98,7 +98,7 @@ func _on_confirm_button_pressed(type: String):
 				change_password_status = false
 		if change_password_status:
 			# 校验邮箱格式
-			var check = Global.check_mail_format(change_account.text)
+			var check = Utils.check_mail_format(change_account.text)
 			if !check:
 				get_parent().on_message("邮箱格式不正确", 0)
 				return
@@ -136,7 +136,7 @@ func _on_confirm_button_pressed(type: String):
 				register_status = false
 		if register_status:
 			# 校验邮箱格式
-			var check = Global.check_mail_format(register_account.text)
+			var check = Utils.check_mail_format(register_account.text)
 			if !check:
 				get_parent().on_message("邮箱格式不正确", 0)
 				return

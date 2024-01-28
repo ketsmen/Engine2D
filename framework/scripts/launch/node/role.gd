@@ -74,11 +74,11 @@ func _process(_delta):
 		create_career.play()
 	else:
 		# 开始游戏按钮显示状态
-		if len(User.get_role_list()) > 0:
+		if len(Account.get_role_list()) > 0:
 			select.visible = true
 			start.visible = true
 			# 玩家角色管理
-			var select_role = User.get_role(node_role_index)
+			var select_role = Account.get_role(node_role_index)
 			for i in range(len(node_career_array)):
 				if node_career_array[i]["career"] == select_role["role_career"]:
 					var gender = 0
@@ -107,7 +107,7 @@ func _process(_delta):
 func _on_submit_button_pressed():
 	if create_nickname.text != "":
 		var submit_data = {
-			"token": User.get_area_token_value(),
+			"token": Account.get_area_token_value(),
 			"nickname": create_nickname.text,
 			"gender":  node_gender_array[node_gender],
 			"career": node_career_array[node_career]["career"]
@@ -118,9 +118,9 @@ func _on_submit_button_pressed():
 				var response = JSON.parse_string(body.get_string_from_utf8())
 				if response["code"] == 0:
 					get_parent().on_message("角色创建成功", 0)
-					var current_role:Array = User.get_role_list()
+					var current_role:Array = Account.get_role_list()
 					current_role.push_front(response["data"]["role"])
-					User.set_role_list(current_role)
+					Account.set_role_list(current_role)
 					node_role_index = 0;
 					create_submit_button.disabled = false
 					_on_cancel_button_pressed()
@@ -140,7 +140,7 @@ func _on_return_button_pressed():
 
 func _on_start_button_pressed():
 	# 开始游戏按钮
-	var select_role = User.get_role(node_role_index)
+	var select_role = Account.get_role(node_role_index)
 	# 更新玩家数据
 	Player.data["token"] = select_role["token"]
 	Player.data["nickname"] = select_role["role_nickname"]
@@ -173,7 +173,7 @@ func _on_select_switch_left_button_pressed():
 		node_role_index -= 1;
 
 func _on_select_switch_right_button_pressed():
-	if node_role_index < (len(User.get_role_list()) - 1):
+	if node_role_index < (len(Account.get_role_list()) - 1):
 		node_role_index += 1;
 
 func _on_men_pressed():

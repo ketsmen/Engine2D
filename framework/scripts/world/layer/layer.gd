@@ -47,7 +47,7 @@ func _ready():
 
 func _process(_delta):
 	# 更新当前时间
-	footer_left_time.text = Global.get_current_time()
+	footer_left_time.text = Utils.get_current_time()
 	# 更新小地图按钮状态
 	if min_map_status:
 		min_map_show_button.visible = false
@@ -63,8 +63,8 @@ func _process(_delta):
 		chat_left_button.visible = false
 		chat_right_button.visible= true
 	if owner.get_child(4):
-		# 更新玩家当前位置
-		Player.set_coordinate_value(owner.get_child(4).position)
+		# 更新坐标信息
+		Player.set_coordinate_value(owner.get_child(0).get_child(0).local_to_map(owner.get_child(4).position))
 		var current_coordinate = Player.get_coordinate_value()
 		min_map_coordinate.text = "盟重省" + " " + str(int(current_coordinate.x)) + " " + str(int(current_coordinate.y))
 		# 更新玩家等级

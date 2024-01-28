@@ -56,7 +56,7 @@ func get_map_value() -> String:
 
 # 获取玩家地图资源
 func get_map() -> String:
-	return Global.get_map_root_path() + get_map_value() + ".tscn"
+	return Utils.get_map_root_path() + get_map_value() + ".tscn"
 
 # 获取玩家服饰
 func get_clothe_value() -> String:
@@ -64,7 +64,7 @@ func get_clothe_value() -> String:
 	
 # 获取玩家服饰资源
 func get_clothe() -> String:
-	return Global.get_clothe_root_path() + get_clothe_value() + "/" + get_gender_value() + ".tscn"
+	return Utils.get_clothe_root_path() + get_clothe_value() + "/" + get_gender_value() + ".tscn"
 
 # 获取玩家武器
 func get_weapon_value() -> String:
@@ -72,7 +72,7 @@ func get_weapon_value() -> String:
 
 # 获取玩家武器资源
 func get_weapon() -> String:
-	return Global.get_weapon_root_path() + get_weapon_value() + "/" + get_gender_value() + ".tscn"
+	return Utils.get_weapon_root_path() + get_weapon_value() + "/" + get_gender_value() + ".tscn"
 
 # 获取玩家翅膀
 func get_wing_value() -> String:
@@ -80,7 +80,7 @@ func get_wing_value() -> String:
 
 # 获取玩家翅膀资源
 func get_wing() -> String:
-	return Global.get_wing_root_path() + get_wing_value() + "/" + get_gender_value() + ".tscn"
+	return Utils.get_wing_root_path() + get_wing_value() + "/" + get_gender_value() + ".tscn"
 
 # 获取玩家等级
 func get_level_value() -> int:

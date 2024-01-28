@@ -1,11 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://rjfcnghlbxgu"]
+[gd_scene load_steps=3 format=3 uid="uid://b14ja036rlb6r"]
 
+[ext_resource type="TileSet" uid="uid://csi1j54vb3w1o" path="res://framework/statics/scenes/world/map/tilemap.tres" id="1_iyon1"]
 [ext_resource type="Texture2D" uid="uid://s3skd13llqe2" path="res://runtime/map.jpg" id="1_ydig5"]
 
 [node name="Map" type="Node2D"]
-self_modulate = Color(0, 0, 0, 1)
 
-[node name="TextureRect" type="TextureRect" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("1_iyon1")
+format = 2
+
+[node name="Background" type="TextureRect" parent="TileMap"]
+offset_right = 13120.0
+offset_bottom = 7047.0
 texture = ExtResource("1_ydig5")

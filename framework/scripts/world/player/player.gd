@@ -128,13 +128,12 @@ func _physics_process(_delta):
 			var mouse_position = get_local_mouse_position()
 			# 获取鼠标的角度(以弧度为单位)并捕捉最接近45度的倍数(0,1,2,3,4,-4,-3,-2,-1)，将获取的倍数分别除以45度(0,1,2,3,4,5,6,7)
 			player_angle = wrapi(int(snapped(mouse_position.angle(), PI/4) / (PI/4)), 0, 8)
-			# 根据角度更新玩家装备渲染层级
-			on_switch_layer()
 			# 计算方向向量
 			var direction = Vector2(cos(player_angle * PI/4), sin(player_angle * PI/4))
+			on_switch_layer()
 			if Input.is_action_pressed("walking") or Input.is_action_pressed("running"):
 				if Input.is_action_pressed("walking"):
-					player_action = "walking"
+					player_action = "walking" 
 					player_action_speed = 70
 					player_step_length = 50
 				if Input.is_action_pressed("running"):
@@ -156,7 +155,7 @@ func _physics_process(_delta):
 					# 目标位置
 					player_target_position = player_position + direction * player_step_length
 					# 目标速度
-					velocity = direction.normalized() * player_action_speed
+					velocity = position.direction_to(player_target_position) * player_action_speed
 					# 未到达目标位置则运动
 					if position.distance_to(player_target_position) > 0:
 						move_and_slide()
@@ -168,46 +167,6 @@ func _physics_process(_delta):
 			on_action_stop()
 	else:
 		on_action_stop()
-	
-	#if Action.get_status() and player_father:
-		## 更新并获取玩家位置
-		#var player_position = Action.update_player_position(position)
-		## 更新并获取鼠标位置
-		#var mouse_position = Action.update_mouse_position(get_local_mouse_position())
-		## 更新并获取角度
-		#var angle = Action.update_mouse_angle(mouse_position)
-		## 获取方向量
-		#var direction = Action.get_direction()
-		## 根据角度更新玩家装备渲染层级
-		#on_switch_layer(angle)
-		## 动作控制
-		#var action = Action.get_action()
-		#if action != "stand":
-			#Action.set_move(true)
-			#player_body.get_child(0).animation = str(angle) + "_" + action
-			#player_body.get_child(0).play()
-			#var weapon_id = Player.get_weapon_value()
-			#if weapon_id != "000":
-				#player_body.get_child(1).animation = str(angle) + "_" + action
-				#player_body.get_child(1).play()
-			#var wing_id = Player.get_wing_value()
-			#if wing_id != "000":
-				#player_body.get_child(2).animation = str(angle) + "_" + action
-				#player_body.get_child(2).play()
-			## 获取速度
-			#var speed = Action.get_speed()
-			## 获取步长
-			#var step_length = Action.get_step_length()
-			#if speed > 0 and mouse_position.length() > 15:
-				## 更新并获取目标位置
-				#var target_position = Action.update_player_target_position(player_position + direction * step_length)
-				#velocity = direction.normalized() * speed
-				#if position.distance_to(target_position) > 0:
-					#move_and_slide()
-		#else:
-			#on_action_stop()
-	#else:
-		#on_action_stop()
 
 func on_switch_layer():
 	var weapon_id = Player.get_weapon_value()

@@ -16,13 +16,13 @@ var selected_token: String = ""
 
 func _ready():
 	# 设置节点默认数据
-	selected_token = User.get_area_token_value()
-	server_list = User.get_area_list()
+	selected_token = Account.get_area_token_value()
+	server_list = Account.get_area_list()
 	# 显示当前节点场景
 	visible = true
 
 func update_server():
-	server_list = User.get_area_list()
+	server_list = Account.get_area_list()
 	# 清空服务器列表
 	while server_list_box.get_child_count() > 0:
 		var last_child = server_list_box.get_child(server_list_box.get_child_count() - 1)

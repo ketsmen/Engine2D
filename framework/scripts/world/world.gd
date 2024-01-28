@@ -14,12 +14,12 @@ func _ready():
 	current_scene = get_tree().current_scene
 	# 加载玩家当前地图资源
 	on_loader_map()
-	# 创建玩家缓存节点
-	create_players_node()
-	# 创建怪物缓存节点
-	create_monsters_node()
-	# 创建NPC缓存节点
-	create_npcs_node()
+	# 创建用户存储节点
+	create_user_node()
+	# 创建怪物存储节点
+	create_monster_node()
+	# 创建NPC存储节点
+	create_npc_node()
 	# 加载玩家资源
 	on_loader_player()
 	# 加载UI资源
@@ -34,23 +34,23 @@ func on_loader_map():
 	# 设置地图资源层级
 	current_scene.move_child(map_loader, 0)
 
-func create_players_node():
-	var players_node = Node2D.new()
-	players_node.name = "Players"
-	current_scene.add_child(players_node)
-	current_scene.move_child(players_node, 1)
+func create_user_node():
+	var player_node = Node2D.new()
+	player_node.name = "User"
+	current_scene.add_child(player_node)
+	current_scene.move_child(player_node, 1)
 
-func create_monsters_node():
-	var monsters_node = Node2D.new()
-	monsters_node.name = "Monsters"
-	current_scene.add_child(monsters_node)
-	current_scene.move_child(monsters_node, 2)
+func create_monster_node():
+	var monster_node = Node2D.new()
+	monster_node.name = "Monster"
+	current_scene.add_child(monster_node)
+	current_scene.move_child(monster_node, 2)
 
-func create_npcs_node():
-	var npcs_node = Node2D.new()
-	npcs_node.name = "Npcs"
-	current_scene.add_child(npcs_node)
-	current_scene.move_child(npcs_node, 3)
+func create_npc_node():
+	var npc_node = Node2D.new()
+	npc_node.name = "Npc"
+	current_scene.add_child(npc_node)
+	current_scene.move_child(npc_node, 3)
 	
 func on_loader_player():
 	# 玩家资源路径
@@ -69,5 +69,5 @@ func on_loader_layer():
 
 func on_return_launch():
 	var launch_path = "res://framework/scenes/launch/launch.tscn"
-	Global.data["source"] = "world"
+	Utils.data["source"] = "world"
 	get_tree().change_scene_to_file(launch_path)
