@@ -15,7 +15,7 @@ func _ready():
 	# 查找小地图渲染节点
 	var map_box = current_scene.find_child("Max")
 	# 将地图添加到场景中
-	map_loader.position = Vector2(-12024, -8016)
+	map_loader.position = Vector2(-8424, -5616)
 	map_box.add_child(map_loader)
 	# 将地图设置为最底层
 	map_box.move_child(map_loader, 0)
