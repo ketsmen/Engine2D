@@ -88,7 +88,7 @@ func _process(_delta):
 		min_map_location.position = owner.get_child(4).position
 		if max_map_box.visible:
 			# 如果大图显示，则生效
-			max_map_location.position = Vector2(owner.get_child(4).position.x - 4995, owner.get_child(4).position.y - 3386)
+			max_map_location.position = Vector2(owner.get_child(4).position.x - 12024, owner.get_child(4).position.y - 8016)
 		# TODO 显示周边人物、NPC、怪物
 
 func _on_min_map_show_pressed():
