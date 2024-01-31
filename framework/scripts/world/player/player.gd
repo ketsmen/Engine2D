@@ -19,6 +19,8 @@ var player_clothe:AnimatedSprite2D
 var player_weapon:AnimatedSprite2D
 var player_wing:AnimatedSprite2D
 var player_action:String
+var player_target_position:Vector2
+var player_move_status:bool
 
 # 如果鼠标事件未被其他场景、节点等资源消耗则触发该函数
 func _unhandled_input(event):
@@ -73,6 +75,7 @@ func loader_player_resources():
 	Action.update_angle(Global.get_player_angle(player_token))
 	# 初始化玩家位置
 	position = Global.map_node.get_child(0).map_to_local(Global.get_player_coordinate(Global.get_account_player_token()))
+	player_target_position = position
 	# 显示玩家主体
 	player_father.visible = true
 
@@ -93,10 +96,21 @@ func _physics_process(_delta):
 			player_wing.animation = player_action
 			player_wing.play()
 		# 运动控制
-		if position != Action.get_target_position(player_body.position):
-			var player_target_position = Action.get_target_position(position)
+		if (player_action.find("walking") > 0 or player_action.find("running") > 0) and !player_move_status:
+			player_move_status = true
+			player_target_position = Action.get_target_position(position)
+		if position != player_target_position:
 			velocity = position.direction_to(player_target_position) * Action.get_speed()
-			move_and_slide()
+			if position.distance_squared_to(player_target_position) > 5:
+				move_and_slide()
+			else:
+				player_move_status = false
+				position = player_target_position
+				Action.restore_default_actions()
+		else:
+			player_move_status = false
+			position = player_target_position
+			Action.restore_default_actions()
 		## 获取窗口的边界
 		#var viewport_rect = get_viewport_rect()
 		## 获取鼠标的位置

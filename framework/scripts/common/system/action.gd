@@ -14,7 +14,8 @@ var data = {
 	"mouse": {
 		"position": Vector2.ZERO
 	},
-	"tilemap_grid_size": Vector2(48, 32)
+	"tilemap_grid_size": Vector2(48, 32),
+	"move_status": false
 }
 
 func _process(_delta):
@@ -26,10 +27,12 @@ func _process(_delta):
 	if viewport_rect.has_point(viewport_mouse_position) and data["control_status"]:
 		# 按键检测
 		if Input.is_action_pressed("walking") and !Input.is_action_pressed("shift") and !Input.is_action_pressed("ctrl"):
+			data["move_status"] = true
 			data["action"] = "walking"
 			data["step"] = 1
 			data["angle"] = calculation_angle()
 		if Input.is_action_pressed("running") and !Input.is_action_pressed("shift") and !Input.is_action_pressed("ctrl"):
+			data["move_status"] = true
 			data["action"] = "running"
 			data["step"] = 2
 			data["angle"] = calculation_angle()
@@ -44,10 +47,12 @@ func _process(_delta):
 		if Input.is_action_pressed("skill_f1") or Input.is_action_pressed("skill_f2") or Input.is_action_pressed("skill_f3") or Input.is_action_pressed("skill_f4") or Input.is_action_pressed("skill_f5") or Input.is_action_pressed("skill_f6") or Input.is_action_pressed("skill_f7") or Input.is_action_pressed("skill_f8") or Input.is_action_pressed("skill_f9") or Input.is_action_pressed("skill_f10") or Input.is_action_pressed("skill_f11") or Input.is_action_pressed("skill_f12"):
 			data["action"] = "launch"
 			data["angle"] = calculation_angle()
+		if Input.is_action_just_released("walking") or Input.is_action_just_released("running"):
+			data["move_status"] = false
 		# 移动速度检测
 		if data["mouse"]["position"].length() > 50:
 			if data["action"] == "walking":
-				data["speed"] = 70
+				data["speed"] = 80
 			if data["action"] == "running":
 				data["speed"] = 160
 		else:
@@ -62,6 +67,10 @@ func get_control_status() -> bool:
 func update_control_status(status: bool) -> bool:
 	data["control_status"] = status
 	return data["control_status"]
+
+# 获取移动状态
+func get_move_status() -> bool:
+	return data["move_status"]
 
 # 更新鼠标位置
 func update_mouse_position(mouse_position: Vector2):
