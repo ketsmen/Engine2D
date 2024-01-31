@@ -15,8 +15,13 @@ var data = {
 		"position": Vector2.ZERO
 	},
 	"tilemap_grid_size": Vector2(48, 32),
+	"enter_status": false,
 	"move_status": false
 }
+
+func _input(event):
+	if event is InputEventKey or event is InputEventMouseButton:
+		print(event.is_action_pressed("shift"))
 
 func _process(_delta):
 	# 获取窗口的边界
@@ -32,13 +37,12 @@ func _process(_delta):
 		if Input.is_action_pressed("running") and !Input.is_action_pressed("shift") and !Input.is_action_pressed("ctrl"):
 			data["action"] = "running"
 			data["step"] = 2
-		if !Input.is_action_pressed("walking") and Input.is_action_pressed("shift") and !Input.is_action_pressed("ctrl"):
-			data["action"] = "attack_stand"
 		if Input.is_action_pressed("walking") and Input.is_action_pressed("shift") and !Input.is_action_pressed("ctrl"):
 			data["action"] = "attack"
 		if Input.is_action_pressed("walking") and !Input.is_action_pressed("shift") and Input.is_action_pressed("ctrl"):
 			data["action"] = "pickup"
 		if Input.is_action_pressed("skill_f1") or Input.is_action_pressed("skill_f2") or Input.is_action_pressed("skill_f3") or Input.is_action_pressed("skill_f4") or Input.is_action_pressed("skill_f5") or Input.is_action_pressed("skill_f6") or Input.is_action_pressed("skill_f7") or Input.is_action_pressed("skill_f8") or Input.is_action_pressed("skill_f9") or Input.is_action_pressed("skill_f10") or Input.is_action_pressed("skill_f11") or Input.is_action_pressed("skill_f12"):
+			data["enter_status"] = true
 			data["action"] = "launch"
 		# 方向检测
 		if 	data["action"] in ["walking", "running", "attack", "pickup", "launch"] and !data["move_status"]:
@@ -62,11 +66,20 @@ func update_control_status(status: bool) -> bool:
 	data["control_status"] = status
 	return data["control_status"]
 
+# 获取按键状态
+func get_enter_status() -> bool:
+	return data["enter_status"]
+
+# 更新按键状态
+func update_enter_status(status: bool) -> bool:
+	data["enter_status"] = status
+	return data["enter_status"]
+
 # 获取移动状态
 func get_move_status() -> bool:
 	return data["move_status"]
 
-# 获取移动状态
+# 更新移动状态
 func update_move_status(status: bool) -> bool:
 	data["move_status"] = status
 	return data["move_status"]

@@ -20,7 +20,6 @@ var player_weapon:AnimatedSprite2D
 var player_wing:AnimatedSprite2D
 var player_action:String
 var player_target_position:Vector2
-var player_move_status:bool
 
 # 如果鼠标事件未被其他场景、节点等资源消耗则触发该函数
 func _unhandled_input(event):
@@ -95,6 +94,8 @@ func _physics_process(_delta):
 		if player_wing:
 			player_wing.animation = player_action
 			player_wing.play()
+		# 更新武器层级
+		on_switch_weapon_index()
 		# 运动控制
 		if (player_action.find("walking") > 0 or player_action.find("running") > 0) and !Action.get_move_status():
 			Action.update_move_status(true)
@@ -107,30 +108,12 @@ func _physics_process(_delta):
 				Action.update_move_status(false)
 				position = player_target_position
 				Action.restore_default_actions()
-		else:
-			Action.update_move_status(false)
-			position = player_target_position
-			Action.restore_default_actions()
 
-#func on_switch_layer():
-	#var weapon_id = Player.get_weapon_value()
-	#if weapon_id != "000":
-		#if player_angle == 3 or player_angle == 4 or player_angle == 5:
-			#if player_body.get_child(0).name == "Clothe":
-				#player_body.move_child(player_body.get_child(1), 0)
-		#else:
-			#if player_body.get_child(0).name == "Weapon":
-				#player_body.move_child(player_body.get_child(1), 0)
-#
-#func on_action_stop():
-	#velocity = Vector2.ZERO
-	#player_action_speed = 0
-	#velocity = Vector2.ZERO
-	#player_action = "stand"
-	#player_body.get_child(0).animation = str(player_angle) + "_" + player_action
-	#var weapon_id = Player.get_weapon_value()
-	#if weapon_id != "000":
-		#player_body.get_child(1).animation = str(player_angle) + "_" + player_action
-	#var wing_id = Player.get_wing_value()
-	#if wing_id != "000":
-		#player_body.get_child(2).animation = str(player_angle) + "_" + player_action
+func on_switch_weapon_index():
+	if player_weapon:
+		if Action.get_angle() in [3, 4, 5]:
+			if player_body.get_child(0).name == "Clothe":
+				player_body.move_child(player_body.get_child(1), 0)
+		else:
+			if player_body.get_child(0).name == "Weapon":
+				player_body.move_child(player_body.get_child(1), 0)
