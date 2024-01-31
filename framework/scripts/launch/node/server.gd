@@ -16,13 +16,13 @@ var selected_token: String = ""
 
 func _ready():
 	# 设置节点默认数据
-	selected_token = Account.get_area_token_value()
-	server_list = Account.get_area_list()
+	selected_token = Global.get_account_area_token()
+	server_list = Global.get_account_area_list()
 	# 显示当前节点场景
 	visible = true
 
 func update_server():
-	server_list = Account.get_area_list()
+	server_list = Global.get_account_area_list()
 	# 清空服务器列表
 	while server_list_box.get_child_count() > 0:
 		var last_child = server_list_box.get_child(server_list_box.get_child_count() - 1)
@@ -52,4 +52,6 @@ func update_server():
 		server_list_box.add_child(item)
 
 func _on_item_pressed(token: String):
+	for i in range(server_list_box.get_child_count()):
+		server_list_box.get_child(i).disabled = false
 	item_pressed.emit(token)

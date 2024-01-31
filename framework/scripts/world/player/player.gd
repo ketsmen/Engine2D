@@ -5,7 +5,6 @@
 extends CharacterBody2D
 
 # 实例化控件
-@onready var sound:AudioStreamPlayer = $Sound
 @onready var player_father:Control = $Father
 @onready var player_body:Control = $Father/Body
 @onready var player_header:Control = $Father/Header
@@ -15,13 +14,11 @@ extends CharacterBody2D
 @onready var player_nickname:Label = $Father/NickName
 
 # 初始化节点数据
-var player_career:String
-var player_gender:String
-var player_angle:int
+var player_token:String
+var player_clothe:AnimatedSprite2D
+var player_weapon:AnimatedSprite2D
+var player_wing:AnimatedSprite2D
 var player_action:String
-var player_action_speed:int
-var player_step_length:int
-var player_target_position:Vector2
 
 # 如果鼠标事件未被其他场景、节点等资源消耗则触发该函数
 func _unhandled_input(event):
@@ -32,91 +29,74 @@ func _unhandled_input(event):
 			Action.update_control_status(false)
 
 func _ready():
+	player_token = get_meta("token")
 	# 默认禁用控制
 	Action.update_control_status(false)
 	# 默认隐藏玩家主体
 	player_father.visible = false
-	# 初始化玩家数据
-	player_nickname.text = Player.get_nickname_value()
-	player_career = Player.get_career_value()
-	player_gender = Player.get_gender_value()
-	player_angle = Player.get_angle_value()
-	player_header_life_value.text = Player.get_life_career_format()
-	player_header_life.value = Player.get_life_percentage()
-	player_header_magic.value = Player.get_magic_percentage()
-	player_action = "stand"
-	player_action_speed = 0
-	player_step_length = 10
+	# 更新玩家数据
+	update_player_data()
 	# 加载玩家数据资源
 	loader_player_resources()
 	# 玩家默认状态
-	on_action_stop()
+	#on_action_stop()
+
+func update_player_data():
+	# 玩家昵称
+	player_nickname.text = Global.get_player_nickname(player_token)
+	# 玩家生命值、职业格式化数据
+	player_header_life_value.text = Global.get_player_life_career_format(player_token)
+	# 玩家生命值百分比
+	player_header_life.value = Global.get_player_life_percentage(player_token)
+	# 玩家魔法值百分比
+	player_header_magic.value = Global.get_player_magic_percentage(player_token)
 
 func loader_player_resources():
 	# 加载玩家服饰
-	loader_player_clothe()
+	player_clothe = Equipment.get_clothe_resource(player_token)
+	player_body.add_child(player_clothe)
+	player_body.move_child(player_clothe, 0)
+	player_clothe.play()
 	# 加载玩家武器
-	loader_player_weapon()
+	player_weapon = Equipment.get_weapon_resource(player_token)
+	if player_weapon:
+		player_body.add_child(player_weapon)
+		player_body.move_child(player_weapon, 1)
+		player_weapon.play()
 	# 加载玩家装饰
-	loader_player_wing()
+	player_wing = Equipment.get_wing_resource(player_token)
+	if player_wing:
+		player_body.add_child(player_wing)
+		player_body.move_child(player_wing, 2)
+		player_wing.play()
+	# 初始化玩家方向
+	Action.update_angle(Global.get_player_angle(player_token))
+	# 初始化玩家位置
+	position = Global.map_node.get_child(0).map_to_local(Global.get_player_coordinate(Global.get_account_player_token()))
 	# 显示玩家主体
 	player_father.visible = true
 
-func loader_player_clothe():
-	# 服饰资源路径
-	var clothe_path = Player.get_clothe()
-	# 加载服饰资源
-	var clothe_loader = load(clothe_path).instantiate()
-	clothe_loader.name = "Clothe"
-	# 将服饰资源添加到玩家Body节点
-	player_body.add_child(clothe_loader)
-	# 设置服饰资源层级
-	player_body.move_child(clothe_loader, 0)
-	# 设置服饰资源动画速度缩放比
-	clothe_loader.speed_scale = 8
-	# 默认播放
-	clothe_loader.play()
-
-func loader_player_weapon():
-	# 当前玩家武器的编号
-	var weapon_id = Player.get_weapon_value()
-	if weapon_id != "000":
-		# 武器资源路径
-		var weapon_path = Player.get_weapon()
-		# 加载武器资源
-		var weapon_loader = load(weapon_path).instantiate()
-		weapon_loader.name = "Weapon"
-		# 将武器资源添加到玩家Body节点
-		player_body.add_child(weapon_loader)
-		# 设置武器资源层级
-		player_body.move_child(weapon_loader, 1)
-		# 设置武器资源动画速度缩放比
-		weapon_loader.speed_scale = 8
-		# 默认播放
-		weapon_loader.play()
-
-func loader_player_wing():
-	# 当前玩家翅膀的编号
-	var wing_id = Player.get_wing_value()
-	if wing_id != "000":
-		# 翅膀资源路径
-		var wing_path = Player.get_wing()
-		# 加载翅膀资源
-		var wing_loader = load(wing_path).instantiate()
-		wing_loader.name = "Wing"
-		# 将翅膀资添加到玩家Body节点
-		player_body.add_child(wing_loader)
-		# 设置翅膀资源层级
-		player_body.move_child(wing_loader, 2)
-		# 设置翅膀资源动画速度缩放比
-		wing_loader.speed_scale = 8
-		# 默认播放
-		wing_loader.play()
-
 func _physics_process(_delta):
 	if player_father.visible:
-		pass
-		
+		# 更新玩家数据
+		update_player_data()
+		# 更新鼠标位置
+		Action.update_mouse_position(get_local_mouse_position())
+		# 更新玩家动作
+		player_action = Action.get_action()
+		player_clothe.animation = player_action
+		player_clothe.play()
+		if player_weapon:
+			player_weapon.animation = player_action
+			player_weapon.play()
+		if player_wing:
+			player_wing.animation = player_action
+			player_wing.play()
+		# 运动控制
+		if position != Action.get_target_position(player_body.position):
+			var player_target_position = Action.get_target_position(position)
+			velocity = position.direction_to(player_target_position) * Action.get_speed()
+			move_and_slide()
 		## 获取窗口的边界
 		#var viewport_rect = get_viewport_rect()
 		## 获取鼠标的位置
@@ -169,25 +149,25 @@ func _physics_process(_delta):
 	#else:
 		#on_action_stop()
 
-func on_switch_layer():
-	var weapon_id = Player.get_weapon_value()
-	if weapon_id != "000":
-		if player_angle == 3 or player_angle == 4 or player_angle == 5:
-			if player_body.get_child(0).name == "Clothe":
-				player_body.move_child(player_body.get_child(1), 0)
-		else:
-			if player_body.get_child(0).name == "Weapon":
-				player_body.move_child(player_body.get_child(1), 0)
-
-func on_action_stop():
-	velocity = Vector2.ZERO
-	player_action_speed = 0
-	velocity = Vector2.ZERO
-	player_action = "stand"
-	player_body.get_child(0).animation = str(player_angle) + "_" + player_action
-	var weapon_id = Player.get_weapon_value()
-	if weapon_id != "000":
-		player_body.get_child(1).animation = str(player_angle) + "_" + player_action
-	var wing_id = Player.get_wing_value()
-	if wing_id != "000":
-		player_body.get_child(2).animation = str(player_angle) + "_" + player_action
+#func on_switch_layer():
+	#var weapon_id = Player.get_weapon_value()
+	#if weapon_id != "000":
+		#if player_angle == 3 or player_angle == 4 or player_angle == 5:
+			#if player_body.get_child(0).name == "Clothe":
+				#player_body.move_child(player_body.get_child(1), 0)
+		#else:
+			#if player_body.get_child(0).name == "Weapon":
+				#player_body.move_child(player_body.get_child(1), 0)
+#
+#func on_action_stop():
+	#velocity = Vector2.ZERO
+	#player_action_speed = 0
+	#velocity = Vector2.ZERO
+	#player_action = "stand"
+	#player_body.get_child(0).animation = str(player_angle) + "_" + player_action
+	#var weapon_id = Player.get_weapon_value()
+	#if weapon_id != "000":
+		#player_body.get_child(1).animation = str(player_angle) + "_" + player_action
+	#var wing_id = Player.get_wing_value()
+	#if wing_id != "000":
+		#player_body.get_child(2).animation = str(player_angle) + "_" + player_action

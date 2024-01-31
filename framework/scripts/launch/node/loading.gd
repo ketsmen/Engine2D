@@ -8,34 +8,33 @@ extends Control
 @onready var progress:TextureProgressBar = $Progress/Texture
 
 # 初始化节点数据
-var world_scene_path = "res://framework/scenes/world/world.tscn"
-var player_current_map = ""
-var loader_progress = []
-var loader_status = 0
 var is_loader = false
 
 func _ready():
+	# 初始化加载状态
 	is_loader = false
-	player_current_map = Player.get_map()
-	ResourceLoader.load_threaded_request(world_scene_path)
+	# 初始化进度条
+	progress.value = 0
 
 func _process(_delta):
 	if is_loader:
-		# 加载世界场景
-		loader_status = ResourceLoader.load_threaded_get_status(world_scene_path, loader_progress)
-		progress.value = 10
-		if loader_status == ResourceLoader.THREAD_LOAD_LOADED:
-			# 加载地图
-			loader_progress = []
-			ResourceLoader.load_threaded_request(player_current_map)
-			loader_status = ResourceLoader.load_threaded_get_status(player_current_map, loader_progress)
-			progress.value += (loader_progress[0] * 100) - 10
-			if loader_status == ResourceLoader.THREAD_LOAD_LOADED:
-				set_process(false)
-				await get_tree().create_timer(0.5).timeout
-				get_tree().change_scene_to_file(world_scene_path)
+		var loader_status = false
+		for i in range(len(Loader.get_default_path_list())):
+			Loader.load_resource(Loader.get_default_path(i))
+			var status = Loader.get_resource_status(Loader.get_default_path(i))
+			progress.value += (status["progress"][0] * 100) / len(Loader.get_default_path_list())
+			if status["status"] and i == (len(Loader.get_default_path_list()) - 1):
+				loader_status = true
+		await get_tree().create_timer(0.5).timeout
+		if loader_status:
+			set_process(false)
+			await get_tree().create_timer(0.5).timeout
+			var change_scene_status = get_tree().change_scene_to_file(Loader.get_world_scene_path())
+			if change_scene_status == OK:
 				is_loader = false
 				visible = false
+			else:
+				get_parent().on_message("资源加载失败，请重新尝试", 0)
 
 func on_loader():
 	if !is_loader:

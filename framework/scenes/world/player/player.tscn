@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://7cs7bpp5xd08"]
+[gd_scene load_steps=7 format=3 uid="uid://7cs7bpp5xd08"]
 
 [ext_resource type="Script" path="res://framework/scripts/world/player/player.gd" id="1_oy6e2"]
-[ext_resource type="AudioStream" uid="uid://bcg8cdywk1qa2" path="res://framework/statics/musics/walking.wav" id="2_gtl4t"]
 [ext_resource type="FontFile" uid="uid://b8ippc7k3ew6o" path="res://framework/statics/fonts/msyh.ttc" id="130_bdh52"]
 [ext_resource type="Texture2D" uid="uid://bxfbiaovww685" path="res://framework/statics/scenes/world/player/progress/player_header_background.png" id="131_cgt7i"]
 [ext_resource type="Texture2D" uid="uid://dlru5palr0lg1" path="res://framework/statics/scenes/world/player/progress/player_header_health.png" id="132_cwbv4"]
@@ -12,10 +11,6 @@ height = 20.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_oy6e2")
-
-[node name="Sound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_gtl4t")
-volume_db = -10.0
 
 [node name="RigidBody" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_8bkoj")
@@ -119,5 +114,3 @@ vertical_alignment = 1
 
 [node name="Camera" type="Camera2D" parent="."]
 offset = Vector2(0, 40)
-
-[connection signal="finished" from="Sound" to="." method="_on_sound_finished"]

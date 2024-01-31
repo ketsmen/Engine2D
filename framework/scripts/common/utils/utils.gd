@@ -4,11 +4,11 @@
 #*****************************************************************************
 extends Node
 
+# 初始化自定义数据
 var data = {
 	"debug": true,
 	"config": {
 		"version": "1.0.0",
-		"user_path": "user://userdata/",
 		"map_root_path": "res://framework/scenes/world/map/",
 		"clothe_root_path": "res://framework/scenes/world/player/clothe/",
 		"weapon_root_path": "res://framework/scenes/world/player/weapon/",

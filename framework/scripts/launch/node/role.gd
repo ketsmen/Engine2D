@@ -74,11 +74,11 @@ func _process(_delta):
 		create_career.play()
 	else:
 		# 开始游戏按钮显示状态
-		if len(Account.get_role_list()) > 0:
+		if len(Global.get_account_area_role_list()) > 0:
 			select.visible = true
 			start.visible = true
 			# 玩家角色管理
-			var select_role = Account.get_role(node_role_index)
+			var select_role = Global.get_account_area_role(node_role_index)
 			for i in range(len(node_career_array)):
 				if node_career_array[i]["career"] == select_role["role_career"]:
 					var gender = 0
@@ -107,7 +107,7 @@ func _process(_delta):
 func _on_submit_button_pressed():
 	if create_nickname.text != "":
 		var submit_data = {
-			"token": Account.get_area_token_value(),
+			"token": Global.get_account_area_token(),
 			"nickname": create_nickname.text,
 			"gender":  node_gender_array[node_gender],
 			"career": node_career_array[node_career]["career"]
@@ -118,9 +118,9 @@ func _on_submit_button_pressed():
 				var response = JSON.parse_string(body.get_string_from_utf8())
 				if response["code"] == 0:
 					get_parent().on_message("角色创建成功", 0)
-					var current_role:Array = Account.get_role_list()
+					var current_role:Array = Global.get_account_area_role_list()
 					current_role.push_front(response["data"]["role"])
-					Account.set_role_list(current_role)
+					Global.set_account_area_role_list(current_role)
 					node_role_index = 0;
 					create_submit_button.disabled = false
 					_on_cancel_button_pressed()
@@ -140,27 +140,16 @@ func _on_return_button_pressed():
 
 func _on_start_button_pressed():
 	# 开始游戏按钮
-	var select_role = Account.get_role(node_role_index)
-	print(select_role)
+	var select_role = Global.get_account_area_role(node_role_index)
 	# 更新玩家数据
-	Player.data["token"] = select_role["token"]
-	Player.data["nickname"] = select_role["role_nickname"]
-	Player.data["career"] = select_role["role_career"]
-	Player.data["gender"] = select_role["role_gender"]
-	Player.data["angle"] = select_role["role_angle"]
-	Player.data["map"] = select_role["role_map"]
-	Player.data["map_name"] = select_role["role_map_name"]
-	Player.data["asset"]["level"] = select_role["role_asset_level"]
-	Player.data["asset"]["life"] = select_role["role_asset_life"]
-	Player.data["asset"]["life_max"] = select_role["role_asset_life_max"]
-	Player.data["asset"]["magic"] = select_role["role_asset_magic"]
-	Player.data["asset"]["magic_max"] = select_role["role_asset_magic_max"]
-	Player.data["asset"]["experience"] = select_role["role_asset_experience"]
-	Player.data["asset"]["experience_max"] = select_role["role_asset_experience_max"]
-	Player.data["body"]["clothe"] = select_role["role_body_clothe"]
-	Player.data["body"]["weapon"] = select_role["role_body_weapon"]
-	Player.data["body"]["wing"] = select_role["role_body_wing"]
-	Player.data["coordinate"] = Vector2(select_role["role_map_x"], select_role["role_map_y"])
+	Global.update_player_data(select_role)
+	# 更新账号的玩家Token
+	var player_token = Global.update_account_player_token(select_role["token"])
+	# 更新玩家坐标数据
+	Global.update_player_coordinate(player_token, Vector2(select_role["role_map_x"], select_role["role_map_y"]))
+	# 更新玩家当前地图场景路径
+	Loader.update_map_scene_path(Global.get_player_map_path(player_token))
+	# 发射信号
 	start_button_pressed.emit()
 
 func _on_create_switch_left_button_pressed():
@@ -176,7 +165,7 @@ func _on_select_switch_left_button_pressed():
 		node_role_index -= 1;
 
 func _on_select_switch_right_button_pressed():
-	if node_role_index < (len(Account.get_role_list()) - 1):
+	if node_role_index < (len(Global.get_account_area_role_list()) - 1):
 		node_role_index += 1;
 
 func _on_men_pressed():

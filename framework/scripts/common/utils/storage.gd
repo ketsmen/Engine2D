@@ -3,3 +3,8 @@
 # @author  MakerYang
 #*****************************************************************************
 extends Node
+
+# 初始化自定义数据
+var data= {
+	"user_data": "user://userdata"
+}

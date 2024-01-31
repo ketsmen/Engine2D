@@ -62,33 +62,33 @@ func _process(_delta):
 	else:
 		chat_left_button.visible = false
 		chat_right_button.visible= true
-	if owner.get_child(4):
-		# 更新坐标信息
-		Player.set_coordinate_value(owner.get_child(0).get_child(0).local_to_map(owner.get_child(4).position))
-		var current_coordinate = Player.get_coordinate_value()
-		min_map_coordinate.text = Player.get_map_name_value() + " " + str(int(current_coordinate.x)) + " " + str(int(current_coordinate.y))
+	if Global.player:
+		var player_token = Global.get_account_player_token()
+		# 更新并返回坐标信息
+		var current_coordinate = Global.update_player_coordinate(player_token, Global.map_node.get_child(0).local_to_map(Global.player.position))
+		min_map_coordinate.text = Global.get_player_map_name(player_token) + " " + str(int(current_coordinate.x)) + " " + str(int(current_coordinate.y))
 		# 更新玩家等级
-		footer_centre_level.text = str(Player.get_level_value())
+		footer_centre_level.text = str(Global.get_player_level(player_token))
 		# 更新玩家生命值
-		footer_centre_round_left.value = Player.get_life_percentage()
-		footer_centre_hp.text = Player.get_life_format()
+		footer_centre_round_left.value = Global.get_player_life_percentage(player_token)
+		footer_centre_hp.text = Global.get_player_life_format(player_token)
 		# 更新玩家魔法值
-		footer_centre_round_right.value = Player.get_magic_percentage()
-		footer_centre_mp.text = Player.get_magic_format()
+		footer_centre_round_right.value = Global.get_player_magic_percentage(player_token)
+		footer_centre_mp.text = Global.get_player_magic_format(player_token)
 		# 更新生命球动画
 		if footer_centre_round_left.value == 100 and footer_centre_round_right.value == 100:
 			footer_centre_round_light.visible = true
 		else:
 			footer_centre_round_light.visible = false
 		# 更新玩家经验数据
-		footer_experience.value = Player.get_experience()
+		footer_experience.value = Global.get_player_experience(player_token)
 		# 相机位置同步
-		min_map_camera.position = owner.get_child(4).position
+		min_map_camera.position = Global.player.position
 		# 人物位置同步 TODO 待人物动画确定后需要计算人物偏移量
-		min_map_location.position = owner.get_child(4).position
+		min_map_location.position = Global.player.position
 		if max_map_box.visible:
 			# 如果大图显示，则生效
-			max_map_location.position = Vector2(owner.get_child(4).position.x - 8424, owner.get_child(4).position.y - 5616)
+			max_map_location.position = Vector2(Global.player.position.x - 12024, Global.player.position.y - 8016)
 		# TODO 显示周边人物、NPC、怪物
 
 func _on_min_map_show_pressed():
