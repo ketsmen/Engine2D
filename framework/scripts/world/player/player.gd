@@ -96,72 +96,21 @@ func _physics_process(_delta):
 			player_wing.animation = player_action
 			player_wing.play()
 		# 运动控制
-		if (player_action.find("walking") > 0 or player_action.find("running") > 0) and !player_move_status:
-			player_move_status = true
+		if (player_action.find("walking") > 0 or player_action.find("running") > 0) and !Action.get_move_status():
+			Action.update_move_status(true)
 			player_target_position = Action.get_target_position(position)
 		if position != player_target_position:
 			velocity = position.direction_to(player_target_position) * Action.get_speed()
 			if position.distance_squared_to(player_target_position) > 5:
 				move_and_slide()
 			else:
-				player_move_status = false
+				Action.update_move_status(false)
 				position = player_target_position
 				Action.restore_default_actions()
 		else:
-			player_move_status = false
+			Action.update_move_status(false)
 			position = player_target_position
 			Action.restore_default_actions()
-		## 获取窗口的边界
-		#var viewport_rect = get_viewport_rect()
-		## 获取鼠标的位置
-		#var viewport_mouse_position = get_viewport().get_mouse_position()
-		## 检查鼠标是否在窗口内
-		#if viewport_rect.has_point(viewport_mouse_position):
-			## 获取玩家的位置
-			#var player_position = position
-			## 获取鼠标的位置
-			#var mouse_position = get_local_mouse_position()
-			## 获取鼠标的角度(以弧度为单位)并捕捉最接近45度的倍数(0,1,2,3,4,-4,-3,-2,-1)，将获取的倍数分别除以45度(0,1,2,3,4,5,6,7)
-			#player_angle = wrapi(int(snapped(mouse_position.angle(), PI/4) / (PI/4)), 0, 8)
-			## 计算方向向量
-			#var direction = Vector2(cos(player_angle * PI/4), sin(player_angle * PI/4))
-			#on_switch_layer()
-			#if Input.is_action_pressed("walking") or Input.is_action_pressed("running"):
-				#if Input.is_action_pressed("walking"):
-					#player_action = "walking" 
-					#player_action_speed = 70
-					#player_step_length = 50
-				#if Input.is_action_pressed("running"):
-					#player_action = "running"
-					#player_action_speed = 160
-					#player_step_length = 100
-				## 满足条件才能运动
-				#if player_action_speed > 0 and mouse_position.length() > 15:
-					#player_body.get_child(0).animation = str(player_angle) + "_" + player_action
-					#player_body.get_child(0).play()
-					#var weapon_id = Player.get_weapon_value()
-					#if weapon_id != "000":
-						#player_body.get_child(1).animation = str(player_angle) + "_" + player_action
-						#player_body.get_child(1).play()
-					#var wing_id = Player.get_wing_value()
-					#if wing_id != "000":
-						#player_body.get_child(2).animation = str(player_angle) + "_" + player_action
-						#player_body.get_child(2).play()
-					## 目标位置
-					#player_target_position = player_position + direction * player_step_length
-					## 目标速度
-					#velocity = position.direction_to(player_target_position) * player_action_speed
-					## 未到达目标位置则运动
-					#if position.distance_to(player_target_position) > 0:
-						#move_and_slide()
-					#else:
-						#on_action_stop()
-			#if Input.is_action_just_released("walking") or Input.is_action_just_released("running"):
-				#on_action_stop()
-		#else:
-			#on_action_stop()
-	#else:
-		#on_action_stop()
 
 #func on_switch_layer():
 	#var weapon_id = Player.get_weapon_value()

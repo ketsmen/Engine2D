@@ -27,28 +27,22 @@ func _process(_delta):
 	if viewport_rect.has_point(viewport_mouse_position) and data["control_status"]:
 		# 按键检测
 		if Input.is_action_pressed("walking") and !Input.is_action_pressed("shift") and !Input.is_action_pressed("ctrl"):
-			data["move_status"] = true
 			data["action"] = "walking"
 			data["step"] = 1
-			data["angle"] = calculation_angle()
 		if Input.is_action_pressed("running") and !Input.is_action_pressed("shift") and !Input.is_action_pressed("ctrl"):
-			data["move_status"] = true
 			data["action"] = "running"
 			data["step"] = 2
-			data["angle"] = calculation_angle()
 		if !Input.is_action_pressed("walking") and Input.is_action_pressed("shift") and !Input.is_action_pressed("ctrl"):
 			data["action"] = "attack_stand"
 		if Input.is_action_pressed("walking") and Input.is_action_pressed("shift") and !Input.is_action_pressed("ctrl"):
 			data["action"] = "attack"
-			data["angle"] = calculation_angle()
 		if Input.is_action_pressed("walking") and !Input.is_action_pressed("shift") and Input.is_action_pressed("ctrl"):
 			data["action"] = "pickup"
-			data["angle"] = calculation_angle()
 		if Input.is_action_pressed("skill_f1") or Input.is_action_pressed("skill_f2") or Input.is_action_pressed("skill_f3") or Input.is_action_pressed("skill_f4") or Input.is_action_pressed("skill_f5") or Input.is_action_pressed("skill_f6") or Input.is_action_pressed("skill_f7") or Input.is_action_pressed("skill_f8") or Input.is_action_pressed("skill_f9") or Input.is_action_pressed("skill_f10") or Input.is_action_pressed("skill_f11") or Input.is_action_pressed("skill_f12"):
 			data["action"] = "launch"
+		# 方向检测
+		if 	data["action"] in ["walking", "running", "attack", "pickup", "launch"] and !data["move_status"]:
 			data["angle"] = calculation_angle()
-		if Input.is_action_just_released("walking") or Input.is_action_just_released("running"):
-			data["move_status"] = false
 		# 移动速度检测
 		if data["mouse"]["position"].length() > 50:
 			if data["action"] == "walking":
@@ -70,6 +64,11 @@ func update_control_status(status: bool) -> bool:
 
 # 获取移动状态
 func get_move_status() -> bool:
+	return data["move_status"]
+
+# 获取移动状态
+func update_move_status(status: bool) -> bool:
+	data["move_status"] = status
 	return data["move_status"]
 
 # 更新鼠标位置
