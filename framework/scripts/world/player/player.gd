@@ -129,13 +129,10 @@ func _physics_process(_delta):
 func on_switch_action_status() -> void:
 	if player_clothe:
 		player_clothe.animation = str(player_angle) + "_" + player_action
-		player_clothe.play()
 	if player_weapon:
 		player_weapon.animation = str(player_angle) + "_" + player_action
-		player_weapon.play()
 	if player_wing:
 		player_wing.animation = str(player_angle) + "_" + player_action
-		player_wing.play()
 
 # 切换玩家资源层级
 func on_switch_weapon_index() -> void:
