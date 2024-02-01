@@ -13,7 +13,6 @@ func _ready() -> void:
 func enter() -> void:
 	super.enter()
 	player.player_action = "walking"
-	print("[行走状态]")
 
 func process_update(delta: float) -> void:
 	super.process_update(delta)

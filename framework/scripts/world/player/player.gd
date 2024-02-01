@@ -107,24 +107,24 @@ func _physics_process(_delta):
 					player_action = "attack"
 				if Input.is_action_pressed("walking") and !Input.is_action_pressed("shift") and Input.is_action_pressed("ctrl"):
 					player_action = "pickup"
-				# 获取鼠标位置
-				var mouse_position = get_local_mouse_position()
-				# 更新玩家方向
-				if player_action in ["walking", "running", "attack", "pickup", "launch"] and !player_move_status:
-					player_angle = Global.update_player_angle(player_token, wrapi(int(snapped(mouse_position.angle(), PI/4) / (PI/4)), 0, 8))
-				# 切换玩家资源层级
-				on_switch_weapon_index()
-				if mouse_position.length() > 40:
-					if player_action == "walking":
-						player_move_speed = 80
-						player_move_step = 1
-					if player_action == "running":
-						player_move_speed = 160
-						player_move_step = 2
-				else:
-					player_action = "stand"
-					player_move_speed = 0
-					player_move_step = 0
+			# 获取鼠标位置
+			var mouse_position = get_local_mouse_position()
+			# 更新玩家方向
+			if player_action in ["walking", "running", "attack", "pickup", "launch"] and !player_move_status:
+				player_angle = Global.update_player_angle(player_token, wrapi(int(snapped(mouse_position.angle(), PI/4) / (PI/4)), 0, 8))
+			# 切换玩家资源层级
+			on_switch_weapon_index()
+			if mouse_position.length() > 40:
+				if player_action == "walking":
+					player_move_speed = 80
+					player_move_step = 1
+				if player_action == "running":
+					player_move_speed = 160
+					player_move_step = 2
+			else:
+				player_action = "stand"
+				player_move_speed = 0
+				player_move_step = 0
 # 切换玩家动作状态
 func on_switch_action_status() -> void:
 	if player_clothe:

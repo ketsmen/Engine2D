@@ -15,7 +15,6 @@ func enter() -> void:
 	super.enter()
 	player.player_action = "stand"
 	player.player_move_status = false
-	print("[站体状态]")
 
 func process_update(delta: float) -> void:
 	super.process_update(delta)
@@ -39,3 +38,5 @@ func physics_process_update(delta: float) -> void:
 		state_machine.change_state("Running")
 	if player.player_action == "attack" and !player.player_move_status:
 		state_machine.change_state("Attack")
+	if player.player_action == "pickup" and !player.player_move_status:
+		state_machine.change_state("Pickup")
