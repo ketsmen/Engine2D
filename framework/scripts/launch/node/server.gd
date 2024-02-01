@@ -39,6 +39,7 @@ func update_server():
 		item.texture_normal = texture_normal
 		item.texture_pressed = texture_pressed
 		item.texture_hover = texture_hover
+		item.texture_disabled = texture_pressed
 		item_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		item_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 		item_label.text = server_list[i]["area_name"]
@@ -53,5 +54,6 @@ func update_server():
 
 func _on_item_pressed(token: String):
 	for i in range(server_list_box.get_child_count()):
-		server_list_box.get_child(i).disabled = false
+		# 禁用点击
+		server_list_box.get_child(i).disabled = true
 	item_pressed.emit(token)

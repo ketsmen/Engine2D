@@ -4,6 +4,9 @@
 #*****************************************************************************
 extends CharacterBody2D
 
+## 玩家类
+class_name Player
+
 # 实例化控件
 @onready var player_father:Control = $Father
 @onready var player_body:Control = $Father/Body
@@ -14,33 +17,44 @@ extends CharacterBody2D
 @onready var player_nickname:Label = $Father/NickName
 
 # 初始化节点数据
-var player_token:String
-var player_clothe:AnimatedSprite2D
-var player_weapon:AnimatedSprite2D
-var player_wing:AnimatedSprite2D
-var player_action:String
-var player_target_position:Vector2
+@export var player_control_status:bool
+@export var player_token:String
+@export var player_angle:int
+@export var player_clothe:AnimatedSprite2D
+@export var player_weapon:AnimatedSprite2D
+@export var player_wing:AnimatedSprite2D
+@export var player_action:String
+@export var player_move_status:bool
+@export var player_move_speed:int
+@export var player_move_step:int
+@export var player_target_position:Vector2
 
 # 如果鼠标事件未被其他场景、节点等资源消耗则触发该函数
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
 		if (event.button_index == 1 and event.pressed) or (event.button_index == 2 and event.pressed):
-			Action.update_control_status(true)
+			player_control_status = true
 		else:
-			Action.update_control_status(false)
+			player_control_status = false
 
 func _ready():
+	# 更新玩家Token
 	player_token = get_meta("token")
 	# 默认禁用控制
-	Action.update_control_status(false)
+	player_control_status = false
 	# 默认隐藏玩家主体
 	player_father.visible = false
+	# 初始化玩家方向
+	player_angle = Global.get_player_angle(player_token)
+	# 初始化玩家动作
+	player_action = "stand"
+	# 初始化玩家位置
+	position = Utils.convert_map_to_world(Global.get_player_coordinate(player_token))
+	player_target_position = position
 	# 更新玩家数据
 	update_player_data()
 	# 加载玩家数据资源
 	loader_player_resources()
-	# 玩家默认状态
-	#on_action_stop()
 
 func update_player_data():
 	# 玩家昵称
@@ -54,27 +68,22 @@ func update_player_data():
 
 func loader_player_resources():
 	# 加载玩家服饰
-	player_clothe = Equipment.get_clothe_resource(player_token)
+	player_clothe = Global.loader_player_clothe_resource(player_token)
 	player_body.add_child(player_clothe)
 	player_body.move_child(player_clothe, 0)
 	player_clothe.play()
 	# 加载玩家武器
-	player_weapon = Equipment.get_weapon_resource(player_token)
+	player_weapon = Global.loader_player_weapon_resource(player_token)
 	if player_weapon:
 		player_body.add_child(player_weapon)
 		player_body.move_child(player_weapon, 1)
 		player_weapon.play()
 	# 加载玩家装饰
-	player_wing = Equipment.get_wing_resource(player_token)
+	player_wing = Global.loader_player_wing_resource(player_token)
 	if player_wing:
 		player_body.add_child(player_wing)
 		player_body.move_child(player_wing, 2)
 		player_wing.play()
-	# 初始化玩家方向
-	Action.update_angle(Global.get_player_angle(player_token))
-	# 初始化玩家位置
-	position = Global.map_node.get_child(0).map_to_local(Global.get_player_coordinate(Global.get_account_player_token()))
-	player_target_position = position
 	# 显示玩家主体
 	player_father.visible = true
 
@@ -82,38 +91,83 @@ func _physics_process(_delta):
 	if player_father.visible:
 		# 更新玩家数据
 		update_player_data()
-		# 更新鼠标位置
-		Action.update_mouse_position(get_local_mouse_position())
-		# 更新玩家动作
-		player_action = Action.get_action()
-		player_clothe.animation = player_action
+		# 获取窗口的边界
+		var viewport_rect = get_viewport_rect()
+		# 获取鼠标的位置
+		var viewport_mouse_position = get_viewport().get_mouse_position()
+		# 如果鼠标是否在窗口内且允许控制
+		if viewport_rect.has_point(viewport_mouse_position) and player_control_status:
+			# 按键检测
+			if player_action == "stand":
+				if Input.is_action_pressed("walking") and !Input.is_action_pressed("shift") and !Input.is_action_pressed("ctrl"):
+					player_action = "walking"
+				if Input.is_action_pressed("running") and !Input.is_action_pressed("shift") and !Input.is_action_pressed("ctrl"):
+					player_action = "running"
+				if Input.is_action_pressed("walking") and Input.is_action_pressed("shift") and !Input.is_action_pressed("ctrl"):
+					player_action = "attack"
+				if Input.is_action_pressed("walking") and !Input.is_action_pressed("shift") and Input.is_action_pressed("ctrl"):
+					player_action = "pickup"
+				# 获取鼠标位置
+				var mouse_position = get_local_mouse_position()
+				# 更新玩家方向
+				if player_action in ["walking", "running", "attack", "pickup", "launch"] and !player_move_status:
+					player_angle = Global.update_player_angle(player_token, wrapi(int(snapped(mouse_position.angle(), PI/4) / (PI/4)), 0, 8))
+				# 切换玩家资源层级
+				on_switch_weapon_index()
+				if mouse_position.length() > 40:
+					if player_action == "walking":
+						player_move_speed = 80
+						player_move_step = 1
+					if player_action == "running":
+						player_move_speed = 160
+						player_move_step = 2
+				else:
+					player_action = "stand"
+					player_move_speed = 0
+					player_move_step = 0
+# 切换玩家动作状态
+func on_switch_action_status() -> void:
+	if player_clothe:
+		player_clothe.animation = str(player_angle) + "_" + player_action
 		player_clothe.play()
-		if player_weapon:
-			player_weapon.animation = player_action
-			player_weapon.play()
-		if player_wing:
-			player_wing.animation = player_action
-			player_wing.play()
-		# 更新武器层级
-		on_switch_weapon_index()
-		# 运动控制
-		if (player_action.find("walking") > 0 or player_action.find("running") > 0) and !Action.get_move_status():
-			Action.update_move_status(true)
-			player_target_position = Action.get_target_position(position)
-		if position != player_target_position:
-			velocity = position.direction_to(player_target_position) * Action.get_speed()
-			if position.distance_squared_to(player_target_position) > 5:
-				move_and_slide()
-			else:
-				Action.update_move_status(false)
-				position = player_target_position
-				Action.restore_default_actions()
-
-func on_switch_weapon_index():
 	if player_weapon:
-		if Action.get_angle() in [3, 4, 5]:
-			if player_body.get_child(0).name == "Clothe":
-				player_body.move_child(player_body.get_child(1), 0)
+		player_weapon.animation = str(player_angle) + "_" + player_action
+		player_weapon.play()
+	if player_wing:
+		player_wing.animation = str(player_angle) + "_" + player_action
+		player_wing.play()
+
+# 切换玩家资源层级
+func on_switch_weapon_index() -> void:
+	if player_weapon:
+		if player_angle in [3, 4, 5]:
+			player_body.move_child(player_body.get_node("Weapon"), 0)
+			player_body.move_child(player_body.get_node("Clothe"), 1)
 		else:
-			if player_body.get_child(0).name == "Weapon":
-				player_body.move_child(player_body.get_child(1), 0)
+			player_body.move_child(player_body.get_node("Weapon"), 1)
+			player_body.move_child(player_body.get_node("Clothe"), 0)
+	if player_wing:
+		pass
+
+# 更新目标位置
+func update_target_position() -> void:
+	var target_position = Vector2.ZERO
+	var step = player_move_step
+	var size = Global.get_map_grid_size()
+	if player_angle == 0:
+		target_position = Vector2(position.x + (step * size.x), position.y)
+	if player_angle == 1:
+		target_position = Vector2(position.x + (step * size.x), position.y + (step * size.y))
+	if player_angle == 2:
+		target_position = Vector2(position.x, position.y + (step * size.y))
+	if player_angle == 3:
+		target_position = Vector2(position.x - (step * size.x), position.y + (step * size.y))
+	if player_angle == 4:
+		target_position = Vector2(position.x - (step * size.x), position.y)
+	if player_angle == 5:
+		target_position = Vector2(position.x - (step * size.x), position.y - (step * size.y))
+	if player_angle == 6:
+		target_position = Vector2(position.x, position.y - (step * size.y))
+	if player_angle == 7:
+		target_position = Vector2(position.x + (step * size.x), position.y - (step * size.y))
+	player_target_position = target_position

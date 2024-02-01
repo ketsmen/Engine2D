@@ -34,6 +34,7 @@ extends CanvasLayer
 @onready var dialog_confirm_content:Label = $Dialog/Confirm/ConfirmContent
 
 # 初始化节点数据
+var player_node:Node2D = null
 var min_map_status:bool = true
 var chat_box_status:bool = true
 var dialog_callback:Callable = Callable()
@@ -44,6 +45,9 @@ func _ready():
 	# 默认隐藏Dialog资源
 	dialog_box.visible = false
 	dialog_confirm.visible = false
+	# 实例化Player节点
+	await get_parent().ready
+	player_node = Global.get_nodes_item("player")
 
 func _process(_delta):
 	# 更新当前时间
@@ -62,10 +66,10 @@ func _process(_delta):
 	else:
 		chat_left_button.visible = false
 		chat_right_button.visible= true
-	if Global.player:
-		var player_token = Global.get_account_player_token()
+	if player_node:
+		var player_token = player_node.get_meta("token")
 		# 更新并返回坐标信息
-		var current_coordinate = Global.update_player_coordinate(player_token, Global.map_node.get_child(0).local_to_map(Global.player.position))
+		var current_coordinate = Global.update_player_coordinate(player_token, Utils.convert_world_to_map(player_node.position))
 		min_map_coordinate.text = Global.get_player_map_name(player_token) + " " + str(int(current_coordinate.x)) + " " + str(int(current_coordinate.y))
 		# 更新玩家等级
 		footer_centre_level.text = str(Global.get_player_level(player_token))
@@ -83,12 +87,12 @@ func _process(_delta):
 		# 更新玩家经验数据
 		footer_experience.value = Global.get_player_experience(player_token)
 		# 相机位置同步
-		min_map_camera.position = Global.player.position
+		min_map_camera.position = player_node.position
 		# 人物位置同步 TODO 待人物动画确定后需要计算人物偏移量
-		min_map_location.position = Global.player.position
+		min_map_location.position = player_node.position
 		if max_map_box.visible:
 			# 如果大图显示，则生效
-			max_map_location.position = Vector2(Global.player.position.x - 12024, Global.player.position.y - 8016)
+			max_map_location.position = Vector2(player_node.position.x - 12024, player_node.position.y - 8016)
 		# TODO 显示周边人物、NPC、怪物
 
 func _on_min_map_show_pressed():

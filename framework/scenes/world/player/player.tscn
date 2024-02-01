@@ -1,6 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://7cs7bpp5xd08"]
+[gd_scene load_steps=13 format=3 uid="uid://7cs7bpp5xd08"]
 
 [ext_resource type="Script" path="res://framework/scripts/world/player/player.gd" id="1_oy6e2"]
+[ext_resource type="Script" path="res://framework/scripts/world/player/state/machine.gd" id="6_lii5o"]
+[ext_resource type="Script" path="res://framework/scripts/world/player/state/action/stand.gd" id="7_x8d33"]
+[ext_resource type="Script" path="res://framework/scripts/world/player/state/action/walking.gd" id="8_sojnw"]
+[ext_resource type="Script" path="res://framework/scripts/world/player/state/action/running.gd" id="9_obgmt"]
+[ext_resource type="Script" path="res://framework/scripts/world/player/state/action/attack.gd" id="10_2qyix"]
+[ext_resource type="Script" path="res://framework/scripts/world/player/state/action/attack_stand.gd" id="11_dbf7h"]
 [ext_resource type="FontFile" uid="uid://b8ippc7k3ew6o" path="res://framework/statics/fonts/msyh.ttc" id="130_bdh52"]
 [ext_resource type="Texture2D" uid="uid://bxfbiaovww685" path="res://framework/statics/scenes/world/player/progress/player_header_background.png" id="131_cgt7i"]
 [ext_resource type="Texture2D" uid="uid://dlru5palr0lg1" path="res://framework/statics/scenes/world/player/progress/player_header_health.png" id="132_cwbv4"]
@@ -114,3 +120,21 @@ vertical_alignment = 1
 
 [node name="Camera" type="Camera2D" parent="."]
 offset = Vector2(0, 40)
+
+[node name="StateMachine" type="Node2D" parent="."]
+script = ExtResource("6_lii5o")
+
+[node name="Stand" type="Node2D" parent="StateMachine"]
+script = ExtResource("7_x8d33")
+
+[node name="Walking" type="Node2D" parent="StateMachine"]
+script = ExtResource("8_sojnw")
+
+[node name="Running" type="Node2D" parent="StateMachine"]
+script = ExtResource("9_obgmt")
+
+[node name="Attack" type="Node2D" parent="StateMachine"]
+script = ExtResource("10_2qyix")
+
+[node name="AttackStand" type="Node2D" parent="StateMachine"]
+script = ExtResource("11_dbf7h")

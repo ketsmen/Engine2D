@@ -22,10 +22,10 @@ func _ready():
 	loading.visible = false
 	login.visible = true
 	login.sound.play()
-	# 如果加载来源是游戏主界面
-	if Utils.data["source"] == "world":
+	# 如果加载来源是游戏
+	if Global.data["source"] == "world":
 		_on_server_item_pressed(Global.get_account_area_token())
-		Utils.data["source"] = ""
+		Global.data["source"] = ""
 
 func _on_login_submit_button_pressed(status: bool):
 	if status:
