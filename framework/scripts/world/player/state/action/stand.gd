@@ -24,19 +24,23 @@ func physics_process_update(delta: float) -> void:
 	# 切换玩家状态
 	player.on_switch_action_status()
 	# 状态检测
-	if player.player_action == "walking" and !player.player_move_status:
+	if player.player_action == "walking" and !player.player_move_status and player.player_mouse_position.length() > 40:
 		# 更新运动状态
 		player.player_move_status = true
 		# 更新目标位置
 		player.update_target_position()
+		# 切换状态
 		state_machine.change_state("Walking")
-	if player.player_action == "running" and !player.player_move_status:
+	if player.player_action == "running" and !player.player_move_status and player.player_mouse_position.length() > 40:
 		# 更新运动状态
 		player.player_move_status = true
 		# 更新目标位置
 		player.update_target_position()
+		# 切换状态
 		state_machine.change_state("Running")
 	if player.player_action == "attack" and !player.player_move_status:
+		# 切换状态
 		state_machine.change_state("Attack")
 	if player.player_action == "pickup" and !player.player_move_status:
+		# 切换状态
 		state_machine.change_state("Pickup")

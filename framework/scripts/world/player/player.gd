@@ -27,6 +27,7 @@ class_name Player
 @export var player_move_status:bool
 @export var player_move_speed:int
 @export var player_move_step:int
+@export var player_mouse_position:Vector2
 @export var player_target_position:Vector2
 
 # 如果鼠标事件未被其他场景、节点等资源消耗则触发该函数
@@ -65,25 +66,25 @@ func update_player_data():
 	player_header_life.value = Global.get_player_life_percentage(player_token)
 	# 玩家魔法值百分比
 	player_header_magic.value = Global.get_player_magic_percentage(player_token)
+	# 更新层级
+	player_header.z_index = 50
+	player_nickname.z_index = 50
 
 func loader_player_resources():
 	# 加载玩家服饰
 	player_clothe = Global.loader_player_clothe_resource(player_token)
+	player_clothe.z_index = 10
 	player_body.add_child(player_clothe)
-	player_body.move_child(player_clothe, 0)
-	player_clothe.play()
 	# 加载玩家武器
 	player_weapon = Global.loader_player_weapon_resource(player_token)
 	if player_weapon:
+		player_weapon.z_index = 11
 		player_body.add_child(player_weapon)
-		player_body.move_child(player_weapon, 1)
-		player_weapon.play()
 	# 加载玩家装饰
 	player_wing = Global.loader_player_wing_resource(player_token)
 	if player_wing:
+		player_wing.z_index = 12
 		player_body.add_child(player_wing)
-		player_body.move_child(player_wing, 2)
-		player_wing.play()
 	# 显示玩家主体
 	player_father.visible = true
 
@@ -99,22 +100,23 @@ func _physics_process(_delta):
 		if viewport_rect.has_point(viewport_mouse_position) and player_control_status:
 			# 按键检测
 			if player_action == "stand":
-				if Input.is_action_pressed("walking") and !Input.is_action_pressed("shift") and !Input.is_action_pressed("ctrl"):
+				if Event.get_button() == "left" and Event.get_key() == "":
 					player_action = "walking"
-				if Input.is_action_pressed("running") and !Input.is_action_pressed("shift") and !Input.is_action_pressed("ctrl"):
+				if Event.get_button() == "right" and Event.get_key() == "":
 					player_action = "running"
-				if Input.is_action_pressed("walking") and Input.is_action_pressed("shift") and !Input.is_action_pressed("ctrl"):
+				if Event.get_button() == "left" and Event.get_key() == "Shift":
 					player_action = "attack"
-				if Input.is_action_pressed("walking") and !Input.is_action_pressed("shift") and Input.is_action_pressed("ctrl"):
+				if Event.get_button() == "left" and Event.get_key() == "Ctrl":
 					player_action = "pickup"
 			# 获取鼠标位置
-			var mouse_position = get_local_mouse_position()
+			player_mouse_position = get_local_mouse_position()
 			# 更新玩家方向
 			if player_action in ["walking", "running", "attack", "pickup", "launch"] and !player_move_status:
-				player_angle = Global.update_player_angle(player_token, wrapi(int(snapped(mouse_position.angle(), PI/4) / (PI/4)), 0, 8))
+				player_angle = Global.update_player_angle(player_token, wrapi(int(snapped(player_mouse_position.angle(), PI/4) / (PI/4)), 0, 8))
 			# 切换玩家资源层级
 			on_switch_weapon_index()
-			if mouse_position.length() > 40:
+			# 更新速度与步距
+			if player_mouse_position.length() > 40:
 				if player_action == "walking":
 					player_move_speed = 80
 					player_move_step = 1
@@ -138,13 +140,14 @@ func on_switch_action_status() -> void:
 func on_switch_weapon_index() -> void:
 	if player_weapon:
 		if player_angle in [3, 4, 5]:
-			player_body.move_child(player_body.get_node("Weapon"), 0)
-			player_body.move_child(player_body.get_node("Clothe"), 1)
+			player_weapon.z_index = 1
 		else:
-			player_body.move_child(player_body.get_node("Weapon"), 1)
-			player_body.move_child(player_body.get_node("Clothe"), 0)
+			player_weapon.z_index = 11
 	if player_wing:
-		pass
+		if player_angle in [1, 2, 3]:
+			player_wing.z_index = 0
+		else:
+			player_wing.z_index = 12
 
 # 更新目标位置
 func update_target_position() -> void:
