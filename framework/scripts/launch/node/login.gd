@@ -37,7 +37,7 @@ extends Control
 # 自定义信号
 signal submit_button_pressed(status: bool)
 
-func _ready():
+func _ready() -> void:
 	# 显示当前节点场景
 	visible = true
 	# 隐藏密码修改窗口
@@ -47,7 +47,7 @@ func _ready():
 	# 登录游戏按钮允许点击
 	submit_button.disabled = false
 
-func _on_submit_button_pressed():
+func _on_submit_button_pressed() -> void:
 	# 校验用户登录数据
 	if email_input.text != "" and password_input.text != "":
 		# 校验邮箱格式
@@ -81,7 +81,7 @@ func _on_submit_button_pressed():
 	else:
 		get_parent().on_message("登录信息不完整", 0)
 
-func _on_change_password_button_pressed():
+func _on_change_password_button_pressed() -> void:
 	# 显示密码修改窗口
 	change_account.text = ""
 	change_old_password.text = ""
@@ -89,7 +89,7 @@ func _on_change_password_button_pressed():
 	change_confirm_new_password.text = ""
 	change_password.visible = true
 
-func _on_confirm_button_pressed(type: String):
+func _on_confirm_button_pressed(type: String) -> void:
 	if type == "change_password":
 		# 修改密码
 		var change_password_status = true
@@ -172,12 +172,12 @@ func _on_confirm_button_pressed(type: String):
 		else:
 			get_parent().on_message("注册信息不完整", 0)
 			
-func _on_cancel_button_pressed():
+func _on_cancel_button_pressed() -> void:
 	# 隐藏窗口
 	change_password.visible = false
 	register.visible = false
 
-func _on_register_button_pressed():
+func _on_register_button_pressed() -> void:
 	# 显示注册窗口
 	register_account.text = ""
 	register_password.text = ""
@@ -190,6 +190,6 @@ func _on_register_button_pressed():
 	register_answer_b.text = ""
 	register.visible = true
 
-func _on_sound_finished():
+func _on_sound_finished() -> void:
 	# 确保背景音效循环播放
 	sound.play()

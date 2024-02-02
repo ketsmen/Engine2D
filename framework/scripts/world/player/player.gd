@@ -31,14 +31,14 @@ class_name Player
 @export var player_target_position:Vector2
 
 # 如果鼠标事件未被其他场景、节点等资源消耗则触发该函数
-func _unhandled_input(event):
+func _unhandled_input(event) -> void:
 	if event is InputEventMouseButton:
 		if (event.button_index == 1 and event.pressed) or (event.button_index == 2 and event.pressed):
 			player_control_status = true
 		else:
 			player_control_status = false
 
-func _ready():
+func _ready() -> void:
 	# 更新玩家Token
 	player_token = get_meta("token")
 	# 默认禁用控制
@@ -57,7 +57,7 @@ func _ready():
 	# 加载玩家数据资源
 	loader_player_resources()
 
-func update_player_data():
+func update_player_data() -> void:
 	# 玩家昵称
 	player_nickname.text = Global.get_player_nickname(player_token)
 	# 玩家生命值、职业格式化数据
@@ -70,7 +70,7 @@ func update_player_data():
 	player_header.z_index = 50
 	player_nickname.z_index = 50
 
-func loader_player_resources():
+func loader_player_resources() -> void:
 	# 加载玩家服饰
 	player_clothe = Global.loader_player_clothe_resource(player_token)
 	player_clothe.z_index = 10
@@ -88,7 +88,7 @@ func loader_player_resources():
 	# 显示玩家主体
 	player_father.visible = true
 
-func _physics_process(_delta):
+func _physics_process(_delta) -> void:
 	if player_father.visible:
 		# 更新玩家数据
 		update_player_data()
@@ -97,16 +97,21 @@ func _physics_process(_delta):
 		# 获取鼠标的位置
 		var viewport_mouse_position = get_viewport().get_mouse_position()
 		# 如果鼠标是否在窗口内且允许控制
+		if viewport_rect.has_point(viewport_mouse_position) and !player_control_status:
+			# 按键检测
+			if player_action == "stand" and !player_move_status:
+				if Event.is_skill():
+					player_action = "launch"
 		if viewport_rect.has_point(viewport_mouse_position) and player_control_status:
 			# 按键检测
 			if player_action == "stand":
-				if Event.get_button() == "left" and Event.get_key() == "":
+				if Event.get_button() == "left" and Event.get_key() == "" and !Event.is_skill():
 					player_action = "walking"
-				if Event.get_button() == "right" and Event.get_key() == "":
+				if Event.get_button() == "right" and Event.get_key() == "" and !Event.is_skill():
 					player_action = "running"
-				if Event.get_button() == "left" and Event.get_key() == "Shift":
+				if Event.get_button() == "left" and Event.get_key() == "Shift" and !Event.is_skill():
 					player_action = "attack"
-				if Event.get_button() == "left" and Event.get_key() == "Ctrl":
+				if Event.get_button() == "left" and Event.get_key() == "Ctrl"  and !Event.is_skill():
 					player_action = "pickup"
 			# 获取鼠标位置
 			player_mouse_position = get_local_mouse_position()
@@ -127,6 +132,7 @@ func _physics_process(_delta):
 				player_action = "stand"
 				player_move_speed = 0
 				player_move_step = 0
+
 # 切换玩家动作状态
 func on_switch_action_status() -> void:
 	if player_clothe:

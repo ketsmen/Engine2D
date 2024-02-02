@@ -39,7 +39,7 @@ func update_map_scene_path(path: String):
 	data["default_path"][1] = path
 
 # 请求加载资源
-func load_resource(path: String):
+func load_resource(path: String) -> void:
 	if not ResourceLoader.has_cached(path):
 		ResourceLoader.load_threaded_request(path)
 	if path not in data["loader_progress"]:

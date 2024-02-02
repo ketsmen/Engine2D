@@ -39,7 +39,7 @@ var node_career_array: Array = [
 	{"career": "taoist", "name": "道士", "offset": [Vector2(47, 0), Vector2(-46, 61)]}
 ]
 
-func _ready():
+func _ready() -> void:
 	# 隐藏当前节点场景
 	modulate.a = 0
 	# 默认隐藏创建相关的控件
@@ -49,7 +49,7 @@ func _ready():
 	# 默认隐藏角色动画
 	create_career.animation = "default"
 
-func _process(_delta):
+func _process(_delta) -> void:
 	# 角色切换
 	if node_type == "create":
 		# 性别切换
@@ -104,7 +104,7 @@ func _process(_delta):
 		create_career.offset = Vector2(0, 0)
 		create_career.stop()
 
-func _on_submit_button_pressed():
+func _on_submit_button_pressed() -> void:
 	if create_nickname.text != "":
 		var submit_data = {
 			"token": Global.get_account_area_token(),
@@ -134,11 +134,11 @@ func _on_submit_button_pressed():
 	else:
 		get_parent().on_message("角色信息不完整", 0)
 
-func _on_return_button_pressed():
+func _on_return_button_pressed() -> void:
 	# 返回登录界面
 	return_button_pressed.emit()
 
-func _on_start_button_pressed():
+func _on_start_button_pressed() -> void:
 	# 开始游戏按钮
 	var select_role = Global.get_account_area_role(node_role_index)
 	# 更新玩家数据
@@ -152,37 +152,37 @@ func _on_start_button_pressed():
 	# 发射信号
 	start_button_pressed.emit()
 
-func _on_create_switch_left_button_pressed():
+func _on_create_switch_left_button_pressed() -> void:
 	if node_career > 0:
 		node_career -= 1;
 
-func _on_create_switch_right_button_pressed():
+func _on_create_switch_right_button_pressed() -> void:
 	if node_career < 2:
 		node_career += 1;
 
-func _on_select_switch_left_button_pressed():
+func _on_select_switch_left_button_pressed() -> void:
 	if node_role_index > 0:
 		node_role_index -= 1;
 
-func _on_select_switch_right_button_pressed():
+func _on_select_switch_right_button_pressed() -> void:
 	if node_role_index < (len(Global.get_account_area_role_list()) - 1):
 		node_role_index += 1;
 
-func _on_men_pressed():
+func _on_men_pressed() -> void:
 	node_gender = 0
 
-func _on_women_pressed():
+func _on_women_pressed() -> void:
 	node_gender = 1
 
-func _on_create_button_pressed():
+func _on_create_button_pressed() -> void:
 	node_type = "create"
 
-func _on_cancel_button_pressed():
+func _on_cancel_button_pressed() -> void:
 	node_type = ""
 	create_nickname.text = ""
 	node_career = 0
 	node_gender = 0
 
-func _on_sound_finished():
+func _on_sound_finished() -> void:
 	# 确保背景音效循环播放
 	sound.play()

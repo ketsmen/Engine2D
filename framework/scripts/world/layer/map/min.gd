@@ -6,7 +6,7 @@ extends SubViewport
 
 @onready var camera = $Camera
 
-func _ready():
+func _ready() -> void:
 	# 获取当前场景
 	var current_scene = get_tree().current_scene
 	# 动态加载地图

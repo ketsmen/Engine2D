@@ -14,7 +14,7 @@ extends Control
 @onready var dialog_message:Control = $Dialog/Message
 @onready var dialog_message_content:Control = $Dialog/Message/Background/Content
 
-func _ready():
+func _ready() -> void:
 	# 初始化子节点状态
 	dialog_message.modulate.a = 0
 	server.visible = false
@@ -27,13 +27,13 @@ func _ready():
 		_on_server_item_pressed(Global.get_account_area_token())
 		Global.data["source"] = ""
 
-func _on_login_submit_button_pressed(status: bool):
+func _on_login_submit_button_pressed(status: bool) -> void:
 	if status:
 		server.update_server()
 		login.visible = false
 		server.visible = true
 
-func _on_server_item_pressed(area_token: String):
+func _on_server_item_pressed(area_token: String) -> void:
 	# 更新服务区Token
 	Global.set_account_area_token(area_token)
 	Global.set_account_area_list([])
@@ -62,7 +62,7 @@ func _on_server_item_pressed(area_token: String):
 			on_message("服务器请求失败，请重新尝试", 0)
 	)
 
-func _on_roles_return_button_pressed():
+func _on_roles_return_button_pressed() -> void:
 	# 创建补间动画
 	var tween = get_tree().create_tween()
 	tween.set_parallel(true)
@@ -74,7 +74,7 @@ func _on_roles_return_button_pressed():
 	tween.tween_property(background, "modulate:a", 1, 1)
 	login.visible = true
 
-func _on_roles_start_button_pressed():
+func _on_roles_start_button_pressed() -> void:
 	# 创建补间动画
 	var tween = get_tree().create_tween()
 	tween.set_parallel(true)
@@ -87,7 +87,7 @@ func _on_roles_start_button_pressed():
 	loading.visible = true
 	loading.on_loader()
 
-func on_message(content: String, duration: int):
+func on_message(content: String, duration: int) -> void:
 	dialog_message_content.text = content
 	dialog_message.modulate.a = 1
 	var tween = get_tree().create_tween()

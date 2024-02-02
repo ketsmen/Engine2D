@@ -26,7 +26,7 @@ func physics_process_update(delta: float) -> void:
 	# 切换玩家状态
 	player.on_switch_action_status()
 	# 状态检测
-	if Input.is_action_just_released("ctrl"):
+	if Event.get_key() != "Ctrl":
 		status_lock = false
 	if !status_lock:
 		state_machine.change_state("Stand")

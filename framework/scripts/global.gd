@@ -40,7 +40,7 @@ var data = {
 	"player": Node2D.new()
 }
 
-func _ready():
+func _ready() -> void:
 	# 限制窗口最小尺寸
 	DisplayServer.window_set_min_size(Vector2(1280, 720))
 

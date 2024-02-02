@@ -44,3 +44,6 @@ func physics_process_update(delta: float) -> void:
 	if player.player_action == "pickup" and !player.player_move_status:
 		# 切换状态
 		state_machine.change_state("Pickup")
+	if player.player_action == "launch" and !player.player_move_status:
+		# 切换状态
+		state_machine.change_state("Launch")

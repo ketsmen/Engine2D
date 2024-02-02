@@ -15,7 +15,7 @@ var http_headers = [
 	"User-Token: ",
 ]
 
-func on_service(path: String, method: int, data, callback):
+func on_service(path: String, method: int, data, callback) -> void:
 	if !http_request.is_inside_tree():
 		add_child(http_request)
 	var json_data = JSON.stringify(data)

@@ -14,14 +14,14 @@ signal item_pressed(token: String)
 var server_list: Array = []
 var selected_token: String = ""
 
-func _ready():
+func _ready() -> void:
 	# 设置节点默认数据
 	selected_token = Global.get_account_area_token()
 	server_list = Global.get_account_area_list()
 	# 显示当前节点场景
 	visible = true
 
-func update_server():
+func update_server() -> void:
 	server_list = Global.get_account_area_list()
 	# 清空服务器列表
 	while server_list_box.get_child_count() > 0:
@@ -52,7 +52,7 @@ func update_server():
 		item.connect("pressed", _on_item_pressed.bind(server_list[i]["token"]))
 		server_list_box.add_child(item)
 
-func _on_item_pressed(token: String):
+func _on_item_pressed(token: String) -> void:
 	for i in range(server_list_box.get_child_count()):
 		# 禁用点击
 		server_list_box.get_child(i).disabled = true

@@ -10,13 +10,13 @@ extends Control
 # 初始化节点数据
 var is_loader = false
 
-func _ready():
+func _ready() -> void:
 	# 初始化加载状态
 	is_loader = false
 	# 初始化进度条
 	progress.value = 0
 
-func _process(_delta):
+func _process(_delta) -> void:
 	if is_loader:
 		var loader_status = false
 		for i in range(len(Loader.get_default_path_list())):
@@ -36,6 +36,6 @@ func _process(_delta):
 			else:
 				get_parent().on_message("资源加载失败，请重新尝试", 0)
 
-func on_loader():
+func on_loader() -> void:
 	if !is_loader:
 		is_loader = true

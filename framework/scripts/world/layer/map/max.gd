@@ -6,7 +6,7 @@ extends SubViewport
 
 @onready var camera = $Camera
 
-func _ready():
+func _ready() -> void:
 	# 动态加载地图
 	var map_loader = Loader.get_resource_loaded(Loader.get_map_scene_path()).instantiate()
 	# 获取当前场景

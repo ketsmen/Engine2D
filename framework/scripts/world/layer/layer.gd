@@ -39,7 +39,7 @@ var min_map_status:bool = true
 var chat_box_status:bool = true
 var dialog_callback:Callable = Callable()
 
-func _ready():
+func _ready() -> void:
 	# 默认隐藏大地图
 	max_map_box.visible = false
 	# 默认隐藏Dialog资源
@@ -49,7 +49,7 @@ func _ready():
 	await get_parent().ready
 	player_node = Global.get_nodes_item("player")
 
-func _process(_delta):
+func _process(_delta) -> void:
 	# 更新当前时间
 	footer_left_time.text = Utils.get_current_time()
 	# 更新小地图按钮状态
@@ -95,19 +95,19 @@ func _process(_delta):
 			max_map_location.position = Vector2(player_node.position.x - 12024, player_node.position.y - 8016)
 		# TODO 显示周边人物、NPC、怪物
 
-func _on_min_map_show_pressed():
+func _on_min_map_show_pressed() -> void:
 	var tween = get_tree().create_tween()
 	tween.set_parallel(true)
 	tween.tween_property(min_map_main, "position:y", (min_map_main.position.y + 145), 0.2)
 	min_map_status = true
 
-func _on_min_map_hide_pressed():
+func _on_min_map_hide_pressed() -> void:
 	var tween = get_tree().create_tween()
 	tween.set_parallel(true)
 	tween.tween_property(min_map_main, "position:y", (min_map_main.position.y - 145), 0.2)
 	min_map_status = false
 
-func _on_max_show_button_pressed():
+func _on_max_show_button_pressed() -> void:
 	if !max_map_box.visible:
 		max_map_box.visible = true
 		
@@ -115,47 +115,47 @@ func _on_max_hide_button_pressed():
 	if max_map_box.visible:
 		max_map_box.visible = false
 
-func _on_chat_left_button_pressed():
+func _on_chat_left_button_pressed() -> void:
 	var tween = get_tree().create_tween()
 	tween.set_parallel(true)
 	tween.tween_property(chat_box, "position:x", (chat_box.position.x - 325), 0.2)
 	chat_box_status = false
 
-func _on_chat_right_button_pressed():
+func _on_chat_right_button_pressed() -> void:
 	var tween = get_tree().create_tween()
 	tween.set_parallel(true)
 	tween.tween_property(chat_box, "position:x", (chat_box.position.x + 325), 0.2)
 	chat_box_status = true
 
-func _on_out_role_pressed():
+func _on_out_role_pressed() -> void:
 	on_dialog_confirm("是否确认退出当前角色？", func ():
 		get_parent().on_return_launch()
 	)
 
-func _on_out_game_pressed():
+func _on_out_game_pressed() -> void:
 	on_dialog_confirm("是否确认退出游戏？", func ():
 		get_tree().quit()
 	)
 
-func on_dialog_confirm(content: String, callback):
+func on_dialog_confirm(content: String, callback) -> void:
 	dialog_confirm_content.text = content
 	if callback:
 		dialog_callback = callback
 	dialog_confirm.visible = true
 	dialog_box.visible = true
 
-func _on_dialog_confirm_button_pressed():
+func _on_dialog_confirm_button_pressed() -> void:
 	if dialog_callback:
 		dialog_callback.call()
 
-func _on_dialog_cancel_button_pressed():
+func _on_dialog_cancel_button_pressed() -> void:
 	if not dialog_callback.is_null():
 		dialog_callback = Callable()
 	dialog_confirm_content.text = ""
 	dialog_confirm.visible = false
 	dialog_box.visible = false
 
-func _notification(what):
+func _notification(what) -> void:
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
 		# 阻止默认退出事件
 		get_tree().set_auto_accept_quit(false)

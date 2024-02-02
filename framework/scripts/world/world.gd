@@ -7,7 +7,7 @@ extends Node2D
 # 实例化节点树中的资源
 @onready var layer:CanvasLayer = $Layer
 
-func _ready():
+func _ready() -> void:
 	# 添加到Global便于后续使用
 	Global.update_nodes_item("world", get_tree().current_scene)
 	# 加载玩家当前地图资源
@@ -23,7 +23,7 @@ func _ready():
 	# 加载玩家资源
 	on_loader_player()
 
-func on_loader_map():
+func on_loader_map() -> void:
 	# 加载地图资源
 	var map_loader = Loader.get_resource_loaded(Loader.get_map_scene_path()).instantiate()
 	map_loader.name = "Map"
@@ -34,7 +34,7 @@ func on_loader_map():
 	# 添加到Global便于后续使用
 	Global.update_nodes_item("map", map_loader)
 
-func create_user_node():
+func create_user_node() -> void:
 	# 创建玩家存储节点
 	var player_node = Node2D.new()
 	player_node.name = "Players"
@@ -45,7 +45,7 @@ func create_user_node():
 	# 添加到Global便于后续使用
 	Global.update_nodes_item("players", player_node)
 
-func create_monster_node():
+func create_monster_node() -> void:
 	# 创建怪物存储节点
 	var monster_node = Node2D.new()
 	monster_node.name = "Monsters"
@@ -56,7 +56,7 @@ func create_monster_node():
 	# 添加到Global便于后续使用
 	Global.update_nodes_item("monsters", monster_node)
 
-func create_npc_node():
+func create_npc_node() -> void:
 	# 创建NPC存储节点
 	var npc_node = Node2D.new()
 	npc_node.name = "Npcs"
@@ -67,11 +67,11 @@ func create_npc_node():
 	# 添加到Global便于后续使用
 	Global.update_nodes_item("npcs", npc_node)
 
-func on_loader_layer():
+func on_loader_layer() -> void:
 	# 更新layer层级
 	Global.get_nodes_item("world").move_child(layer, 4)
 
-func on_loader_player():
+func on_loader_player() -> void:
 	# 加载玩家资源
 	var player_loader = Loader.get_resource_loaded(Loader.get_player_scene_path()).instantiate()
 	player_loader.name = "Player"
@@ -82,7 +82,7 @@ func on_loader_player():
 	# 添加到Global便于后续
 	Global.update_nodes_item("player", player_loader)
 
-func on_return_launch():
+func on_return_launch() -> void:
 	var launch_path = "res://framework/scenes/launch/launch.tscn"
 	Global.data["source"] = "world"
 	get_tree().change_scene_to_file(launch_path)

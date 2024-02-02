@@ -15,7 +15,7 @@ func _ready() -> void:
 
 func enter() -> void:
 	super.enter()
-	player.player_action = "attack"
+	player.player_action = "launch"
 	status_lock = true
 
 func process_update(delta: float) -> void:
@@ -26,7 +26,7 @@ func physics_process_update(delta: float) -> void:
 	# 切换玩家状态
 	player.on_switch_action_status()
 	# 状态检测
-	if Event.get_key() != "Shift":
+	if !Event.is_skill():
 		status_lock = false
 	if !status_lock and player.player_clothe.frame == 5:
 		state_machine.change_state("Stand")
